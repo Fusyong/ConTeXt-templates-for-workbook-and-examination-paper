@@ -1,0 +1,149 @@
+%%%% 全局配置
+\startenvironment
+
+%%%%
+\setuppapersize[width=145mm, height=210mm]
+
+% 中文配置
+\mainlanguage[cn]
+\language[cn]
+\setscript[hanzi] % 汉字脚本（断行）
+\setupalign[hanging,hz] %行末标点悬挂
+
+% 汉字字体配置
+\usetypescriptfile[mscore]
+\usebodyfont   [mschinese,9pt]
+% \usebodyfont   [mschinese-light,12pt]
+% \setupbodyfont [mschinese-literate,12pt]
+% \usebodyfont   [mschinese-literate,12pt]
+% \definebodyfontenvironment[24pt]
+% \definebodyfontenvironment[18pt]
+% 定义字体
+% \definefont[kaiti][name:kaiti*default at 24pt]
+
+% 配置章节格式
+\setuphead[chapter][style={\setupalign[middle]\bf\switchtobodyfont[30pt]}]
+\setuphead[section][style={\setupalign[middle]\bf\switchtobodyfont[20pt]}]
+\setuphead[subsection][style={\setupalign[middle]\bf\switchtobodyfont[12pt]}]
+
+% 目录设置
+\setupcolors[state=start]
+\setupheadtext[content=音节表]
+\setuphead[chapter][number=no]
+\setuphead[section][number=no]
+\setuphead[subsection][number=no]
+\setuphead[subsubsection][number=no]
+\setupcombinedlist[content][list={chapter,section,subsection,subsubsection}]%alternative=c
+\setuplist[section][width=10mm, style=bold]
+\setuplist[subsection][width=20mm]
+\setuplist[subsubsection][width=20mm, style=slanted, pagestyle=normal]
+% pdf交互/链接
+\setupinteraction[state=start]
+
+% 设置页码格式
+\setuppagenumbering[
+    alternative=doublesided,
+    location={header, margin},
+]
+
+% 行距设置
+\setupinterlinespace[line=1.5em]
+% 缩进设置
+\setupindenting[yes, 2em, first]
+% 窄行、缩进设置（每一级的缩进量）
+\setupnarrower[left=01em]%
+\setupcolumns[n=2, separator=rule]
+
+%%%% 标点压缩
+\usemodule[zhpunc][pattern=kaiming, spacequad=0.5, hangjian=false]
+% 
+% 四种标点压缩方案：全角、开明、半角、原样：
+%   pattern: quanjiao(default), kaiming, banjiao, yuanyang
+% 行间标点（转换`、，。．：！；？`到行间，pattern建议用banjiao）：
+%   hangjian: false(default), true
+% 加空宽度（角）：
+%   spacequad: 0.5(default)
+% 
+% 行间书名号和专名号（\bar实例）：
+%   \zhuanmh{专名}
+%   \shumh{书名}
+
+% 引用、交互
+\setupreferencing[left=,right=] % 覆盖左右两侧的引号
+\setupinteraction   [state=start, color=,contrastcolor=black,style=]
+\define[1]\see{\at{}{页}[#1]\about[#1]}% 另见
+
+% 页眉
+% \setupheadertexts[{\getmarking[subsubject]}][][][{\getmarking[subsubject]}]
+\setupheadertexts%
+    []%
+    [{\ReadFile{header.lua}}]%
+    [{\ReadFile{header.lua}}]%
+    []%
+
+
+%%%% 存取数据
+
+\definedataset[zicitable][delay=yes] % 最后实现，会插入页码信息
+
+%%%% 宏
+
+% \define[3]\zi{%
+%     \startnarrower[left]%
+%         \setupindenting[yes,-1em]%
+%         \setupinitial[n=2,text=#1]%
+%         \placeinitial #2 \par%
+%         \forgetinitial%
+%         \setupindenting[yes,2em] #3%
+%     \stopnarrower%
+% }
+
+% 单字词条 \zi{单字词条}{音}{正文}{另见}
+% \defineexpandable
+\define[4]\zi{%
+    \startnarrower[left]%
+        \newcount\myhanglinenum \myhanglinenum=2% 字头绕排行数
+        \newdimen\mytitleindent \mytitleindent=-1em% 字头缩进量
+        \newdimen\hangingdist \hangingdist=-0.5em% 绕排间距
+
+        \setbox0=\hbox{\tfd \bf #1}% 字头
+        \newdimen\titleright \titleright=\wd0% 字头宽度
+        \advance\titleright by \mytitleindent%
+        \advance\titleright by -\hangingdist%
+        
+        \setupindenting[yes,\mytitleindent]% 缩进
+        % 字头绕排
+        \starthanging[location=left,n=\myhanglinenum,distance=\hangingdist]{%
+            \reference[#1-#2]{#2}% 引用锚点
+            \setdataset[zicitable][title=#1, pinyin=#2, class=zi]% 登记在字词表中，不用键名
+            \box0% 字头
+        }%
+            {\hskip -\mytitleindent #2 #3}\par% 字头解释，字头缩进后需要用hskip和hangingdist修正
+            \advance \myhanglinenum by -\prevgraf% 减去上一个段落的行数
+            % 如果实际绕排1行，还有1个空行，则后行跟上、加缩进
+            \ifnum \myhanglinenum=1%
+                \doifsomethingelse{#4}
+                    {\setupindenting[yes,\titleright]另见#4}%
+                    {\dorecurse{\myhanglinenum}{\blank}}%
+            \else%
+                \doifsomethingelse{#4}
+                    {\setupindenting[yes,2em]另见#4}%
+            \fi%
+        \stophanging%
+    \stopnarrower%
+}
+
+% 多字词条 \zi{多字词条}{音}{正文}{另见}
+\define[4]\ci{%
+    \startnarrower[left]%
+        \setupindenting[yes,-1em]%
+        \reference[#1-#2]{#2}% 引用锚点
+        \setdataset[zicitable][title=#1, pinyin=#2, class=ci]% 登记在字词表中，不用键名
+        \hbox{\bf #1} #2 #3 \par% 词头和词头解释
+        \doifsomethingelse{#4}
+        {\setupindenting[yes,2em]另见#4}% 另见
+        \forgetinitial%
+    \stopnarrower%
+}
+
+\stopenvironment
