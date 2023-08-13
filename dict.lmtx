@@ -6,8 +6,11 @@
 % \tracingnodes1 %1,2
 
 %%%%配置和宏环境
-\environment[evns/env_setting.tex]
+\environment[envs/env_setting.tex]
+
 
 \startproduct dict
-    \component[chapter_a.tex]
+    % \placecontent
+    \completecontent
+    \component[chapter_a.lmtx]
 \stopproduct
