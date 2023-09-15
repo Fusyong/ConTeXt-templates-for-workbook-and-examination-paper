@@ -12,7 +12,7 @@
 
 % 汉字字体配置
 \usetypescriptfile[mscore]
-\usebodyfont   [mschinese,9pt]
+\usebodyfont   [mschinese,14pt]
 % \usebodyfont   [mschinese-light,12pt]
 % \setupbodyfont [mschinese-literate,12pt]
 % \usebodyfont   [mschinese-literate,12pt]
@@ -21,10 +21,13 @@
 % 定义字体
 % \definefont[kaiti][name:kaiti*default at 24pt]
 
-% 配置章节格式
-\setuphead[chapter][style={\setupalign[middle]\bf\switchtobodyfont[30pt]}]
-\setuphead[section][style={\setupalign[middle]\bf\switchtobodyfont[20pt]}]
-\setuphead[subsection][style={\setupalign[middle]\bf\switchtobodyfont[12pt]}]
+
+% 配置标题格式
+\setuphead[chapter][style={\setupalign[middle]\tfb}]
+\setuphead[section][style={\setupalign[middle]\tfa}]
+\setuphead[subsection][style={\bf}]
+\setuphead[subsubsection][style={\tf}, color=middlecyan]
+\definehead[centralTitle][section][style={\setupalign[middle]\tf},color=middlecyan] % 居中的文章标题
 
 % 目录设置
 \setupcolors[state=start]
@@ -49,7 +52,7 @@
 % 段落间距
 \setupwhitespace[none]
 % 条目间距（覆盖预设）
-\setupitemgroup[inbetween=]
+% \setupitemgroup[packed]
 % 行距设置
 \setupinterlinespace[line=1.5em]
 % 缩进设置
@@ -57,24 +60,6 @@
 % 窄行、缩进设置（每一级的缩进量）
 \setupnarrower[left=01em]%
 \setupcolumns[n=2, separator=rule]
-
-%%%% 标点压缩
-\usemodule[zhpunc][pattern=kaiming, spacequad=0.5, hangjian=false]
-% 
-% 四种标点压缩方案：全角、开明、半角、原样：
-%   pattern: quanjiao(default), kaiming, banjiao, yuanyang
-% 行间标点（转换`、，。．：！；？`到行间，pattern建议用banjiao）：
-%   hangjian: false(default), true
-% 加空宽度（角）：
-%   spacequad: 0.5(default)
-% 
-% 行间书名号和专名号（\bar实例）：
-%   \zhuanmh{专名}
-%   \shumh{书名}
-
-
-
-
 
 
 % % 引用、交互
@@ -154,5 +139,35 @@
 %         \forgetinitial%
 %     \stopnarrower%
 % }
+
+%%%%%%%%%%%%% 使用模块(保持顺序) %%%%%%%%%%%%%
+% 竖排
+% \usemodule[vtypeset]
+
+
+% 标点压缩与支持
+\usemodule[zhpunc][pattern=quanjiao, spacequad=0.5, hangjian=false]
+% 
+% 四种标点压缩方案：全角、开明、半角、原样：
+%   pattern: quanjiao(default), kaiming, banjiao, yuanyang
+% 行间标点（转换`、，。．：！；？`到行间，pattern建议用banjiao）：
+%   hangjian: false(default), true
+% 加空宽度（角）：
+%   spacequad: 0.5(default)
+% 
+% 行间书名号和专名号（\bar实例）：
+%   \zhuanmh{专名}
+%   \shumh{书名}
+
+
+% 夹注
+% \usemodule[jiazhu][fontname=tf, fontsize=10.5pt, interlinespace=0.2em]
+% default: fontname=tf, fontsize=10.5pt, interlinespace=0.08em(行间标点时约0.2em)
+% fontname和fontsize与\switchtobodyfont的对应参数一致
+% 夹注命令：
+%   \jiazh{夹注}
+
+% 着重号
+\definebar[zhuozhong][text=\lower0.6em\hbox{~·}, repeat=no]
 
 \stopenvironment

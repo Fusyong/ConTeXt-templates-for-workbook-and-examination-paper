@@ -4,9 +4,9 @@
 
 \chapter{第一单元}
 
-单元学习目标
+\centralTitle{单元学习目标}
 
-\startitemize[n]
+\startitemize[n,packed]
     \item 按要求掌握“识字表”“写字表”中本单元的生字，理解并积累“词语表”中本单元的词语，掌握“识字表”中列出的多音字。
     \item 有感情地朗读课文，背诵并默写指定的内容。
     \item 透过语言文字想象画面，感受乡村的和谐美好。
@@ -14,40 +14,65 @@
     \item 和同学分享交流你最喜欢的景致；写写自己喜欢的某个地方，表达出真实的感受。
 \stopitemize
 
-\section{1. 社戏}
+\section{1 古诗词三首}
 
-\startcolumns
+\subsection{基础练习}
 
-\subsubject{学习目标}
+\subsubsection{一、用“\backslash”划去下列错误的读音或字形。}
 
-\subsubject{学习积累}
+\startitemize[n,packed]
+    \item 篱落（疏疏 \quad 蔬蔬）一径深，树头新绿未成（荫 \quad 阴）。
+    \item 日长篱落无人过，惟有蜻蜓蛱（xiá \quad jiá）蝶飞。
+    \item（矛 \quad 茅）檐低小，溪上青青草。
+    \item 最喜小儿亡（wú \quad wáng）赖，溪头卧剥（bāo \quad bō）莲蓬。
+\stopitemize
 
-\subsubsubject{作者简介}
+\subsubsection{二、读拼音，写词语。}
+zá
+xìng
+sù
+shè
+qīng
+tíng
+xī
+shǎo
+jī
+lóng
+yī
+lài
+máo
+yán
+lǎo wēng
 
-\subsubsubject{背景资料}
-
-\subsubsubject{趣味链接}
-
-\subsubsubsubject{爱书情结}
-
-\subsubsubsubject{辣椒驱寒}
-
-\subsubsubsubject{理发趣事}
-
-\subsubsubsubject{鲁迅的对联}
-
-\subsubsubsubject{标点的稿费}
-
-\subsubsubject{整体感悟}
-\subsubsubsubject{文脉图解}
-\subsubsubsubject{问题探究}
+\subsubsection{三、给加点的字词选择正确的意思。}
 
 
-\subsubsubject{巩固达标}
-\subsubsubsubject{基础巩固}
-\subsubsubsubject{阅读提升}
-\subsubsubsubject{能力提升}
-
-\stopcolumns
+\startitemize[n,packed]
+    \item 儿童急\zhuozhong{走}追黄蝶（ \qquad ） % 或者
+        \startitemize[A,horizontal,three]
+            \startitem 离开 \stopitem
+            \startitem 跑 \stopitem
+            \startitem 行走 \stopitem
+        \stopitemize
+    \item 白发谁家翁\zhuozhong{媪}（ \qquad ）
+        \startitemize[A,horizontal,three]
+            \startitem 母亲 \stopitem
+            \startitem 妇女 \stopitem
+            \startitem 老妇人 \stopitem
+        \stopitemize
+    \item 最喜小儿\zhuozhong{亡赖}（ \qquad ）
+        \startitemize[A,horizontal,three]
+            \startitem 顽皮、淘气 \stopitem
+            \startitem 撒泼刁蛮 \stopitem
+            \startitem 没有依靠 \stopitem
+        \stopitemize
+    \item 四时田园杂\zhuozhong{兴}（ \qquad ）
+        \startitemize[A,horizontal,three]
+            \startitem 高兴 \stopitem
+            \startitem 兴奋 \stopitem
+            \startitem 兴致 \stopitem
+        \stopitemize
+    \stophead
+\stopitemize
 
 \stoptext
