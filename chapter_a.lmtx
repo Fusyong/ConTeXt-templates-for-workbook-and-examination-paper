@@ -4,7 +4,7 @@
 
 \chapter{第一单元}
 
-\centralTitle{单元学习目标}
+\centralTitle[单元学习目标][]
 
 \startitemize[n,packed]
     \item 按要求掌握“识字表”“写字表”中本单元的生字，理解并积累“词语表”中本单元的词语，掌握“识字表”中列出的多音字。
@@ -18,7 +18,7 @@
 
 \subsection{基础练习}
 
-\subsubsection{一、用“\backslash”划去下列错误的读音或字形。}
+\subsubsection{用“\backslash”划去下列错误的读音或字形。}
 
 \startitemize[n,packed]
     \item 篱落（疏疏 \quad 蔬蔬）一径深，树头新绿未成（荫 \quad 阴）。
@@ -27,7 +27,8 @@
     \item 最喜小儿亡（wú \quad wáng）赖，溪头卧剥（bāo \quad bō）莲蓬。
 \stopitemize
 
-\subsubsection{二、读拼音，写词语。}
+\subsubsection{读拼音，写词语。}
+
 zá
 xìng
 sù
@@ -44,35 +45,81 @@ máo
 yán
 lǎo wēng
 
-\subsubsection{三、给加点的字词选择正确的意思。}
-
+\subsubsection{给加点的字词选择正确的意思。}
 
 \startitemize[n,packed]
-    \item 儿童急\zhuozhong{走}追黄蝶（ \qquad ） % 或者
+    \item 儿童急\zhuozhong{走}追黄蝶 \hfill （ \qquad ） % 或者
         \startitemize[A,horizontal,three]
             \startitem 离开 \stopitem
             \startitem 跑 \stopitem
             \startitem 行走 \stopitem
         \stopitemize
-    \item 白发谁家翁\zhuozhong{媪}（ \qquad ）
+    \item 白发谁家翁\zhuozhong{媪} \hfill （ \qquad ）
         \startitemize[A,horizontal,three]
             \startitem 母亲 \stopitem
             \startitem 妇女 \stopitem
             \startitem 老妇人 \stopitem
         \stopitemize
-    \item 最喜小儿\zhuozhong{亡赖}（ \qquad ）
+    \item 最喜小儿\zhuozhong{亡赖} \hfill （ \qquad ）
         \startitemize[A,horizontal,three]
             \startitem 顽皮、淘气 \stopitem
             \startitem 撒泼刁蛮 \stopitem
             \startitem 没有依靠 \stopitem
         \stopitemize
-    \item 四时田园杂\zhuozhong{兴}（ \qquad ）
+    \item 四时田园杂\zhuozhong{兴} \hfill （ \qquad ）
         \startitemize[A,horizontal,three]
             \startitem 高兴 \stopitem
             \startitem 兴奋 \stopitem
             \startitem 兴致 \stopitem
         \stopitemize
-    \stophead
 \stopitemize
+
+\subsubsection{默写《宿新市徐公店》并回答问题。}
+
+% \blackrule[width=52em,depth=4pt,height=-3.5pt]
+
+% {\fillinline[width=12em,distance=0em]{\hfill 你好：}\hfill}
+
+% \fillinrules[n=2,width=0em]{}{，}
+% \fillinrules[n=1,width=0em]{}{。}
+% \fillinrules[n=1,width=0em]{}{，}
+% \fillinrules[n=1,width=0em]{}{。}
+
+
+
+{\midaligned{
+\cloze{宿新市徐公店}\\
+\cloze{篱落疏疏一径深}，\cloze{树头新绿未成阴}。\\
+\cloze{儿童急走追黄蝶}，\cloze{飞入菜花无处寻}。\\
+}}
+
+这首诗的作者是 \cloze{宋} 代诗人 \cloze{杨万里}，诗中运用 \cloze{动静结合} 的手法描写了 \cloze{暮春乡村} 的景色。我喜欢的诗句是 \cloze{儿童急走追黄蝶，飞入菜花无处寻}，因为 \cloze{这两句诗表现了儿童的天真可爱}。
+
+\subsubsection{判断下列说法是否正确。（正确的画“√”，错误的画“×”）}
+
+\startitemize[n,packed]
+    \item 《宿新市徐公店》描写的是暮春时节乡村的景色，而《四时田园杂兴（其二十五）》则写的是初春江南的田园景色。 \hfill （ \qquad ）
+    \item 《四时田园杂兴（其二十五）》这首诗的前两句写景色，第三句从侧面写农民劳动的情况，最后一句用蛱蝶飞来衬托村中的寂静，静中有动，显得更静。 \hfill （ \qquad ）
+    \item 《清平乐·村居》是宋代词人辛弃疾的词作，“清平乐”是题目，“村居”是词牌名，全词表现了词人对农村和平宁静生活的喜爱。 \hfill （ \qquad ）
+\stopitemize
+
+\subsubsection{阅读古诗词，完成练习。}
+
+\centralTitle[行香子·树绕村庄][秦观]
+
+{\it 树绕村庄，水满陂（bēi）塘。倚东风、豪兴徜徉。小园几许，收尽春光。
+有桃花红，李花白，菜花黄。
+
+远远苔墙，隐隐茅堂。飏（yáng）青旗、流水桥旁。偶然乘兴、步过东冈。
+正莺儿啼，燕儿舞，蝶儿忙。
+}
+
+\subsubsection{给加点的字词选择正确的意思。}
+\subsubsection{给加点的字词选择正确的意思。}
+\subsubsection{给加点的字词选择正确的意思。}
+\subsubsection{给加点的字词选择正确的意思。}
+\subsubsection{给加点的字词选择正确的意思。}
+\subsubsection{给加点的字词选择正确的意思。}
+
 
 \stoptext

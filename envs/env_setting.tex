@@ -21,22 +21,41 @@
 % 定义字体
 % \definefont[kaiti][name:kaiti*default at 24pt]
 
+% 结构传统
+\definestructureconversionset[cnconversion]
+    [R,   % part: Rome
+     cn,  % chapter：中文数字
+     ,   % section: none defined (use fallback)
+     ,   % subsection: medieaval, a.k.a. oldstyle
+     cn]   % subsubsection: 中文数字
+    [r]
 
-% 配置标题格式
+\setupheads
+    [part,chapter,section,subsection,subsubsection]
+    [before={}, after={}, % 覆盖上下行插入的空格
+     sectionconversionset=cnconversion,
+     number=no,
+     indentnext=yes, % 其后首行缩进
+     sectionsegments=current] % 序号段：只包括当前序号
+
+% 配置标题、目录格式
+% 单元，新页起 , page=yes/left/right
 \setuphead[chapter][style={\setupalign[middle]\tfb}]
+%  课目
 \setuphead[section][style={\setupalign[middle]\tfa}]
+% 栏目
 \setuphead[subsection][style={\bf}]
-\setuphead[subsubsection][style={\tf}, color=middlecyan]
-\definehead[centralTitle][section][style={\setupalign[middle]\tf},color=middlecyan] % 居中的文章标题
+% 题目
+\setuplabeltext[cn][subsubsection={{},{、}}] % 前后标签
+\setuphead[subsubsection][style={\tf}, color=middlecyan, number=yes,distance=0pt]
+% 短文标题
+\def\centralTitle[#1][#2]{%
+    \subsubsubject{\tf \midaligned{\color[middlecyan]{ #1 \break #2}}}%
+}
 
-% 目录设置
 \setupcolors[state=start]
 \setupheadtext[content=目录]
-\setuphead[chapter][number=no]
-\setuphead[section][number=no]
-\setuphead[subsection][number=no]
-\setuphead[subsubsection][number=no]
-\setupcombinedlist[content][list={chapter,section,subsection,subsubsection}]%alternative=c
+\setupcombinedlist[content][list={chapter,section},alternative=c]%
 \setuplist[section][width=10mm, style=bold]
 \setuplist[subsection][width=20mm]
 \setuplist[subsubsection][width=20mm, style=slanted, pagestyle=normal]
@@ -169,5 +188,14 @@
 
 % 着重号
 \definebar[zhuozhong][text=\lower0.6em\hbox{~·}, repeat=no]
+
+% 完形填空  ！！！标点符号处理过程导致下划线丢失
+\definebar[clozeBar][underbar][continue=yes, color=black, offset=-0.5]
+\def\cloze #1{%
+    \startbar[clozeBar]%
+    \scratchdimen\widthofstring{#1}\relax % 获取文本宽度
+    \zwj\kern.5\scratchdimen \color[black]{#1} \kern.5\scratchdimen\zwj % U+200D ZERO WIDTH JOINER
+    \stopbar%
+}%
 
 \stopenvironment
