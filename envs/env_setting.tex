@@ -209,4 +209,15 @@
     \stopbar%
 }%
 
+% 编号段落
+\newcounter\Paracount
+\def\Paragraphnumber%
+    {\increment\Paracount 
+    \Paracount.~}
+\def\startParagraphNumbers%
+    {\par \begingroup \appendtoks \Paragraphnumber \to \everypar}
+\def\stopParagraphNumbers%
+    {\par \endgroup}
+
+
 \stopenvironment
