@@ -4,7 +4,7 @@
 
 \chapter{第一单元}
 
-\centralTitle[单元学习目标][]
+\essayhead[单元学习目标][]
 
 \startitemize[n,packed]
     \item 按要求掌握“识字表”“写字表”中本单元的生字，理解并积累“词语表”中本单元的词语，掌握“识字表”中列出的多音字。
@@ -105,7 +105,7 @@ lǎo wēng
 
 \subsubsection{阅读古诗词，完成练习。}
 
-\centralTitle[行香子·树绕村庄][秦观]
+\essayhead[行香子·树绕村庄][秦观]
 
 {\it 树绕村庄，水满陂（bēi）塘。倚东风、豪兴徜徉。小园几许，收尽春光。
 有桃花红，李花白，菜花黄。

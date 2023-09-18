@@ -50,15 +50,18 @@
 \setuphead[subsubsection][style={\tf}, color=middlecyan, number=yes,distance=0pt]
 
 % 自订标题
-\definehead[centersection][section][align=center]
-\definehead[leftsection][section][align=flushleft]
-\define[2]\essayhead{\centersection{#1}\middlealigned{\itx #2}\blank}
-\define[2]\rhymehead{\leftsection{#1}\leftaligned{\itx #2}\blank[0cm]}
-\define[2]\classicalpoemhead{\centersection{#1}\middlealigned{\itx #2}\blank[0cm]}
+\definehead[centersection][subsubsubject][align=middle]
+\definehead[leftsection][subsubsubject][align=flushleft]
+\def\essayhead[#1][#2]{%
+    \centersection{#1}%
+    \doifnotempty{#2}{\centersection{#2}}%
+    }
+% \define[2]\rhymehead{\leftsection{#1}\leftaligned{\itx #2}\blank[0cm]}
+% \define[2]\classicalpoemhead{\centersection{#1}\middlealigned{\itx #2}\blank[0cm]}
 
 % 短文标题
 \def\centralTitle[#1][#2]{%
-    \subsubsubject{\tf \midaligned{\color[middlecyan]{ #1 \break #2}}}%
+    \subsubsubject{\tf }%
 }
 
 \setupcolors[state=start]
