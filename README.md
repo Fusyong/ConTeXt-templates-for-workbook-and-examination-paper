@@ -1,4 +1,4 @@
-a ConTeXt template for workbook, or examination paper in Chinese
+some ConTeXt templates for workbook and examination paper in Chinese
 
 语文练习册和试卷的ConTeXt模板
 
