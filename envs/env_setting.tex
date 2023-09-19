@@ -200,12 +200,15 @@
 % 着重号
 \definebar[zhuozhong][text=\lower0.6em\hbox{~·}, repeat=no]
 
-% 完形填空  ！！！标点符号处理过程导致下划线丢失
+% 完形填空
+% ！！！标点符号处理过程导致下划线丢失，或禁则失效
+% 可能是标点模块删除标点前后的空白造成的
+% 临时处理方法是只在填空前面加kern
 \definebar[clozeBar][underbar][continue=yes, color=black, offset=-0.5]
 \def\cloze #1{%
     \startbar[clozeBar]%
     \scratchdimen\widthofstring{#1}\relax % 获取文本宽度
-    \zwj\kern.5\scratchdimen \color[black]{#1} \kern.5\scratchdimen\zwj % U+200D ZERO WIDTH JOINER
+    \zwj\kern1\scratchdimen \color[black]{#1}% \kern.5\scratchdimen\zwj % U+200D ZERO WIDTH JOINER
     \stopbar%
 }%
 

@@ -4,6 +4,7 @@
 \showframe
 % \showmakeup
 % \tracingnodes1 %1,2
+\showreferences
 
 %%%%配置和宏环境
 \environment[envs/env_setting.tex]
