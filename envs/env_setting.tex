@@ -1,13 +1,20 @@
 %%%% 全局配置
 \startenvironment
 
-%%%%
-\setuppapersize[width=145mm, height=210mm]
+%%%% 纸张和版面
+\definepapersize[sheet][width=145mm, height=210mm]
+% Create two A4-derived paper sizes
+\definepapersize[standing][A4][sheet]
+\setuppapersize[standing]
+\setuplayout[
+    marking=on, % 裁切线，设置较大幅面打印纸才能显示
+    location=middle,
+]
 
 % 中文配置
 \mainlanguage[cn]
 \language[cn]
-\setscript[hanzi] % 汉字脚本（断行）
+\setscript[hanzi] % 汉字处理脚本（断行）
 \setupalign[hanging,hz] %行末标点悬挂
 
 % 汉字字体配置

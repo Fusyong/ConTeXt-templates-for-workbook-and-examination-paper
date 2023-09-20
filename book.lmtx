@@ -1,14 +1,15 @@
-%%%%% 显式视觉调试信息 %%%%
-% \showboxes
-% \showglyphs
-\showframe
-% \showmakeup
-% \tracingnodes1 %1,2
-\showreferences
 
 %%%%配置和宏环境
 \environment[envs/env_setting.tex]
 
+%%%%% 显式视觉调试信息 %%%%
+% \showboxes
+% \showglyphs
+\setuppapersize[standing][A3] % A3打印，能看到裁切线
+\showframe
+% \showmakeup
+% \tracingnodes1 %1,2
+% \showreferences
 
 \startproduct dict
     % \placecontent
