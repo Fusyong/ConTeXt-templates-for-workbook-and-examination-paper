@@ -15,7 +15,7 @@
 
 \section{1 古诗词三首}
 
-\subsection{基础练习}
+\subsubsubject{基础练习}
 
 \subsubsection{用“\backslash”划去下列错误的读音或字形。}
 
@@ -75,26 +75,13 @@ lǎo wēng
 
 \subsubsection{默写《宿新市徐公店》并回答问题。}
 
-% \blackrule[width=52em,depth=4pt,height=-3.5pt]
-
-% {\fillinline[width=12em,distance=0em]{\hfill 你好：}\hfill}
-
-% \fillinrules[n=2,width=0em]{}{，}
-% \fillinrules[n=1,width=0em]{}{。}
-% \fillinrules[n=1,width=0em]{}{，}
-% \fillinrules[n=1,width=0em]{}{。}
-
-
-
-{\midaligned{
-\cloze{宿新市徐公店}\\
+{\midaligned{\cloze{宿新市徐公店}\\
 \cloze{篱落疏疏一径深}，\cloze{树头新绿未成阴}。\\
-\cloze{儿童急走追黄蝶}，\cloze{飞入菜花无处寻}。\\
-}}
+\cloze{儿童急走追黄蝶}，\cloze{飞入菜花无处寻}。}}
 
 这首诗的作者是 \cloze{宋} 代诗人 \cloze{杨万里}，诗中运用 \cloze{动静结合} 的手法描写了 \cloze{暮春乡村} 的景色。我喜欢的诗句是 \cloze{儿童急走追黄蝶，飞入菜花无处寻}，因为 \cloze{这两句诗表现了儿童的天真可爱}。
 
-\subsubsection{判断下列说法是否正确。（正确的画“{\checkMarkFont ✔}”，错误的画“{\checkMarkFont ✗}”）}
+\subsubsection{判断下列说法是否正确。（正确的画“ \checkMark ”，错误的画“ \crossMark ”）}
 
 \startitemize[n,packed]
     \item 《宿新市徐公店》描写的是暮春时节乡村的景色，而《四时田园杂兴（其二十五）》则写的是初春江南的田园景色。 \hfill （ \qquad ）
@@ -113,28 +100,179 @@ lǎo wēng
 正莺儿啼，燕儿舞，蝶儿忙。
 }
 
+\startitemize[n,packed] % intext
+    \item 这首词的词牌名是 \cloze{行香子}，我知道的词牌名还有： \cloze{卜算子}、 \cloze{沁园春}、 \cloze{念奴娇}。
+    \item 这首词上下片完全对称，节奏明快，上下片结尾各有由一个字引领的三字排偶句（对仗句）：
+        有 \cloze{桃花红}， \cloze{李花白}， \cloze{菜花黄}。
+        正 \cloze{莺儿啼}， \cloze{燕儿舞}， \cloze{蝶儿忙}。
+    \item 根据词句内容填空。
+    \startitemize[n,packed][left=（, right=）,stopper=]
+        \item 小园虽然很小，但也能收尽 \cloze{春光}。看那桃花 \cloze{红}，李花 \cloze{白}，菜花 \cloze{黄}。
+        \item 远远的 \cloze{苔墙}，隐隐的 \cloze{茅堂}。青色的酒旗在风中飘扬。
+        \item 乘着游兴，步过 \cloze{东冈}，正有莺儿 \cloze{啼}，燕儿 \cloze{舞}，蝶儿 \cloze{忙}。
+    \stopitemize
+\stopitemize
 
-\startParagraphNumbers
-这首词的词牌名是 \cloze{行香子}，我知道的词牌名还有： \cloze{卜算子}、 \cloze{沁园春}、 \cloze{念奴娇}。
+\subsubsubject{实践运用}
 
-这首词上下片完全对称，节奏明快，上下片结尾各有由一个字引领的
-三字排偶句（对仗句）：
-有 \cloze{桃花红}， \cloze{李花白}， \cloze{菜花黄}。
-正 \cloze{莺儿啼}， \cloze{燕儿舞}， \cloze{蝶儿忙}。
+\subsubsection{无论什么时候，无论什么季节，乡下人家都是一道独特的风景，一幅和谐的画卷。我们来补一补下面这些关于乡村生活的诗句吧！}
 
-根据词句内容填空。
-（1）小园虽然很小，但也能收尽 \cloze{春光}。看那桃花 \cloze{红}，李花 \cloze{白}，菜花 \cloze{黄}。
-（2）远远的 \cloze{苔墙}，隐隐的 \cloze{茅堂}。青色的酒旗在风中飘扬。
-（3）乘着游兴，步过 \cloze{东冈}，正有莺儿 \cloze{啼}，燕儿 \cloze{舞}，蝶儿 \cloze{忙}。
-\stopParagraphNumbers
+\startitemize[n,packed] % intext
+    \item \cloze{昼出耘田夜绩麻}，村庄儿女各当家。
+    \item 晨兴理荒秽， \cloze{ 戴月荷锄归}。
+    \item 乡村四月闲人少， \cloze{才了蚕桑又插田}。
+    \item 黄梅时节家家雨， \cloze{青草池塘处处蛙}。
+    \item \cloze{绿树村边合}，青山郭外斜。
+    \item 水满田畴 \cloze{稻叶齐}，日光穿树 \cloze{晓烟低}。
+\stopitemize
 
 
-\subsubsection{给加点的字词选择正确的意思。}
-\subsubsection{给加点的字词选择正确的意思。}
-\subsubsection{给加点的字词选择正确的意思。}
-\subsubsection{给加点的字词选择正确的意思。}
-\subsubsection{给加点的字词选择正确的意思。}
-\subsubsection{给加点的字词选择正确的意思。}
+\section{2 乡下人家}
 
+\subsubsubject{基础练习}
+
+\subsubsection{读拼音，写词语。}
+
+ji9 g7u shùn xù hé xié zhuāng shì 
+tǎng ruò shuì mián sǒng lì zhào lì
+
+\subsubsection{用“\backslash”划去下面词语中加点的字错误的读音。}
+
+\startitemize[horizontal][columns=two,symbol=n]
+    \startitem 鸡\zhuozhong{冠}花（guān \quad guàn） \stopitem
+    \startitem \zhuozhong{朴}素（su4 \quad shu4） \stopitem
+    \startitem \zhuozhong{附}会（fu3 \quad fu4） \stopitem
+    \startitem 大\zhuozhong{踏}步（tā \quad tà） \stopitem
+\stopitemize
+
+\subsubsection{根据要求写词语。}
+
+\startitemize[n,packed] % intext
+    \item 从课文中找出下列词语的反义词。
+        \startitemize[horizontal][columns=,symbol=a]
+            \startitem 朴素 — （ \qquad ） \stopitem
+            \startitem 普通 — （ \qquad ） \stopitem
+        \stopitemize
+    \item 从课文中找出下列词语的近义词。
+        \startitemize[horizontal][columns=,symbol=a]
+            \startitem 假设 — （ \qquad ） \stopitem
+            \startitem 协调 — （ \qquad ） \stopitem
+        \stopitemize
+    \item 在括号里填上合适的动词。
+        \startitemize[horizontal,three,a]
+            \startitem （ \qquad ）瓜架 \stopitem
+            \startitem （ \qquad ）南瓜 \stopitem
+            \startitem （ \qquad ）尾巴 \stopitem
+            \startitem （ \qquad ）屋檐 \stopitem
+            \startitem （ \qquad ）食物 \stopitem
+            \startitem （ \qquad ）旗杆 \stopitem
+        \stopitemize
+\stopitemize
+
+\subsubsection{查字典填空。}
+
+\startxtable[mytable]
+    \startxtablehead
+        \startxrow[bold]
+            \startxcell 要查的字 \stopxcell
+            \startxcell 音序 \stopxcell
+            \startxcell 部首 \stopxcell
+            \startxcell 查几画 \stopxcell
+            \startxcell 在正确的解释上画“ \checkMark ” \stopxcell
+        \stopxrow
+    \stopxtablehead
+    \startxtablebody
+        \startxrow
+            \startxcell \zhuozhong{觅}食 \stopxcell
+            \startxcell \stopxcell
+            \startxcell \stopxcell
+            \startxcell \stopxcell
+            \startxcell[align=flushleft] ①寻找 ②偷窃 ③雇 \stopxcell
+        \stopxrow
+        \startxrow
+            \startxcell \zhuozhong{率}领 \stopxcell
+            \startxcell \stopxcell
+            \startxcell \stopxcell
+            \startxcell \stopxcell
+            \startxcell[align=flushleft] ①大略 ②带领 ③模范 ④遵循 \stopxcell
+        \stopxrow
+        \startxrow
+            \startxcell 屋\zhuozhong{檐} \stopxcell
+            \startxcell \stopxcell
+            \startxcell \stopxcell
+            \startxcell \stopxcell
+            \startxcell[align=flushleft] ①屋顶伸出的边沿 ②像屋檐 \stopxcell
+        \stopxrow
+        \startxrow
+            \startxcell 和\zhuozhong{谐} \stopxcell
+            \startxcell \stopxcell
+            \startxcell \stopxcell
+            \startxcell \stopxcell
+            \startxcell[align=flushleft] ①调和、调整 ②完结、成功 \stopxcell
+        \stopxrow
+    \stopxtablebody
+\stopxtable
+
+
+\subsubsection{按要求完成句子练习。}
+
+\startitemize[n,packed] % intext
+    \startitem \zhuozhong{即使}附近的石头上有妇女在捣衣，它们 \zhuozhong{也} 从不吃惊。\stopitem
+        用加点的词语写一句话： \thinrule
+    \startitem 你最喜欢文中的哪句话？请端端正正地抄下来，并说说你喜欢的理由。\stopitem
+        句子： \thinrule
+
+        理由： \thinrule
+    \startitem 补全句子。\stopitem
+        “天边的\cloze{红霞}，向晚的\cloze{微风}，头上飞过的\cloze{归巢的鸟儿}，都是他们的好友。它们和乡下人家一起，绘成了一幅\cloze{自然}、\cloze{和谐}的田园风景画。”我觉得他们的好友还有：\cloze{夕阳}、\cloze{大树}、\cloze{田野}。
+    \startitem 辛苦了一天的人们，甜甜蜜蜜地进入梦乡。（缩句）\stopitem
+\stopitemize
+
+
+\subsubsubject{阅读拓展}
+
+\subsubsection{阅读短文，完成练习。}
+
+\essayhead[姥姥家的小院][]
+
+{\it
+今年暑假，我的生活真是丰富多彩。最有趣的是到农村的姥姥家，我最喜欢姥姥家的小院。
+
+院子西南角，几根长竹竿架上，爬满了花藤，稠密的绿叶衬着紫红色的花朵，又娇嫩，又鲜艳，远远望去，好像一匹美丽的花布。
+
+院子的东北角是由金瓜架构成的棚子。光滑的金瓜像吊灯似的挂在藤上。瓜棚下面放着桌子。晚上，灯亮了，孩子们在这里读书、下棋，大人们也在这里乘凉、闲谈。
+
+院子东面栽着几株像巨人一样高大的白杨，还有几株果实累累的果树。白杨树挺直了高大的躯干，碧绿的叶子被风吹得哗哗直响。空气中弥漫着果子的清香。
+
+\bianzhu{你知道吗？写景类文章的结构一般有这样三类：总—分，分—总，总—分—总。我们要根据具体的内容进行分析。中心句大多数情况下在文章或段落的开头或结尾，起着“总起”或“总结”的作用。
+}
+
+院子南面是一片碧绿的小菜园。韭菜绿油油的，茄秧上挂满了嫩茄子，半红半绿的辣椒像害羞似的，藏在茂密的绿叶中，还有西红柿、黄瓜……各种各样的蔬菜，为农家增添了乐趣。
+
+姥姥家的小院，多么富有诗情画意啊！
+}
+
+\startitemize[n,packed] % intext
+    \startitem 短文的结构为\cloze{总—分—总}，全文是围绕哪一句话写的？请把这句话抄下来。\stopitem
+        \cloze{姥姥家的小院，多么富有诗情画意啊！}
+    \startitem 按要求填空。\stopitem
+姥姥家的院子西南角有\cloze{爬满了花藤的竹架}，东北角是\cloze{金瓜架构成的棚子}，院子东面栽着\cloze{白杨树}，院子南面是\cloze{小菜园}，姥姥家的小院多么富有诗情画意啊！
+    \item 这篇文章是按\cloze{方位}顺序来写的，\cloze{西南角}、\cloze{东北角}、\cloze{东面}、\cloze{南面}这几个词语体现了这种顺序。
+\stopitemize
+
+
+\subsubsubject{实践运用}
+
+\subsubsection{《乡下人家》交叉采用了“植物—动物—人物”的对象顺序，“房前—屋后—河中”的空间顺序，“春—夏—秋”的季节顺序，“白天—傍晚—夜间”的时间顺序，运用比喻、拟人等修辞手法为我们描绘了“瓜藤攀檐图”“鲜花绽放图”“雨后春笋图”“鸡鸭觅食图”“院落晚霞图”“秋夜睡梦图”六幅自然和谐的田园风景画，全文运用了“分—总”的结构。请你按照一定的顺序，运用“分—总”的结构描写一段你喜欢的景致，注意要写出“画面感”。}
+
+\thinrules[n=4]
+
+
+\section{3 天窗}
+
+\subsubsection{比一比，再组词。}
+
+帐（ ） 摊（ ） 蝠（ ） 蝙（ ）
+账（ ） 滩（ ） 福（ ） 编（ ）
 
 \stoptext

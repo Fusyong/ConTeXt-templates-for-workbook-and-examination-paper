@@ -1,6 +1,13 @@
 %%%% 全局配置
 \startenvironment
 
+% 校对模式
+\definemode[proofread][yes]
+\enablemode[proofread]
+% \doifmodeelse{proofread}
+%     {}
+%     {}
+
 %%%% 纸张和版面
 \definepapersize[sheet][width=145mm, height=210mm]
 % Create two A4-derived paper sizes
@@ -27,42 +34,59 @@
 % \definebodyfontenvironment[18pt]
 % 定义字体
 % \definefont[kaiti][name:kaiti*default at 24pt]
-\definefont[checkMarkFont][name:dejavusansmono*default at 14pt]
+\definefont[checkMarkFont][name:dejavusansmono*default]
+\define\checkMark{{\checkMarkFont ✔}}
+\define\crossMark{{\checkMarkFont ✗}}
 
-% 结构传统
+% 结构转换集合（序号集合）
 \definestructureconversionset[cnconversion]
     [R,   % part: Rome
      cn,  % chapter：中文数字
      ,   % section: none defined (use fallback)
-     ,   % subsection: medieaval, a.k.a. oldstyle
+     ,   % subsection: 
      cn]   % subsubsection: 中文数字
-    [r]
+    [r] % Default setting
 
+% 重置/不重置集合
+\defineresetset[myresetset]
+    [1,1,1,1,0,1,1] % 对应7级标题
+    [1] % 1=reset, 0=don't reset
 \setupheads
     [part,chapter,section,subsection,subsubsection]
-    [before={}, after={}, % 覆盖上下行插入的空格
-     sectionconversionset=cnconversion,
-     number=no,
-     indentnext=yes, % 其后首行缩进
-     sectionsegments=current] % 序号段：只包括当前序号
+    [%
+    % before=, % 覆盖上下行插入的空格
+    after=, % 覆盖上下行插入的空格
+    sectionconversionset=cnconversion,
+    number=no, % 序号
+    indentnext=yes, % 其后首行缩进
+    sectionsegments=current, % 序号段：只包括当前序号
+    % sectionresetset=myresetset, %
+    ]
+\setupheads
+    [subsection,subsubsection]
+    [%
+    before=, % 覆盖上下行插入的空格
+    ]
+
 
 % 配置标题、目录格式
-% 单元，新页起 , page=yes/left/right
-\setuphead[chapter][style={\setupalign[middle]\tfb}]
+% 单元，新页起 , page=yes新页/left偶数页/right奇数页（默认）
+\setuphead[chapter][page=yes,style={\setupalign[middle]\tfb}]
 %  课目
 \setuphead[section][style={\setupalign[middle]\tfa}]
 % 栏目
-\setuphead[subsection][style={\bf}]
+\setuphead[subsubsubject][style={\bf}]
 % 题目
 \setuplabeltext[cn][subsubsection={{},{、}}] % 前后标签
 \setuphead[subsubsection][style={\tf}, color=middlecyan, number=yes,distance=0pt]
 
-% 自订标题
-\definehead[centersection][subsubsubject][align=middle]
-\definehead[leftsection][subsubsubject][align=flushleft]
+% 自订文章标题（6级）、作者（7级）
+\definehead[centersection][subsubsubsubject][align=middle, before=, after=,]
+\definehead[authorsection][subsubsubsubsubject][align=middle, before=, after=,]
+% \definehead[leftsection][subsubsubject][align=flushleft]
 \def\essayhead[#1][#2]{%
     \centersection{#1}%
-    \doifnotempty{#2}{\centersection{#2}}%
+    \doifnotempty{#2}{\authorsection{#2}}%
     }
 % \define[2]\rhymehead{\leftsection{#1}\leftaligned{\itx #2}\blank[0cm]}
 % \define[2]\classicalpoemhead{\centersection{#1}\middlealigned{\itx #2}\blank[0cm]}
@@ -208,6 +232,8 @@
 % 着重号
 \definebar[zhuozhong][text=\lower0.6em\hbox{~·}, repeat=no]
 
+
+
 % 完形填空
 % ！！！标点符号处理过程导致下划线丢失，或禁则失效
 % 可能是标点模块删除标点前后的空白造成的
@@ -215,10 +241,20 @@
 \definebar[clozeBar][underbar][continue=yes, color=black, offset=-0.5]
 \def\cloze #1{%
     \startbar[clozeBar]%
-    \scratchdimen\widthofstring{#1}\relax % 获取文本宽度
-    \zwj\kern1\scratchdimen \color[black]{#1}% \kern.5\scratchdimen\zwj % U+200D ZERO WIDTH JOINER
+    #1☆#1%
+    % 下面的方法会导致断句困难
+    % \scratchdimen\widthofstring{#1}\relax % 获取文本宽度
+    % \zwj\kern1\scratchdimen \color[black]{#1}% \kern.5\scratchdimen\zwj % U+200D ZERO WIDTH JOINER
     \stopbar%
 }%
+
+% 边注
+\defineframedtext[bianzhu]
+    [corner=round,
+    backgroundcolor=gray,
+    width=12em,
+    indenting={yes, 2em, first},
+    style={\it}]
 
 % 编号段落
 \newcounter\Paracount
@@ -230,6 +266,8 @@
 \def\stopParagraphNumbers%
     {\par \endgroup}
 
+% 表格
+\definextable[mytable][offset=0.2em, option={stretch, width}, align={center,lohi}]
 
 \replacemissingcharacters % 缺字替换
 
