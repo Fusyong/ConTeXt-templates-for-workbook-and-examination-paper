@@ -1,0 +1,42 @@
+% \useMPlibrary[dum]
+% \setupcolors[state=start]
+
+\definetextbackground
+  [imagebackground]
+  [
+    location=paragraph,
+    background=,
+    backgroundcolor=,
+    frame=off,
+  ]
+
+\starttext
+
+  \startimagebackground
+  \placefigure[right,none]{}{\externalfigure[placeholder][width=27mm,height=27mm]}
+  \input knuth
+  \stopimagebackground
+
+\setupframed[framecorner=round,
+frameradius=1em,
+background=screen,
+backgroundscreen=0.70,
+backgroundcorner=round,
+backgroundradius=1em,
+corner=round,
+radius=1em]
+\definefloat[intermezzo]{  }
+
+\placeintermezzo[right]{}
+\startframedtext[width=3.2in]
+
+\centerline{\ss\tfb Life Before Specialty}
+\centerline{\ss\tfb Food Marketing}
+\tfx
+What food entrepeneurs did before starting a specialty food firm (in order of
+prevalence):
+---{\bf\it Food Entrepeneur Magazine}
+
+\stopframedtext
+
+\stoptext
