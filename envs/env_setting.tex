@@ -251,11 +251,16 @@
 % 边注
 \defineframedtext[bianzhu]
     [corner=round,
-    backgroundcolor=gray,
-    width=12em,
-    indenting={yes, 2em, first},
+    width=12.5em,
+    indenting={yes, 2em, first}, % 无效
+    offset=0.25em, % 内容向内偏置(可用loffset等分别指定)
+    frameoffset=0em, % 外框向外偏置（以上两项不影响与周围文本的距离）
+    location=hanging, % depth, low, hanging
     style={\it}]
-\definefloat[intermezzo]{  }
+\definefloat[bianzhumezzo][bianzhumezzos][intermezzo]
+\setupcaption[bianzhumezzo][location=none] % 不加标题
+\define[1]\bz{%
+    \placefloat[bianzhumezzo][right,nonumber]{不显示标题}{\bianzhu{#1}}}
 
 % 编号段落
 \newcounter\Paracount
