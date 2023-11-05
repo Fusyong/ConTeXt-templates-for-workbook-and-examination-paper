@@ -284,24 +284,6 @@
     \stopMPcode
 }
 
-% % 田字格
-% % \startreusableMPgraphic
-% \def\pinyinge[#1][#2]{%
-%     % \startuseMPgraphic{tianzige}
-%     % \stopuseMPgraphic
-%     % \useMPgraphic{tianzige}
-%     \startMPcode
-%         % \includeMPgraphic{tianzige} ;
-%         pickup pencircle scaled 1pt ;
-%         path p ; p := fullsquare scaled 1.3cm ;
-%         draw p ;
-%         % string s ; s := runscript("string.utfcharacters([=[#1]=])");
-%         % string s ; s := lua("print('Hi')");
-%         label.top(textext("#1"), p) ;
-%         label(textext("\itd #2"), origin) ;
-%     \stopMPcode
-% }
-
 % 表格
 \definextable[mytable][offset=0.2em, option={stretch, width}, align={center,lohi}]
 
