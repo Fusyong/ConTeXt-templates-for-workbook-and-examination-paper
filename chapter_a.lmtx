@@ -28,21 +28,18 @@
 
 \subsubsection{读拼音，写词语。}
 
+\hbox{%
 \pinyinge[zá|xìng][杂兴]
-
-sù
-shè
-qīng
-tíng
-xī
-shǎo
-jī
-lóng
-yī
-lài
-máo
-yán
-lǎo wēng
+\pinyinge[sù|shè][宿舍]
+\pinyinge[qīng|tíng][蜻蜓]
+\pinyinge[xī|shǎo][稀少]
+}
+\hbox{%
+\pinyinge[jī|lóng][鸡笼]
+\pinyinge[yī|lài][依赖]
+\pinyinge[máo|yán][茅檐]
+\pinyinge[lǎo|wēng][老翁]
+}
 
 \subsubsection{给加点的字词选择正确的意思。}
 
@@ -133,8 +130,18 @@ lǎo wēng
 
 \subsubsection{读拼音，写词语。}
 
-ji9 g7u shùn xù hé xié zhuāng shì 
-tǎng ruò shuì mián sǒng lì zhào lì
+\hbox{%
+\pinyinge[jié|gòu][结构]
+\pinyinge[shùn|xù][顺序]
+\pinyinge[hé|xié][和谐]
+\pinyinge[zhuāng|shì][装饰]
+}
+\hbox{%
+\pinyinge[tǎng|ruò][倘若]
+\pinyinge[shuì|mián][睡眠]
+\pinyinge[sǒng|lì][耸立]
+\pinyinge[zhào|lì][照例]
+}
 
 \subsubsection{用“\backslash”划去下面词语中加点的字错误的读音。}
 
@@ -252,11 +259,6 @@ tǎng ruò shuì mián sǒng lì zhào lì
 姥姥家的小院，多么富有诗情画意啊！
 }
 
-
-
-
-
-
 \startitemize[n,packed] % intext
     \startitem 短文的结构为\cloze{总—分—总}，全文是围绕哪一句话写的？请把这句话抄下来。\stopitem
         \cloze{姥姥家的小院，多么富有诗情画意啊！}
@@ -276,30 +278,35 @@ tǎng ruò shuì mián sǒng lì zhào lì
 \section{3 天窗}
 
 \subsubsection{读拼音，写词语。}
-
-w8i l shǎn shuò ruì lì s2o d3ng
-q! hu3n f& z1 māo tóu yīng bà qì shí zú
+\hbox{%
+\pinyinge[wēi|lì][威力]
+\pinyinge[shǎn|shuò][闪烁]
+\pinyinge[ruì|lì][锐利]
+\pinyinge[sǎo|dàng][扫荡]
+\pinyinge[qí|huàn][奇幻]
+}
+\hbox{%
+\pinyinge[fù|zá][复杂]
+\pinyinge[māo|tóu|yīng][猫头鹰]
+\pinyinge[bà|qì|shí|zú][霸气十足]
+}
 
 \subsubsection{用“\backslash”划去下面词语中加点的字错误的读音。}
 
+暖\zhuozhong{和}（hé \quad huo） \hfil 一\zhuozhong{瞥}（piē \quad piě） \hfil 慰\zhuozhong{藉}（jiè \quad jí）
 
-暖和
-4 （hé huo）
-一瞥
-4 （piē piě）
-慰藉
-4 （jiè j!）
-卜
-4 落（bǔ bo）
-露
-4 天（lù lòu）
-玻璃
-4 （l@ li）
+\zhuozhong{卜}落（bǔ \quad bo） \hfil \zhuozhong{露}天（lù \quad lòu） \hfil 玻\zhuozhong{璃}（lǐ \quad li）
 
 \subsubsection{比一比，再组词。}
 
-帐（ ） 摊（ ） 蝠（ ） 蝙（ ）
-账（ ） 滩（ ） 福（ ） 编（ ）
+帐（ \qquad ）
+账（ \qquad ）
+摊（ \qquad ）
+滩（ \qquad ）
+蝠（ \qquad ）
+福（ \qquad ）
+蝙（ \qquad ）
+编（ \qquad ）
 
 \subsubsubject{阅读拓展}
 
