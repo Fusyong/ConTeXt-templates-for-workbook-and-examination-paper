@@ -254,7 +254,7 @@
     width=12.5em,
     indenting={yes, 2em, first}, % 无效
     offset=0.25em, % 内容向内偏置(可用loffset等分别指定)
-    frameoffset=0em, % 外框向外偏置（以上两项不影响与周围文本的距离）
+    frameoffset=0em, % 外框向外偏置
     location=hanging, % depth, low, hanging
     style={\it}]
 \definefloat[bianzhumezzo][bianzhumezzos][intermezzo]
@@ -283,6 +283,8 @@
         lua.MP.tianzige("#1","#2") ;
     \stopMPcode
 }
+
+
 
 % 表格
 \definextable[mytable][offset=0.2em, option={stretch, width}, align={center,lohi}]
