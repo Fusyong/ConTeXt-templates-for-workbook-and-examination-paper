@@ -10,7 +10,7 @@
 
     for i=1 upto lua("mp.size(MP.lines)"):
         draw textext.lft("\[") yscaled 2;
-
+        draw textext.rt(lua("mp.quoted(MP.lines[" & decimal i & "])"));
     endfor ;
 
     % draw textext.lft("\[") yscaled 2;
@@ -327,7 +327,11 @@
 
 \subsubsection{比一比，再组词。}
 
-\kuohaozu{帐（ \qquad ） \\ 账（ \qquad ）}
+\kuohaozu{%
+    帐（ \qquad ）
+
+    账（ \qquad ）
+}
 
 \hbox{%
 \kuohaozu{摊（ \qquad ） \\ 滩（ \qquad ）}
