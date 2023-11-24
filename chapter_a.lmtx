@@ -1,31 +1,6 @@
 \environment[envs/env_setting.tex]
 % \showboxes
-% 括号分组
-\def\kuohaozu#1{%
-    \startluacode
-        MP = MP or {}
-        MP.lines = string.splitlines([=[#1]=])
-    \stopluacode
-    \startMPcode
 
-    for i=1 upto lua("mp.size(MP.lines)"):
-        draw textext.lft("\[") yscaled 2;
-        draw textext.rt(lua("mp.quoted(MP.lines[" & decimal i & "])"));
-    endfor ;
-
-    % draw textext.lft("\[") yscaled 2;
-    % draw textext.rt("\framedtext[%
-    %     offset=default,%
-    %     location=depth,%
-    %     frame=off,%
-    %     width=7em,% local fit max broad fixed dimension
-    %     % autowidth=force,% yes no force 无效
-    %     ]{#1}");
-
-    % draw textext.lft("\strut \[") yscaled 2;
-    % draw textext.rt("\vbox{#1}")
-    \stopMPcode
-}
 \starttext
 
 
@@ -327,17 +302,24 @@
 
 \subsubsection{比一比，再组词。}
 
+\startcolumns[n=4,separator=off]
 \kuohaozu{%
-    帐（ \qquad ）
-
+    帐（ \qquad ）\\
     账（ \qquad ）
-}
-
-\hbox{%
-\kuohaozu{摊（ \qquad ） \\ 滩（ \qquad ）}
-\kuohaozu{蝠（ \qquad ） \\ 福（ \qquad ）}
-\kuohaozu{蝙（ \qquad ） \\ 编（ \qquad ）}
-}
+    }
+\kuohaozu{%
+    摊（ \qquad ）\\
+    滩（ \qquad ）
+    }
+\kuohaozu{%
+    蝠（ \qquad ）\\
+    福（ \qquad ）
+    }
+\kuohaozu{%
+    蝙（ \qquad ）\\
+    编（ \qquad ）
+    }
+\stopcolumns
 
 \subsubsubject{阅读拓展}
 

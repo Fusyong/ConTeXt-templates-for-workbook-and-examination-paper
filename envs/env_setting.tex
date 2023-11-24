@@ -284,7 +284,41 @@
     \stopMPcode
 }
 
+% 括号分组
+% TODO 调整前头的空间；自动计算高度；绘制大括号
+% vbox式只能用分栏的形式并排，以获取vbox的宽度
+% 换成图形则可用combination并排
+\def\kuohaozu#1{%
+    % 用lua逐行处理，未完成
+    % \startluacode
+    %     MP = MP or {}
+    %     % MP.lines = string.splitlines([=[#1]=]) --无效
+    %     % MP.lines = string.explode([=[#1]=], [=[\\]=]) --乱
+    %     MP.lines = string.split([=[#1]=], [=[\\]=])
+    % \stopluacode
+    % \startMPcode
+    % draw textext.lft("\[") yscaled 2;
+    % for i=1 upto lua("mp.size(MP.lines)"):
+    %     draw textext.rt(lua("mp.quoted(MP.lines[" & decimal i & "])"));
+    % endfor ;
+    % \stopMPcode
 
+    \startMPcode
+    % 用加框文本可以实现更复杂的控制
+    % draw textext.lft("\[") yscaled 2;
+    % draw textext.rt("\framedtext[%
+    %     offset=default,%
+    %     location=depth,%
+    %     frame=off,%
+    %     % width=7em,% local fit max broad fixed dimension
+    %     % autowidth=force,% yes no force 无效
+    %     ]{#1}");
+
+    % 简易方式
+    draw textext.lft("\strut \[") yscaled 2;
+    draw textext.rt("\vbox{#1}")
+    \stopMPcode
+}
 
 % 表格
 \definextable[mytable][offset=0.2em, option={stretch, width}, align={center,lohi}]
