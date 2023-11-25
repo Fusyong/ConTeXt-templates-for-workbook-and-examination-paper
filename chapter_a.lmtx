@@ -321,6 +321,36 @@
     }
 \stopcolumns
 
+\subsubsection{按要求写词语。}
+
+\startitemize[n,packed] % intext
+\item 从文中找出下列词语的反义词。
+
+寒冷 （ \qquad ） \hfil
+无   （ \qquad ） \hfil
+简单 （ \qquad ） \hfil
+虚   （ \qquad ）
+
+\item 填上合适的量词。
+
+一（ \quad ）木板窗 \quad
+一（ \quad ）小方洞 \quad
+一（ \quad ）风景画
+
+一（ \quad ）黑影 \qquad
+一（ \quad ）空白 \qquad
+一（ \quad ）炊烟
+\stopitemize
+
+\subsubsection{根据课文内容填空。}
+
+\startitemize[n,packed] % intext
+\item 这篇文章的作者是现代著名作家 \cloze{茅盾} 。
+\item 我认为这是一扇 \cloze{神奇} 的天窗，因为 \cloze{它打开了孩子们神奇的想象力和好奇
+心} 。
+\item 最初，人们装天窗是为了 \cloze{采光} 、 \cloze{取暖} ，没想到在黑洞似的屋里，小小的天窗却成了孩子们的 \cloze{精神慰藉} 。文中的“天窗”象征了 \cloze{儿童通往想象世界的窗口} 。
+\stopitemize
+
 \subsubsubject{阅读拓展}
 
 \subsubsection{阅读短文，完成练习。}
@@ -356,6 +386,14 @@
 形的画布，见证着一天中分分秒秒的变化，展示着动态的生活画卷。
 }
 
+\startitemize[n,packed] % intext
+\item 用“\hl[2]”从文中括号里选出正确的字。
+\item 仿写词语。
+
+慢悠悠 \qquad \cloze{胖乎乎} \quad \cloze{绿油油} \quad \cloze{美滋滋} 
+
+人来人往 \quad \cloze{毛手毛脚} \quad \cloze{自由自在} \quad \cloze{百发百中}
+
 \bz{
 反问句的特点：只问不答，答案含在句中。
 
@@ -364,12 +402,21 @@
 陈述句改反问句：一加反问词；二改肯定或否定词；三改标点符号；四查与原句意思是否相同。
 }
 
-\startitemize[n,packed] % intext
-\item 用“ ”从文中括号里选出正确的字。
-\item 仿写词语。慢悠悠人来人往
-\item 文中有一句关于珍惜时间的名言：。你还能写出一句这样的名言吗？试一试：。
-\item 用“ ”画出文中的反问句，并把它改成陈述句。
-\item这篇文章是按 顺序来写的，作者透过那一层厚而明亮的玻璃窗所看到的景象，写出了老百姓日常生活的。
+\item 文中有一句关于珍惜时间的名言：\cloze{一寸光阴一寸金}。你还能写出一句这样的名言吗？试一试：\cloze{少壮不努力，老大
+徒伤悲。}
+\item 用“\hl[2]”画出文中的反问句，并把它改成陈述句。\cloze{这正好验证了那句俗语——“早起的鸟儿有虫吃”。}
+\item这篇文章是按\cloze{时间}顺序来写的，作者透过那一层厚而明亮的玻璃窗所看到的景象，写出了老百姓\cloze{忙碌与幸福}日常生活的。
+
 \stopitemize
+
+\subsubsubject{实践运用}
+
+\subsubsection{透过那小小的玻璃天窗，你可能还会想象到无数神奇的东西……请你发挥想象，用具体、生动的文字把你想象到的某一画面写下来。}
+
+\thinrules[n=4]
+
+\chapter{第二单元}
+
+\chapter{部分参考答案}
 
 \stoptext
