@@ -35,8 +35,8 @@
 % 定义字体
 % \definefont[kaiti][name:kaiti*default at 24pt]
 \definefont[checkMarkFont][name:dejavusansmono*default]
-\define\checkMark{{\checkMarkFont ✔}}
-\define\crossMark{{\checkMarkFont ✗}}
+\define\TrueMark{{\checkMarkFont ✔}}
+\define\FalseMark{{\checkMarkFont ✗}}
 
 % 结构转换集合（序号集合）
 \definestructureconversionset[cnconversion]
@@ -231,18 +231,48 @@
 % 着重号
 \definebar[zhuozhong][text=\lower0.6em\hbox{~·}, repeat=no]
 
+% 回答文本，模式编译
+\def\answerS#1{%
+}
+
 % 斜线删除slashout
 \def\slashout#1{%
     \setbox0=\hbox{#1}%
     \hbox{\copy0 \kern-0.625\wd0 \hbox to 0.5\wd0{\backslash}}
 }
 
-% 完形填空
+% 回答序号
+\def\answerN{%
+    \raise 1em \vbox to 0em{\hbox to 0em {\itx a.n.}}
+}
+
+% 括号
+% TODO 测量宽度；允许输入宽度
+\def\brackets#1{（\enskip #1 \enskip）}
+% 行末括号
+\def\rBrackets#1{\hfill \brackets{#1}}
+
+% 画勾
+\def\answerT{%
+    \rBrackets{\TrueMark}
+}
+
+% 打叉
+\def\answerF{%
+    \rBrackets{\FalseMark}
+}
+
+% 填入括号
+\def\answerB#1{%
+    \brackets{#1}
+}
+
+% 下划线完形填空
 % ！！！标点符号处理过程导致下划线丢失，或禁则失效
 % 可能是标点模块删除标点前后的空白造成的
 % 临时处理方法是只在填空前面加kern
 \definebar[clozeBar][underbar][continue=yes, color=black, offset=-0.5]
-\def\cloze #1{%
+\def\cloze#1{%
     \startbar[clozeBar]%
     #1☆#1%
     % 下面的方法会导致断句困难
