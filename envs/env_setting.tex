@@ -205,8 +205,7 @@
 %%%%%%%%%%%%% 使用模块(保持顺序) %%%%%%%%%%%%%
 % 竖排
 % \usemodule[vtypeset]
-
-
+% 
 % 标点压缩与支持
 \usemodule[zhpunc][pattern=quanjiao, spacequad=0.5, hangjian=false]
 % 
@@ -220,19 +219,23 @@
 % 行间书名号和专名号（\bar实例）：
 %   \zhuanmh{专名}
 %   \shumh{书名}
-
-
+% 
 % 夹注
 % \usemodule[jiazhu][fontname=tf, fontsize=10.5pt, interlinespace=0.2em]
 % default: fontname=tf, fontsize=10.5pt, interlinespace=0.08em(行间标点时约0.2em)
 % fontname和fontsize与\switchtobodyfont的对应参数一致
 % 夹注命令：
 %   \jiazh{夹注}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % 着重号
 \definebar[zhuozhong][text=\lower0.6em\hbox{~·}, repeat=no]
 
-
+% 斜线删除slashout
+\def\slashout#1{%
+    \setbox0=\hbox{#1}%
+    \hbox{\copy0 \kern-0.625\wd0 \hbox to 0.5\wd0{\backslash}}
+}
 
 % 完形填空
 % ！！！标点符号处理过程导致下划线丢失，或禁则失效

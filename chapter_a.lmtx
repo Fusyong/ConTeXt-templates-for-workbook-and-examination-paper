@@ -23,25 +23,26 @@
 \subsubsection{用“\backslash”划去下列错误的读音或字形。}
 
 \startitemize[n,packed]
-    \item 篱落（疏疏 \quad 蔬蔬）一径深，树头新绿未成（荫 \quad 阴）。
-    \item 日长篱落无人过，惟有蜻蜓蛱（xiá \quad jiá）蝶飞。
-    \item（矛 \quad 茅）檐低小，溪上青青草。
-    \item 最喜小儿亡（wú \quad wáng）赖，溪头卧剥（bāo \quad bō）莲蓬。
+    \item 篱落（疏疏 \quad \slashout{蔬蔬}）一径深，树头新绿未成（\slashout{荫} \quad 阴）。
+    \item 日长篱落无人过，惟有蜻蜓蛱（\slashout{xiá} \quad jiá）蝶飞。
+    \item（\slashout{矛} \quad 茅）檐低小，溪上青青草。
+    \item 最喜小儿亡（wú \quad \slashout{wáng}）赖，溪头卧剥（\slashout{bāo} \quad bō）莲蓬。
 \stopitemize
 
 \subsubsection{读拼音，写词语。}
 
 \hbox{%
-\pinyinge[zá|xìng][杂兴]
-\pinyinge[sù|shè][宿舍]
-\pinyinge[qīng|tíng][蜻蜓]
-\pinyinge[xī|shǎo][稀少]
+    \pinyinge[zá|xìng][杂兴]
+    \pinyinge[sù|shè][宿舍]
+    \pinyinge[qīng|tíng][蜻蜓]
+    \pinyinge[xī|shǎo][稀少]
 }
+
 \hbox{%
-\pinyinge[jī|lóng][鸡笼]
-\pinyinge[yī|lài][依赖]
-\pinyinge[máo|yán][茅檐]
-\pinyinge[lǎo|wēng][老翁]
+    \pinyinge[jī|lóng][鸡笼]
+    \pinyinge[yī|lài][依赖]
+    \pinyinge[máo|yán][茅檐]
+    \pinyinge[lǎo|wēng][老翁]
 }
 
 \subsubsection{给加点的字词选择正确的意思。}
@@ -134,16 +135,16 @@
 \subsubsection{读拼音，写词语。}
 
 \hbox{%
-\pinyinge[jié|gòu][结构]
-\pinyinge[shùn|xù][顺序]
-\pinyinge[hé|xié][和谐]
-\pinyinge[zhuāng|shì][装饰]
+    \pinyinge[jié|gòu][结构]
+    \pinyinge[shùn|xù][顺序]
+    \pinyinge[hé|xié][和谐]
+    \pinyinge[zhuāng|shì][装饰]
 }
 \hbox{%
-\pinyinge[tǎng|ruò][倘若]
-\pinyinge[shuì|mián][睡眠]
-\pinyinge[sǒng|lì][耸立]
-\pinyinge[zhào|lì][照例]
+    \pinyinge[tǎng|ruò][倘若]
+    \pinyinge[shuì|mián][睡眠]
+    \pinyinge[sǒng|lì][耸立]
+    \pinyinge[zhào|lì][照例]
 }
 
 \subsubsection{用“\backslash”划去下面词语中加点的字错误的读音。}
@@ -415,8 +416,5 @@
 
 \thinrules[n=4]
 
-\chapter{第二单元}
-
-\chapter{部分参考答案}
 
 \stoptext

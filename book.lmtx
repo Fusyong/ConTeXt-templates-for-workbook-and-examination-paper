@@ -15,4 +15,6 @@
     % \placecontent
     \completecontent
     \component[chapter_a.lmtx]
+    \component[chapter_b.lmtx]
+    \component[chapter_z.lmtx]
 \stopproduct
