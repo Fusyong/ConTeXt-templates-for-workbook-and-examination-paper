@@ -1,8 +1,9 @@
+% \enablemode[proofread]
+% \disablemode[proofread]
 \environment[envs/env_setting.tex]
 % \showboxes
 
 \starttext
-
 
 \chapter{第一单元}
 
@@ -23,10 +24,10 @@
 \subsubsection{用“\backslash”划去下列错误的读音或字形。}
 
 \startitemize[n,packed]
-    \item 篱落（疏疏 \quad \slashout{蔬蔬}）一径深，树头新绿未成（\slashout{荫} \quad 阴）。
-    \item 日长篱落无人过，惟有蜻蜓蛱（\slashout{xiá} \quad jiá）蝶飞。
-    \item（\slashout{矛} \quad 茅）檐低小，溪上青青草。
-    \item 最喜小儿亡（wú \quad \slashout{wáng}）赖，溪头卧剥（\slashout{bāo} \quad bō）莲蓬。
+    \item 篱落（疏疏 \quad \answerS{蔬蔬}）一径深，树头新绿未成（\answerS{荫} \quad 阴）。
+    \item 日长篱落无人过，惟有蜻蜓蛱（\answerS{xiá} \quad jiá）蝶飞。
+    \item （\answerS{矛} \quad 茅）檐低小，溪上青青草。
+    \item 最喜小儿亡（wú \quad \answerS{wáng}）赖，溪头卧剥（\answerS{bāo} \quad bō）莲蓬。
 \stopitemize
 
 \subsubsection{读拼音，写词语。}
@@ -150,10 +151,10 @@
 \subsubsection{用“\backslash”划去下面词语中加点的字错误的读音。}
 
 \startitemize[horizontal][columns=two,symbol=n]
-    \startitem 鸡\zhuozhong{冠}花（guān \quad \slashout{guàn}） \stopitem
-    \startitem \zhuozhong{朴}素（sù \quad \slashout{shù}） \stopitem
-    \startitem \zhuozhong{附}会（\slashout{fǔ} \quad fù） \stopitem
-    \startitem 大\zhuozhong{踏}步（\slashout{tā} \quad tà） \stopitem
+    \startitem 鸡\zhuozhong{冠}花（guān \quad \answerS{guàn}） \stopitem
+    \startitem \zhuozhong{朴}素（sù \quad \answerS{shù}） \stopitem
+    \startitem \zhuozhong{附}会（\answerS{fǔ} \quad fù） \stopitem
+    \startitem 大\zhuozhong{踏}步（\answerS{tā} \quad tà） \stopitem
 \stopitemize
 
 \subsubsection{根据要求写词语。}

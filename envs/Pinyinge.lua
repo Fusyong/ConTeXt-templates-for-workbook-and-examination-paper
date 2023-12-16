@@ -16,7 +16,7 @@ function MP.tianzige(pinyin,characters) --lua.MP是给用户预留的命名空�
         draw c2 shifted(right_y,0cm) dashed evenly ;
 
         label.top(textext("\strut %s"), square) ;
-        label(textext("\itd %s"), square) ;
+        label(textext("\itd\color[proofColor]{%s}"), square) ;
     ]]
 
     -- 分拆拼音音节，逐一存在表中

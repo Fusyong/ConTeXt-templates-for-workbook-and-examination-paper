@@ -2,11 +2,10 @@
 \startenvironment
 
 % 校对模式
-\definemode[proofread][yes]
-\enablemode[proofread]
-% \doifmodeelse{proofread}
-%     {}
-%     {}
+% yes no keep(保持预先设置，其后调整无效，可在命令行设置)
+\definemode[proofread][keep]
+% \disablemode[proofread]
+% \enablemode[proofread]
 
 %%%% 纸张和版面
 \definepapersize[sheet][width=145mm, height=210mm]
@@ -37,6 +36,15 @@
 \definefont[checkMarkFont][name:dejavusansmono*default]
 \define\TrueMark{{\checkMarkFont ✔}}
 \define\FalseMark{{\checkMarkFont ✗}}
+
+% 颜色
+\setupcolors[state=start] % 开启颜色（默认关闭，转成灰度）
+\definecolor [secondColor][c=1] % 双色中的彩色
+\definecolor [aboveColor][c=1,t=0.8,a=1] % 双色中的彩色+透明（用在文字上方）
+\definecolor [transparentColor][k=1,t=0,a=1] % 全透明色（隐藏文本用）
+\doifmodeelse{proofread} % 校对标记专用色（非校对模式下为透明）
+    {\definecolor[proofColor][aboveColor]}
+    {\definecolor[proofColor][transparentColor]}
 
 % 结构转换集合（序号集合）
 \definestructureconversionset[cnconversion]
@@ -78,7 +86,7 @@
 \setuphead[subsubsubject][style={\bf}]
 % 题目
 \setuplabeltext[cn][subsubsection={{},{、}}] % 前后标签
-\setuphead[subsubsection][style={\tf}, color=middlecyan, number=yes,distance=0pt]
+\setuphead[subsubsection][style={\tf}, color=secondColor, number=yes,distance=0pt]
 
 % 自订文章标题（6级）、作者（7级）
 \definehead[centersection][subsubsubsubject][align=middle, before=, after=,]
@@ -96,7 +104,6 @@
     \subsubsubject{\tf }%
 }
 
-\setupcolors[state=start]
 \setupheadtext[content=目录]
 \setupcombinedlist[content][list={chapter,section},alternative=c]%
 \setuplist[section][width=10mm, style=bold]
@@ -231,24 +238,20 @@
 % 着重号
 \definebar[zhuozhong][text=\lower0.6em\hbox{~·}, repeat=no]
 
-% 回答文本，模式编译
+% 回答画掉slashout
 \def\answerS#1{%
-}
-
-% 斜线删除slashout
-\def\slashout#1{%
     \setbox0=\hbox{#1}%
-    \hbox{\copy0 \kern-0.625\wd0 \hbox to 0.5\wd0{\backslash}}
+    \copy0\kern-\wd0\hbox to \wd0{\hfil\proofColor\backslash\hfil}%
 }
 
 % 回答序号
 \def\answerN{%
-    \raise 1em \vbox to 0em{\hbox to 0em {\itx a.n.}}
+    \raise 1em \vbox to 0em{\hbox to 0em {\itx\proofColor a.n.}}
 }
 
 % 括号
 % TODO 测量宽度；允许输入宽度
-\def\brackets#1{（\enskip #1 \enskip）}
+\def\brackets#1{（\enskip {\proofColor #1} \enskip）}
 % 行末括号
 \def\rBrackets#1{\hfill \brackets{#1}}
 
@@ -271,15 +274,27 @@
 % ！！！标点符号处理过程导致下划线丢失，或禁则失效
 % 可能是标点模块删除标点前后的空白造成的
 % 临时处理方法是只在填空前面加kern
-\definebar[clozeBar][underbar][continue=yes, color=black, offset=-0.5]
+\definebar[clozeBar][underbar][continue=yes, color=secondColor, offset=-0.5]
 \def\cloze#1{%
     \startbar[clozeBar]%
-    #1☆#1%
+    \color[proofColor]{#1 #1}%
     % 下面的方法会导致断句困难
     % \scratchdimen\widthofstring{#1}\relax % 获取文本宽度
     % \zwj\kern1\scratchdimen \color[black]{#1}% \kern.5\scratchdimen\zwj % U+200D ZERO WIDTH JOINER
     \stopbar%
 }%
+
+% \definebar[ClozeBar][underbar][continue=yes, color=secondColor, offset=-0.5]
+
+% \starttexdefinition unexpanded Cloze #1
+%    \startbar[ClozeBar]
+%    \scratchdimen\widthofstring{#1}\relax
+%    \zwj\kern.2\scratchdimen #1 \kern.2\scratchdimen\zwj
+%    \stopbar
+% \stoptexdefinition
+
+% This is a \Cloze{\color[red]{cloze}} whose underbar is 1.4 times as wide as the text above it. \Cloze{The leading} and trailing spaces are never broken.
+
 
 % 边注
 \defineframedtext[bianzhu]
