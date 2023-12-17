@@ -73,18 +73,18 @@
 
 \subsubsection{默写《宿新市徐公店》并回答问题。}
 
-{\midaligned{\cloze{宿新市徐公店}\\
-\cloze{篱落疏疏一径深}，\cloze{树头新绿未成阴}。\\
-\cloze{儿童急走追黄蝶}，\cloze{飞入菜花无处寻}。}}
+{\midaligned{\answerU{宿新市徐公店}\\
+\answerU{篱落疏疏一径深}，\answerU{树头新绿未成阴}。\\
+\answerU{儿童急走追黄蝶}，\answerU{飞入菜花无处寻}。}}
 
-这首诗的作者是 \cloze{宋} 代诗人 \cloze{杨万里}，诗中运用 \cloze{动静结合} 的手法描写了 \cloze{暮春乡村} 的景色。我喜欢的诗句是 \cloze{儿童急走追黄蝶，飞入菜花无处寻}，因为 \cloze{这两句诗表现了儿童的天真可爱}。
+这首诗的作者是 \answerU{宋} 代诗人 \answerU{杨万里}，诗中运用 \answerU{动静结合} 的手法描写了 \answerU{暮春乡村} 的景色。我喜欢的诗句是 \answerU{儿童急走追黄蝶，飞入菜花无处寻}，因为 \answerU{这两句诗表现了儿童的天真可爱}。
 
 \subsubsection{判断下列说法是否正确。（正确的画“ \TrueMark ”，错误的画“ \FalseMark ”）}
 
 \startitemize[n,packed]
-    \item 《宿新市徐公店》描写的是暮春时节乡村的景色，而《四时田园杂兴（其二十五）》则写的是初春江南的田园景色。 \answerF
-    \item 《四时田园杂兴（其二十五）》这首诗的前两句写景色，第三句从侧面写农民劳动的情况，最后一句用蛱蝶飞来衬托村中的寂静，静中有动，显得更静。 \answerT
-    \item 《清平乐·村居》是宋代词人辛弃疾的词作，“清平乐”是题目，“村居”是词牌名，全词表现了词人对农村和平宁静生活的喜爱。 \answerF
+    \item 《宿新市徐公店》描写的是暮春时节乡村的景色，而《四时田园杂兴（其二十五）》则写的是初春江南的田园景色。 \answerFR
+    \item 《四时田园杂兴（其二十五）》这首诗的前两句写景色，第三句从侧面写农民劳动的情况，最后一句用蛱蝶飞来衬托村中的寂静，静中有动，显得更静。 \answerTR
+    \item 《清平乐·村居》是宋代词人辛弃疾的词作，“清平乐”是题目，“村居”是词牌名，全词表现了词人对农村和平宁静生活的喜爱。 \answerFR
 \stopitemize
 
 \subsubsection{阅读古诗词，完成练习。}
@@ -99,15 +99,15 @@
 }
 
 \startitemize[n,packed] % intext
-    \item 这首词的词牌名是 \cloze{行香子}，我知道的词牌名还有： \cloze{卜算子}、 \cloze{沁园春}、 \cloze{念奴娇}。
+    \item 这首词的词牌名是 \answerU{行香子}，我知道的词牌名还有： \answerU{卜算子}、 \answerU{沁园春}、 \answerU{念奴娇}。
     \item 这首词上下片完全对称，节奏明快，上下片结尾各有由一个字引领的三字排偶句（对仗句）：
-        有 \cloze{桃花红}， \cloze{李花白}， \cloze{菜花黄}。
-        正 \cloze{莺儿啼}， \cloze{燕儿舞}， \cloze{蝶儿忙}。
+        有 \answerU{桃花红}， \answerU{李花白}， \answerU{菜花黄}。
+        正 \answerU{莺儿啼}， \answerU{燕儿舞}， \answerU{蝶儿忙}。
     \item 根据词句内容填空。
     \startitemize[n,packed][left=（, right=）,stopper=]
-        \item 小园虽然很小，但也能收尽 \cloze{春光}。看那桃花 \cloze{红}，李花 \cloze{白}，菜花 \cloze{黄}。
-        \item 远远的 \cloze{苔墙}，隐隐的 \cloze{茅堂}。青色的酒旗在风中飘扬。
-        \item 乘着游兴，步过 \cloze{东冈}，正有莺儿 \cloze{啼}，燕儿 \cloze{舞}，蝶儿 \cloze{忙}。
+        \item 小园虽然很小，但也能收尽 \answerU{春光}。看那桃花 \answerU{红}，李花 \answerU{白}，菜花 \answerU{黄}。
+        \item 远远的 \answerU{苔墙}，隐隐的 \answerU{茅堂}。青色的酒旗在风中飘扬。
+        \item 乘着游兴，步过 \answerU{东冈}，正有莺儿 \answerU{啼}，燕儿 \answerU{舞}，蝶儿 \answerU{忙}。
     \stopitemize
 \stopitemize
 
@@ -116,12 +116,12 @@
 \subsubsection{无论什么时候，无论什么季节，乡下人家都是一道独特的风景，一幅和谐的画卷。我们来补一补下面这些关于乡村生活的诗句吧！}
 
 \startitemize[n,packed] % intext
-    \item \cloze{昼出耘田夜绩麻}，村庄儿女各当家。
-    \item 晨兴理荒秽， \cloze{ 戴月荷锄归}。
-    \item 乡村四月闲人少， \cloze{才了蚕桑又插田}。
-    \item 黄梅时节家家雨， \cloze{青草池塘处处蛙}。
-    \item \cloze{绿树村边合}，青山郭外斜。
-    \item 水满田畴 \cloze{稻叶齐}，日光穿树 \cloze{晓烟低}。
+    \item \answerU{昼出耘田夜绩麻}，村庄儿女各当家。
+    \item 晨兴理荒秽， \answerU{ 戴月荷锄归}。
+    \item 乡村四月闲人少， \answerU{才了蚕桑又插田}。
+    \item 黄梅时节家家雨， \answerU{青草池塘处处蛙}。
+    \item \answerU{绿树村边合}，青山郭外斜。
+    \item 水满田畴 \answerU{稻叶齐}，日光穿树 \answerU{晓烟低}。
 \stopitemize
 
 
@@ -192,28 +192,28 @@
             \startxcell \PTA{M} \stopxcell
             \startxcell \PTA{爫} \stopxcell
             \startxcell \PTA{4} \stopxcell
-            \startxcell[align=flushleft]\answerC{①}寻找 ②偷窃 ③雇 \stopxcell
+            \startxcell[align=flushleft]\check{①}寻找 ②偷窃 ③雇 \stopxcell
         \stopxrow
         \startxrow
             \startxcell \zhuozhong{率}领 \stopxcell
             \startxcell \PTA{S} \stopxcell
             \startxcell \PTA{亠} \stopxcell
             \startxcell \PTA{9} \stopxcell
-            \startxcell[align=flushleft]①大略 \answerC{②}带领 ③模范 ④遵循 \stopxcell
+            \startxcell[align=flushleft]①大略 \check{②}带领 ③模范 ④遵循 \stopxcell
         \stopxrow
         \startxrow
             \startxcell 屋\zhuozhong{檐} \stopxcell
             \startxcell \PTA{Y} \stopxcell
             \startxcell \PTA{木} \stopxcell
             \startxcell \PTA{13} \stopxcell
-            \startxcell[align=flushleft]\answerC{①}屋顶伸出的边沿 ②像屋檐 \stopxcell
+            \startxcell[align=flushleft]\check{①}屋顶伸出的边沿 ②像屋檐 \stopxcell
         \stopxrow
         \startxrow
             \startxcell 和\zhuozhong{谐} \stopxcell
             \startxcell \PTA{X} \stopxcell
             \startxcell \PTA{讠} \stopxcell
             \startxcell \PTA{19} \stopxcell
-            \startxcell[align=flushleft]\answerC{①}调和、调整 ②完结、成功 \stopxcell
+            \startxcell[align=flushleft]\check{①}调和、调整 ②完结、成功 \stopxcell
         \stopxrow
     \stopxtablebody
 \stopxtable
@@ -222,15 +222,15 @@
 
 \startitemize[n,packed] % intext
     \startitem \zhuozhong{即使}附近的石头上有妇女在捣衣，它们 \zhuozhong{也} 从不吃惊。\stopitem
-        用加点的词语写一句话：\answerE\cloze{即使下雨，我们也要按时到校。}
+        用加点的词语写一句话：\answerE\answerU{即使下雨，我们也要按时到校。}
     \startitem 你最喜欢文中的哪句话？请端端正正地抄下来，并说说你喜欢的理由。\answerO\stopitem
         句子： \thinrule
 
         理由： \thinrule
     \startitem 补全句子。\stopitem
-        “天边的\cloze{红霞}，向晚的\cloze{微风}，头上飞过的\cloze{归巢的鸟儿}，都是他们的好友。它们和乡下人家一起，绘成了一幅\cloze{自然}、\cloze{和谐}的田园风景画。”我觉得他们的好友还有：\answerE\cloze{夕阳}、\cloze{大树}、\cloze{田野}。
+        “天边的\answerU{红霞}，向晚的\answerU{微风}，头上飞过的\answerU{归巢的鸟儿}，都是他们的好友。它们和乡下人家一起，绘成了一幅\answerU{自然}、\answerU{和谐}的田园风景画。”我觉得他们的好友还有：\answerE\answerU{夕阳}、\answerU{大树}、\answerU{田野}。
     \startitem 辛苦了一天的人们，甜甜蜜蜜地进入梦乡。（缩句）\stopitem
-        \cloze{人们进入梦乡。}
+        \answerU{人们进入梦乡。}
 \stopitemize
 
 
@@ -258,11 +258,11 @@
 }
 
 \startitemize[n,packed] % intext
-    \startitem 短文的结构为\cloze{总—分—总}，全文是围绕哪一句话写的？请把这句话抄下来。\stopitem
-        \cloze{姥姥家的小院，多么富有诗情画意啊！}
+    \startitem 短文的结构为\answerU{总—分—总}，全文是围绕哪一句话写的？请把这句话抄下来。\stopitem
+        \answerU{姥姥家的小院，多么富有诗情画意啊！}
     \startitem 按要求填空。\stopitem
-姥姥家的院子西南角有\cloze{爬满了花藤的竹架}，东北角是\cloze{金瓜架构成的棚子}，院子东面栽着\cloze{白杨树}，院子南面是\cloze{小菜园}，姥姥家的小院多么富有诗情画意啊！
-    \item 这篇文章是按\cloze{方位}顺序来写的，\cloze{西南角}、\cloze{东北角}、\cloze{东面}、\cloze{南面}这几个词语体现了这种顺序。
+姥姥家的院子西南角有\answerU{爬满了花藤的竹架}，东北角是\answerU{金瓜架构成的棚子}，院子东面栽着\answerU{白杨树}，院子南面是\answerU{小菜园}，姥姥家的小院多么富有诗情画意啊！
+    \item 这篇文章是按\answerU{方位}顺序来写的，\answerU{西南角}、\answerU{东北角}、\answerU{东面}、\answerU{南面}这几个词语体现了这种顺序。
 \stopitemize
 
 
@@ -288,21 +288,25 @@
 
 \subsubsection{用“\backslash”划去下面词语中加点的字错误的读音。}
 
-暖\zhuozhong{和}（hé \quad huo） \hfil 一\zhuozhong{瞥}（piē \quad piě） \hfil 慰\zhuozhong{藉}（jiè \quad jí）
+暖\zhuozhong{和}（\answerS{hé} \quad huo） \hfil
+一\zhuozhong{瞥}（piē \quad \answerS{piě}） \hfil
+慰\zhuozhong{藉}（jiè \quad jí）
 
-\zhuozhong{卜}落（bǔ \quad bo） \hfil \zhuozhong{露}天（lù \quad lòu） \hfil 玻\zhuozhong{璃}（lǐ \quad li）
+\zhuozhong{卜}落（bǔ \quad \answerS{bo}） \hfil
+\zhuozhong{露}天（lù \quad \answerS{lòu}） \hfil
+玻\zhuozhong{璃}（\answerS{lǐ} \quad li）
 
 \subsubsection{比一比，再组词。}
 
 \startcolumns[n=4,separator=off]
 \kuohaozu{%
-    帐( \qquad)\\账( \qquad)}
+    帐\answerB{帐篷}\\账\answerB{摆摊}}
 \kuohaozu{%
-    摊( \qquad)\\滩( \qquad)}
+    摊\answerB{蝙蝠}\\滩\answerB{蝙蝠}}
 \kuohaozu{%
-    蝠( \qquad)\\福( \qquad)}
+    蝠\answerB{结账}\\福\answerB{沙滩}}
 \kuohaozu{%
-    蝙( \qquad)\\编( \qquad)}
+    蝙\answerB{福气}\\编\answerB{编织}}
 \stopcolumns
 
 \subsubsection{按要求写词语。}
@@ -310,29 +314,30 @@
 \startitemize[n,packed] % intext
 \item 从文中找出下列词语的反义词。
 
-寒冷 （ \qquad ） \hfil
-无   （ \qquad ） \hfil
-简单 （ \qquad ） \hfil
-虚   （ \qquad ）
+寒冷 \answerB{暖和} \hfil
+无   \answerB{有} \hfil
+简单 \answerB{复杂} \hfil
+虚   \answerB{实}
 
-\item 填上合适的量词。
+\item 填上合适的量词。\answerE
 
-一（ \quad ）木板窗 \quad
-一（ \quad ）小方洞 \quad
-一（ \quad ）风景画
+一\answerB{扇}木板窗 \quad
+一\answerB{个}小方洞 \quad
+一\answerB{幅}风景画
 
-一（ \quad ）黑影 \qquad
-一（ \quad ）空白 \qquad
-一（ \quad ）炊烟
+一\answerB{道}黑影 \qquad
+一\answerB{片}空白 \qquad
+一\answerB{缕}炊烟
+
 \stopitemize
 
 \subsubsection{根据课文内容填空。}
 
 \startitemize[n,packed] % intext
-\item 这篇文章的作者是现代著名作家 \cloze{茅盾} 。
-\item 我认为这是一扇 \cloze{神奇} 的天窗，因为 \cloze{它打开了孩子们神奇的想象力和好奇
+\item 这篇文章的作者是现代著名作家 \answerU{茅盾} 。
+\item 我认为这是一扇 \answerU{神奇} 的天窗，因为 \answerU{它打开了孩子们神奇的想象力和好奇
 心} 。
-\item 最初，人们装天窗是为了 \cloze{采光} 、 \cloze{取暖} ，没想到在黑洞似的屋里，小小的天窗却成了孩子们的 \cloze{精神慰藉} 。文中的“天窗”象征了 \cloze{儿童通往想象世界的窗口} 。
+\item 最初，人们装天窗是为了 \answerU{采光} 、 \answerU{取暖} ，没想到在黑洞似的屋里，小小的天窗却成了孩子们的 \answerU{精神慰藉} 。文中的“天窗”象征了 \answerU{儿童通往想象世界的窗口} 。
 \stopitemize
 
 \subsubsubject{阅读拓展}
@@ -346,18 +351,26 @@
 我时常能够看到人们忙碌的身影，听到象征着劳动的喧哗声。
 
 早上，晨曦洒进窗户，又是全新的一天。有时，天空中可能还会有一点
-儿朦朦（胧胧 \quad 笼笼）的雾，给人一种置身仙境的感觉。透过雾，能够看到
+儿朦朦（\answerCU{胧胧} \quad 笼笼）的雾，给人一种置身仙境的感觉。透过雾，能够看到
 许多学生骑着自行车或电动车向校园飞驰而去。有时还能够遇到几个小懒虫，
 上学的大部队都已经走远了，他们才慢悠悠地出发。窗户外面，恰好有几株
 高大的绿化树，所以清晨在窗户前听到几声鸟鸣，是再正常不过的事了。虽
 然大多数时间都是最常听见的麻雀声，但在城市的早晨，这声音也是弥足珍
 贵的。隔着玻璃看着在枝条上跳跃的麻雀，我明白，鸟儿们也已经起床了，
-这难道不正好验证了那句俗语——“早起的鸟儿有虫吃”吗？人们忙碌，鸟
-儿欢叫，构成了一幅无比和（协 \quad 谐）的画卷。
+\answerCU{这难道不正好验证了那句俗语——“早起的鸟儿有虫吃”吗？}人们忙碌，鸟
+儿欢叫，构成了一幅无比和（协 \quad \answerCU{谐}）的画卷。
+
+\bz{
+反问句的特点：只问不答，答案含在句中。
+
+反问句比陈述句语气强烈得多。
+
+陈述句改反问句：一加反问词；二改肯定或否定词；三改标点符号；四查与原句意思是否相同。
+}
 
 午后，太阳将炎热的阳光投射到人间，也投射进我的窗户，窗户外的知
-了也在尽情地享受着这夏（末 \quad 未）的午后，忍不住高歌一曲！也许对这些
-爱唱歌的精灵们来说，已是时日不多，这鸣叫也似乎在告（戒 \quad 诫）窗前的我：
+了也在尽情地享受着这夏（\answerCU{末} \quad 未）的午后，忍不住高歌一曲！也许对这些
+爱唱歌的精灵们来说，已是时日不多，这鸣叫也似乎在告（戒 \quad \answerCU{诫}）窗前的我：
 “一寸光阴一寸金”，莫虚度。
 
 傍晚的窗外，大街上人来人往，有三五成群刚从校园回来的学生；有一
@@ -371,25 +384,17 @@
 }
 
 \startitemize[n,packed] % intext
-\item 用“\hl[2]”从文中括号里选出正确的字。
-\item 仿写词语。
+\item 用“\hl[2]”从文中括号里选出正确的字。\answerAA
+\item 仿写词语。\answerE
 
-慢悠悠 \qquad \cloze{胖乎乎} \quad \cloze{绿油油} \quad \cloze{美滋滋} 
+慢悠悠 \qquad \answerU{胖乎乎} \quad \answerU{绿油油} \quad \answerU{美滋滋} 
 
-人来人往 \quad \cloze{毛手毛脚} \quad \cloze{自由自在} \quad \cloze{百发百中}
+人来人往 \quad \answerU{毛手毛脚} \quad \answerU{自由自在} \quad \answerU{百发百中}
 
-\bz{
-反问句的特点：只问不答，答案含在句中。
-
-反问句比陈述句语气强烈得多。
-
-陈述句改反问句：一加反问词；二改肯定或否定词；三改标点符号；四查与原句意思是否相同。
-}
-
-\item 文中有一句关于珍惜时间的名言：\cloze{一寸光阴一寸金}。你还能写出一句这样的名言吗？试一试：\cloze{少壮不努力，老大
+\item 文中有一句关于珍惜时间的名言：\answerU{一寸光阴一寸金}。你还能写出一句这样的名言吗？试一试：\answerE\answerU{少壮不努力，老大
 徒伤悲。}
-\item 用“\hl[2]”画出文中的反问句，并把它改成陈述句。\cloze{这正好验证了那句俗语——“早起的鸟儿有虫吃”。}
-\item这篇文章是按\cloze{时间}顺序来写的，作者透过那一层厚而明亮的玻璃窗所看到的景象，写出了老百姓\cloze{忙碌与幸福}日常生活的。
+\item 用“\hl[2]”画出文中的反问句，并把它改成陈述句。\answerAA\answerU{这正好验证了那句俗语——“早起的鸟儿有虫吃”。}
+\item这篇文章是按\answerU{时间}顺序来写的，作者透过那一层厚而明亮的玻璃窗所看到的景象，写出了老百姓\answerU{忙碌与幸福}日常生活的。
 
 \stopitemize
 

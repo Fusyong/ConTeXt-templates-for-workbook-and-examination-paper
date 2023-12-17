@@ -47,7 +47,6 @@
 \definecolor[proofColor]      [m=1,t=0.8,a=1] % 校对文本色+透明
 \definecolor[transparentColor][k=0,t=0,a=1] % 透明色（隐藏文本用）
 
-
 % 结构转换集合（序号集合）
 \definestructureconversionset[cnconversion]
     [R,   % part: Rome
@@ -146,77 +145,12 @@
 %     [{\ReadFile{header.lua}}]%
 %     []%
 
-
-% %%%% 存取数据
-
-% \definedataset[zicitable][delay=yes] % 最后实现，会插入页码信息
-
-% %%%% 宏
-
-% % \define[3]\zi{%
-% %     \startnarrower[left]%
-% %         \setupindenting[yes,-1em]%
-% %         \setupinitial[n=2,text=#1]%
-% %         \placeinitial #2 \par%
-% %         \forgetinitial%
-% %         \setupindenting[yes,2em] #3%
-% %     \stopnarrower%
-% % }
-
-% % 单字词条 \zi{单字词条}{音}{正文}{另见}
-% % \defineexpandable
-% \define[4]\zi{%
-%     \startnarrower[left]%
-%         \newcount\myhanglinenum \myhanglinenum=2% 字头绕排行数
-%         \newdimen\mytitleindent \mytitleindent=-1em% 字头缩进量
-%         \newdimen\hangingdist \hangingdist=-0.5em% 绕排间距
-
-%         \setbox0=\hbox{\tfd \bf #1}% 字头
-%         \newdimen\titleright \titleright=\wd0% 字头宽度
-%         \advance\titleright by \mytitleindent%
-%         \advance\titleright by -\hangingdist%
-        
-%         \setupindenting[yes,\mytitleindent]% 缩进
-%         % 字头绕排
-%         \starthanging[location=left,n=\myhanglinenum,distance=\hangingdist]{%
-%             \reference[#1-#2]{#2}% 引用锚点
-%             \setdataset[zicitable][title=#1, pinyin=#2, class=zi]% 登记在字词表中，不用键名
-%             \box0% 字头
-%         }%
-%             {\hskip -\mytitleindent #2 #3}\par% 字头解释，字头缩进后需要用hskip和hangingdist修正
-%             \advance \myhanglinenum by -\prevgraf% 减去上一个段落的行数
-%             % 如果实际绕排1行，还有1个空行，则后行跟上、加缩进
-%             \ifnum \myhanglinenum=1%
-%                 \doifsomethingelse{#4}
-%                     {\setupindenting[yes,\titleright]另见#4}%
-%                     {\dorecurse{\myhanglinenum}{\blank}}%
-%             \else%
-%                 \doifsomethingelse{#4}
-%                     {\setupindenting[yes,2em]另见#4}%
-%             \fi%
-%         \stophanging%
-%     \stopnarrower%
-% }
-
-% % 多字词条 \zi{多字词条}{音}{正文}{另见}
-% \define[4]\ci{%
-%     \startnarrower[left]%
-%         \setupindenting[yes,-1em]%
-%         \reference[#1-#2]{#2}% 引用锚点
-%         \setdataset[zicitable][title=#1, pinyin=#2, class=ci]% 登记在字词表中，不用键名
-%         \hbox{\bf #1} #2 #3 \par% 词头和词头解释
-%         \doifsomethingelse{#4}
-%         {\setupindenting[yes,2em]另见#4}% 另见
-%         \forgetinitial%
-%     \stopnarrower%
-% }
-
 %%%%%%%%%%%%% 使用模块(保持顺序) %%%%%%%%%%%%%
 % 竖排
 % \usemodule[vtypeset]
 % 
 % 标点压缩与支持
-\usemodule[zhpunc][pattern=quanjiao, spacequad=0.5, hangjian=false]
+\usemodule[zhpunc][pattern=kaiming, spacequad=0.5, hangjian=false]
 % 
 % 四种标点压缩方案：全角、开明、半角、原样：
 %   pattern: quanjiao(default), kaiming, banjiao, yuanyang
@@ -237,44 +171,106 @@
 %   \jiazh{夹注}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% %%%% 存取数据
+\definedataset[mytable][delay=yes] % 最后实现，会插入页码信息???
+\def\saveAnswer[#1,#2,#3]#4{%
+    \setdataset[mytable][title=#1, list=#2, type=#3, answer=#4]%
+}
+
 % 着重号
 \definebar[zhuozhong][text=\lower0.6em\hbox{~·}, repeat=no]
 
 % 条件文本：校对标记红P、校对标记透明T、答案不着色A
-\def\PTA#1{%
+% 
+\def\updatePTAColor{%
     \doifmodeelse{answersheet}%
-        {#1}%
-        {\doifmodeelse{proofread}%
-            {\color[proofColor]{#1}}%
-            {\color[transparentColor]{#1}}%
-        }%
-    }
+    {\definecolor[PTAColor][aboveColor]}% default 默认颜色
+    {\doifmodeelse{proofread}%
+        {\definecolor[PTAColor][proofColor]}%
+        {\definecolor[PTAColor][transparentColor]}%
+    }%
+}
+
+\def\PTA#1{%
+    \updatePTAColor%
+    \color[PTAColor]{#1}%
+}
+
+% 下划线颜色
+\setupthinrules[color=secondColor]
+
+% 下划线完形填空answerUnderbar
+% ！！！标点符号处理过程导致下划线断开，或禁则失效
+% 可能是标点模块删除标点前后的空白造成的
+% 临时处理方法是只在填空前面加kern
+\definebar[clozeBar][underbar][continue=yes, rulethickness=0.25pt, color=secondColor, offset=-0.5]
+\def\answerU#1{%
+    \startbar[clozeBar]%
+    \color[transparentColor]{#1}\PTA{#1}%　
+    % 下面的方法会导致断句困难
+    % \scratchdimen\widthofstring{#1}\relax % 获取文本宽度
+    % \zwj\kern1\scratchdimen \color[black]{#1}% \kern.5\scratchdimen\zwj % U+200D ZERO WIDTH JOINER
+    \stopbar%
+    \saveAnswer[1,2,answerU]{#1}%
+}%
 
 % 回答画掉slashout
 \def\answerS#1{%
     \setbox0=\hbox{#1}%
     % 阻止切换到v模式以免断行
     \dontleavehmode\copy0\kern-\wd0\hbox to \wd0{\hfil\PTA{\backslash}\hfil}%
+    \saveAnswer[1,2,answerS]{#1}%
 }
+
 % 回答勾选check
-\def\answerC#1{%
+\def\check#1{%
     \setbox0=\hbox{#1}%
     % 阻止切换到v模式以免断行
     \dontleavehmode\copy0\kern-\wd0\hbox to \wd0{\hfil\PTA{\TrueMark}\hfil}%
 }
+\def\answerC#1{%
+    \check{#1}%
+    \saveAnswer[1,2,answerC]{#1}%
+}
+
+% 回答画选checkUnderbar
+\definebar[checkBar][clozeBar][color=PTAColor]
+\def\checkU#1{%
+    \startbar[checkBar]%
+    #1%　
+    \stopbar%
+}
+\def\answerCU#1{%
+    \updatePTAColor%
+    \checkU{#1}%
+    \saveAnswer[1,2,answerCU]{#1}%
+}
 
 % 回答序号
 \def\answerN{%
-    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{a.n.}}}
+    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{a.n.}}}%
+    \saveAnswer[1,2,answerN]{2}%
 }
 
 % 回答“略” omit
+\def\LableO{（略。）}
 \def\answerO{%
-    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{略}}}
+    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableO}}}%
+    \saveAnswer[1,2,answerO]{}%
 }
+
 % 回答“示例：”example
+\def\LableE{示例：}
 \def\answerE{%
-    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{示例：}}}
+    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableE}}}%
+    \saveAnswer[1,2,answerE]{}%
+}
+
+% 回答“文中练习如前”as given above
+\def\LableAA{（文中练习如前。）}
+\def\answerAA{%
+    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableAA}}}%
+    \saveAnswer[1,2,answerAA]{}%
 }
 
 % 括号
@@ -285,11 +281,17 @@
 
 % 画勾
 \def\answerT{%
+    \brackets{\TrueMark}%
+}
+\def\answerTR{%
     \rBrackets{\TrueMark}%
 }
 
 % 打叉
 \def\answerF{%
+    \brackets{\FalseMark}%
+}
+\def\answerFR{%
     \rBrackets{\FalseMark}%
 }
 
@@ -297,36 +299,10 @@
 \def\answerB#1{%
     \brackets{#1}%
 }
+\def\answerBR#1{%
+    \rBrackets{#1}%
+}
 
-% 下划线颜色
-\setupthinrules[color=secondColor]
-
-% 下划线完形填空
-% ！！！标点符号处理过程导致下划线丢失，或禁则失效
-% ！！！字色覆盖线色（目前用首位加全角空格的临时方法）
-% 可能是标点模块删除标点前后的空白造成的
-% 临时处理方法是只在填空前面加kern
-\definebar[clozeBar][underbar][continue=yes, rulethickness=0.25pt, color=secondColor, offset=-0.5]
-\def\cloze#1{%
-    \startbar[clozeBar]%
-    % !!! 透明度会传递到下画线
-    \color[transparentColor]{#1}\PTA{#1}%　
-    % 下面的方法会导致断句困难
-    % \scratchdimen\widthofstring{#1}\relax % 获取文本宽度
-    % \zwj\kern1\scratchdimen \color[black]{#1}% \kern.5\scratchdimen\zwj % U+200D ZERO WIDTH JOINER
-    \stopbar%
-}%
-
-% \definebar[ClozeBar][underbar][continue=yes, color=secondColor, offset=-0.5]
-
-% \starttexdefinition unexpanded Cloze #1
-%    \startbar[ClozeBar]
-%    \scratchdimen\widthofstring{#1}\relax
-%    \zwj\kern.2\scratchdimen #1 \kern.2\scratchdimen\zwj
-%    \stopbar
-% \stoptexdefinition
-
-% This is a \Cloze{\color[red]{cloze}} whose underbar is 1.4 times as wide as the text above it. \Cloze{The leading} and trailing spaces are never broken.
 
 
 % 边注
