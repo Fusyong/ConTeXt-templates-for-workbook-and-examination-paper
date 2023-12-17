@@ -39,12 +39,14 @@
 
 % 颜色
 \setupcolors[state=start] % 开启颜色（默认关闭，转成灰度）
-\definecolor [secondColor][c=1] % 双色中的彩色
-\definecolor [aboveColor][c=1,t=0.8,a=1] % 双色中的彩色+透明（用在文字上方）
-\definecolor [transparentColor][k=1,t=0,a=1] % 全透明色（隐藏文本用）
+% !!!如果不设置透明度，用于下画线时，字色透明度会覆盖下画线的透明度
+\definecolor[secondColor]     [c=1,t=1,a=1] % 双色中的彩色
+\definecolor[aboveColor]      [c=1,t=0.8,a=1] % 双色中的彩色+透明（用在文字上方）
+\definecolor[proofTextColor]  [m=1,t=0.8,a=1] % 校对文本色+透明
+\definecolor[transparentColor][k=0,t=0,a=1] % 透明色（隐藏文本用）
 \doifmodeelse{proofread} % 校对标记专用色（非校对模式下为透明）
-    {\definecolor[proofColor][aboveColor]}
-    {\definecolor[proofColor][transparentColor]}
+    {\definecolor[proofColorOrTrans][proofTextColor]}
+    {\definecolor[proofColorOrTrans][transparentColor]}
 
 % 结构转换集合（序号集合）
 \definestructureconversionset[cnconversion]
@@ -241,17 +243,17 @@
 % 回答画掉slashout
 \def\answerS#1{%
     \setbox0=\hbox{#1}%
-    \copy0\kern-\wd0\hbox to \wd0{\hfil\proofColor\backslash\hfil}%
+    \copy0\kern-\wd0\hbox to \wd0{\hfil\proofColorOrTrans\backslash\hfil}%
 }
 
 % 回答序号
 \def\answerN{%
-    \raise 1em \vbox to 0em{\hbox to 0em {\itx\proofColor a.n.}}
+    \raise 1em \vbox to 0em{\hbox to 0em {\itx\proofColorOrTrans a.n.}}
 }
 
 % 括号
 % TODO 测量宽度；允许输入宽度
-\def\brackets#1{（\enskip {\proofColor #1} \enskip）}
+\def\brackets#1{（\enskip {\proofColorOrTrans #1} \enskip）}
 % 行末括号
 \def\rBrackets#1{\hfill \brackets{#1}}
 
@@ -272,12 +274,14 @@
 
 % 下划线完形填空
 % ！！！标点符号处理过程导致下划线丢失，或禁则失效
+% ！！！字色覆盖线色（目前用首位加全角空格的临时方法）
 % 可能是标点模块删除标点前后的空白造成的
 % 临时处理方法是只在填空前面加kern
-\definebar[clozeBar][underbar][continue=yes, color=secondColor, offset=-0.5]
+\unexpanded\definebar[clozeBar][underbar][continue=yes, color=secondColor, offset=-0.5]
 \def\cloze#1{%
     \startbar[clozeBar]%
-    \color[proofColor]{#1 #1}%
+    % !!! 透明度会传递到下画线
+    \color[transparentColor]{#1}\color[proofColorOrTrans]{#1}%　
     % 下面的方法会导致断句困难
     % \scratchdimen\widthofstring{#1}\relax % 获取文本宽度
     % \zwj\kern1\scratchdimen \color[black]{#1}% \kern.5\scratchdimen\zwj % U+200D ZERO WIDTH JOINER
