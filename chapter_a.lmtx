@@ -1,5 +1,6 @@
-% \enablemode[proofread]
 \environment[envs/env_setting.tex]
+% \disablemode[proofread]
+
 % \showboxes
 
 \starttext
@@ -31,19 +32,15 @@
 
 \subsubsection{读拼音，写词语。}
 
-\hbox{%
-    \pinyinge[zá|xìng][杂兴]
-    \pinyinge[sù|shè][宿舍]
-    \pinyinge[qīng|tíng][蜻蜓]
-    \pinyinge[xī|shǎo][稀少]
-}
+\pinyinge[zá|xìng][杂兴]
+\pinyinge[sù|shè][宿舍]
+\pinyinge[qīng|tíng][蜻蜓]
+\pinyinge[xī|shǎo][稀少]
 
-\hbox{%
-    \pinyinge[jī|lóng][鸡笼]
-    \pinyinge[yī|lài][依赖]
-    \pinyinge[máo|yán][茅檐]
-    \pinyinge[lǎo|wēng][老翁]
-}
+\pinyinge[jī|lóng][鸡笼]
+\pinyinge[yī|lài][依赖]
+\pinyinge[máo|yán][茅檐]
+\pinyinge[lǎo|wēng][老翁]
 
 \subsubsection{给加点的字词选择正确的意思。}
 
@@ -134,18 +131,15 @@
 
 \subsubsection{读拼音，写词语。}
 
-\hbox{%
-    \pinyinge[jié|gòu][结构]
-    \pinyinge[shùn|xù][顺序]
-    \pinyinge[hé|xié][和谐]
-    \pinyinge[zhuāng|shì][装饰]
-}
-\hbox{%
-    \pinyinge[tǎng|ruò][倘若]
-    \pinyinge[shuì|mián][睡眠]
-    \pinyinge[sǒng|lì][耸立]
-    \pinyinge[zhào|lì][照例]
-}
+\pinyinge[jié|gòu][结构]
+\pinyinge[shùn|xù][顺序]
+\pinyinge[hé|xié][和谐]
+\pinyinge[zhuāng|shì][装饰]
+
+\pinyinge[tǎng|ruò][倘若]
+\pinyinge[shuì|mián][睡眠]
+\pinyinge[sǒng|lì][耸立]
+\pinyinge[zhào|lì][照例]
 
 \subsubsection{用“\backslash”划去下面词语中加点的字错误的读音。}
 
@@ -195,48 +189,48 @@
     \startxtablebody
         \startxrow
             \startxcell \zhuozhong{觅}食 \stopxcell
-            \startxcell \stopxcell
-            \startxcell \stopxcell
-            \startxcell \stopxcell
-            \startxcell[align=flushleft] ①寻找 ②偷窃 ③雇 \stopxcell
+            \startxcell \PTA{M} \stopxcell
+            \startxcell \PTA{爫} \stopxcell
+            \startxcell \PTA{4} \stopxcell
+            \startxcell[align=flushleft]\answerC{①}寻找 ②偷窃 ③雇 \stopxcell
         \stopxrow
         \startxrow
             \startxcell \zhuozhong{率}领 \stopxcell
-            \startxcell \stopxcell
-            \startxcell \stopxcell
-            \startxcell \stopxcell
-            \startxcell[align=flushleft] ①大略 ②带领 ③模范 ④遵循 \stopxcell
+            \startxcell \PTA{S} \stopxcell
+            \startxcell \PTA{亠} \stopxcell
+            \startxcell \PTA{9} \stopxcell
+            \startxcell[align=flushleft]①大略 \answerC{②}带领 ③模范 ④遵循 \stopxcell
         \stopxrow
         \startxrow
             \startxcell 屋\zhuozhong{檐} \stopxcell
-            \startxcell \stopxcell
-            \startxcell \stopxcell
-            \startxcell \stopxcell
-            \startxcell[align=flushleft] ①屋顶伸出的边沿 ②像屋檐 \stopxcell
+            \startxcell \PTA{Y} \stopxcell
+            \startxcell \PTA{木} \stopxcell
+            \startxcell \PTA{13} \stopxcell
+            \startxcell[align=flushleft]\answerC{①}屋顶伸出的边沿 ②像屋檐 \stopxcell
         \stopxrow
         \startxrow
             \startxcell 和\zhuozhong{谐} \stopxcell
-            \startxcell \stopxcell
-            \startxcell \stopxcell
-            \startxcell \stopxcell
-            \startxcell[align=flushleft] ①调和、调整 ②完结、成功 \stopxcell
+            \startxcell \PTA{X} \stopxcell
+            \startxcell \PTA{讠} \stopxcell
+            \startxcell \PTA{19} \stopxcell
+            \startxcell[align=flushleft]\answerC{①}调和、调整 ②完结、成功 \stopxcell
         \stopxrow
     \stopxtablebody
 \stopxtable
-
 
 \subsubsection{按要求完成句子练习。}
 
 \startitemize[n,packed] % intext
     \startitem \zhuozhong{即使}附近的石头上有妇女在捣衣，它们 \zhuozhong{也} 从不吃惊。\stopitem
-        用加点的词语写一句话： \thinrule
-    \startitem 你最喜欢文中的哪句话？请端端正正地抄下来，并说说你喜欢的理由。\stopitem
+        用加点的词语写一句话：\answerE\cloze{即使下雨，我们也要按时到校。}
+    \startitem 你最喜欢文中的哪句话？请端端正正地抄下来，并说说你喜欢的理由。\answerO\stopitem
         句子： \thinrule
 
         理由： \thinrule
     \startitem 补全句子。\stopitem
-        “天边的\cloze{红霞}，向晚的\cloze{微风}，头上飞过的\cloze{归巢的鸟儿}，都是他们的好友。它们和乡下人家一起，绘成了一幅\cloze{自然}、\cloze{和谐}的田园风景画。”我觉得他们的好友还有：\cloze{夕阳}、\cloze{大树}、\cloze{田野}。
+        “天边的\cloze{红霞}，向晚的\cloze{微风}，头上飞过的\cloze{归巢的鸟儿}，都是他们的好友。它们和乡下人家一起，绘成了一幅\cloze{自然}、\cloze{和谐}的田园风景画。”我觉得他们的好友还有：\answerE\cloze{夕阳}、\cloze{大树}、\cloze{田野}。
     \startitem 辛苦了一天的人们，甜甜蜜蜜地进入梦乡。（缩句）\stopitem
+        \cloze{人们进入梦乡。}
 \stopitemize
 
 
@@ -276,24 +270,21 @@
 
 \subsubsection{《乡下人家》交叉采用了“植物—动物—人物”的对象顺序，“房前—屋后—河中”的空间顺序，“春—夏—秋”的季节顺序，“白天—傍晚—夜间”的时间顺序，运用比喻、拟人等修辞手法为我们描绘了“瓜藤攀檐图”“鲜花绽放图”“雨后春笋图”“鸡鸭觅食图”“院落晚霞图”“秋夜睡梦图”六幅自然和谐的田园风景画，全文运用了“分—总”的结构。请你按照一定的顺序，运用“分—总”的结构描写一段你喜欢的景致，注意要写出“画面感”。}
 
-\thinrules[n=4]
-
+\thinrules[n=4]\answerO
 
 \section{3 天窗}
 
 \subsubsection{读拼音，写词语。}
-\hbox{%
+
 \pinyinge[wēi|lì][威力]
 \pinyinge[shǎn|shuò][闪烁]
 \pinyinge[ruì|lì][锐利]
 \pinyinge[sǎo|dàng][扫荡]
 \pinyinge[qí|huàn][奇幻]
-}
-\hbox{%
+
 \pinyinge[fù|zá][复杂]
 \pinyinge[māo|tóu|yīng][猫头鹰]
 \pinyinge[bà|qì|shí|zú][霸气十足]
-}
 
 \subsubsection{用“\backslash”划去下面词语中加点的字错误的读音。}
 
@@ -305,21 +296,13 @@
 
 \startcolumns[n=4,separator=off]
 \kuohaozu{%
-    帐（ \qquad ）\\
-    账（ \qquad ）
-    }
+    帐( \qquad)\\账( \qquad)}
 \kuohaozu{%
-    摊（ \qquad ）\\
-    滩（ \qquad ）
-    }
+    摊( \qquad)\\滩( \qquad)}
 \kuohaozu{%
-    蝠（ \qquad ）\\
-    福（ \qquad ）
-    }
+    蝠( \qquad)\\福( \qquad)}
 \kuohaozu{%
-    蝙（ \qquad ）\\
-    编（ \qquad ）
-    }
+    蝙( \qquad)\\编( \qquad)}
 \stopcolumns
 
 \subsubsection{按要求写词语。}

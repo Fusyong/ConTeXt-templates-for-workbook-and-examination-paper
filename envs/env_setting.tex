@@ -4,8 +4,10 @@
 % 校对模式
 % yes no keep(保持预先设置，其后调整无效，可在命令行设置)
 \definemode[proofread][keep]
+\enablemode[proofread]
 % \disablemode[proofread]
-% \enablemode[proofread]
+\definemode[answersheet][keep]
+\disablemode[answersheet]
 
 %%%% 纸张和版面
 \definepapersize[sheet][width=145mm, height=210mm]
@@ -42,11 +44,9 @@
 % !!!如果不设置透明度，用于下画线时，字色透明度会覆盖下画线的透明度
 \definecolor[secondColor]     [c=1,t=1,a=1] % 双色中的彩色
 \definecolor[aboveColor]      [c=1,t=0.8,a=1] % 双色中的彩色+透明（用在文字上方）
-\definecolor[proofTextColor]  [m=1,t=0.8,a=1] % 校对文本色+透明
+\definecolor[proofColor]      [m=1,t=0.8,a=1] % 校对文本色+透明
 \definecolor[transparentColor][k=0,t=0,a=1] % 透明色（隐藏文本用）
-\doifmodeelse{proofread} % 校对标记专用色（非校对模式下为透明）
-    {\definecolor[proofColorOrTrans][proofTextColor]}
-    {\definecolor[proofColorOrTrans][transparentColor]}
+
 
 % 结构转换集合（序号集合）
 \definestructureconversionset[cnconversion]
@@ -240,48 +240,77 @@
 % 着重号
 \definebar[zhuozhong][text=\lower0.6em\hbox{~·}, repeat=no]
 
+% 条件文本：校对标记红P、校对标记透明T、答案不着色A
+\def\PTA#1{%
+    \doifmodeelse{answersheet}%
+        {#1}%
+        {\doifmodeelse{proofread}%
+            {\color[proofColor]{#1}}%
+            {\color[transparentColor]{#1}}%
+        }%
+    }
+
 % 回答画掉slashout
 \def\answerS#1{%
     \setbox0=\hbox{#1}%
-    \copy0\kern-\wd0\hbox to \wd0{\hfil\proofColorOrTrans\backslash\hfil}%
+    % 阻止切换到v模式以免断行
+    \dontleavehmode\copy0\kern-\wd0\hbox to \wd0{\hfil\PTA{\backslash}\hfil}%
+}
+% 回答勾选check
+\def\answerC#1{%
+    \setbox0=\hbox{#1}%
+    % 阻止切换到v模式以免断行
+    \dontleavehmode\copy0\kern-\wd0\hbox to \wd0{\hfil\PTA{\TrueMark}\hfil}%
 }
 
 % 回答序号
 \def\answerN{%
-    \raise 1em \vbox to 0em{\hbox to 0em {\itx\proofColorOrTrans a.n.}}
+    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{a.n.}}}
+}
+
+% 回答“略” omit
+\def\answerO{%
+    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{略}}}
+}
+% 回答“示例：”example
+\def\answerE{%
+    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{示例：}}}
 }
 
 % 括号
 % TODO 测量宽度；允许输入宽度
-\def\brackets#1{（\enskip {\proofColorOrTrans #1} \enskip）}
+\def\brackets#1{（\enskip \PTA{#1} \enskip）}
 % 行末括号
 \def\rBrackets#1{\hfill \brackets{#1}}
 
 % 画勾
 \def\answerT{%
-    \rBrackets{\TrueMark}
+    \rBrackets{\TrueMark}%
 }
 
 % 打叉
 \def\answerF{%
-    \rBrackets{\FalseMark}
+    \rBrackets{\FalseMark}%
 }
 
 % 填入括号
 \def\answerB#1{%
-    \brackets{#1}
+    \brackets{#1}%
 }
+
+% 下划线颜色
+\setupthinrules[color=secondColor]
 
 % 下划线完形填空
 % ！！！标点符号处理过程导致下划线丢失，或禁则失效
 % ！！！字色覆盖线色（目前用首位加全角空格的临时方法）
 % 可能是标点模块删除标点前后的空白造成的
 % 临时处理方法是只在填空前面加kern
-\unexpanded\definebar[clozeBar][underbar][continue=yes, color=secondColor, offset=-0.5]
+\definebar[clozeBar][underbar][continue=yes, rulethickness=0.25pt, color=secondColor, offset=-0.5]
 \def\cloze#1{%
     \startbar[clozeBar]%
     % !!! 透明度会传递到下画线
-    \color[transparentColor]{#1}\color[proofColorOrTrans]{#1}%　
+    \color[transparentColor]{#1}\PTA{#1}%　
     % 下面的方法会导致断句困难
     % \scratchdimen\widthofstring{#1}\relax % 获取文本宽度
     % \zwj\kern1\scratchdimen \color[black]{#1}% \kern.5\scratchdimen\zwj % U+200D ZERO WIDTH JOINER
@@ -330,7 +359,8 @@
 \startluacode
     require "envs/Pinyinge"
 \stopluacode
-\def\pinyinge[#1][#2]{
+\def\pinyinge[#1][#2]{%
+    \dontleavehmode%
     \startMPcode
         lua.MP.tianzige("#1","#2") ;
     \stopMPcode
@@ -348,13 +378,14 @@
     %     % MP.lines = string.explode([=[#1]=], [=[\\]=]) --乱
     %     MP.lines = string.split([=[#1]=], [=[\\]=])
     % \stopluacode
+    % 
     % \startMPcode
     % draw textext.lft("\[") yscaled 2;
     % for i=1 upto lua("mp.size(MP.lines)"):
     %     draw textext.rt(lua("mp.quoted(MP.lines[" & decimal i & "])"));
     % endfor ;
     % \stopMPcode
-
+    \dontleavehmode%
     \startMPcode
     % 用加框文本可以实现更复杂的控制
     % draw textext.lft("\[") yscaled 2;
@@ -365,7 +396,7 @@
     %     % width=7em,% local fit max broad fixed dimension
     %     % autowidth=force,% yes no force 无效
     %     ]{#1}");
-
+    % 
     % 简易方式
     draw textext.lft("\strut \[") yscaled 2;
     draw textext.rt("\vbox{#1}")
