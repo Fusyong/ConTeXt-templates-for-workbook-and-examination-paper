@@ -174,7 +174,9 @@
 % %%%% 存取数据
 \definedataset[mytable][delay=yes] % 最后实现，会插入页码信息???
 \def\saveAnswer[#1,#2,#3]#4{%
+    \doifnotmode{answersheet}{%
     \setdataset[mytable][title=#1, list=#2, type=#3, answer=#4]%
+    }%
 }
 
 % 着重号
@@ -184,10 +186,10 @@
 % 
 \def\updatePTAColor{%
     \doifmodeelse{answersheet}%
-    {\definecolor[PTAColor][aboveColor]}% default 默认颜色
+    {\definecolor[PTAColor][default]}% default 默认颜色
     {\doifmodeelse{proofread}%
-        {\definecolor[PTAColor][proofColor]}%
-        {\definecolor[PTAColor][transparentColor]}%
+        {\definecolor[PTAColor][proofColor]}%校对色
+        {\definecolor[PTAColor][transparentColor]}%常态透明
     }%
 }
 
@@ -253,7 +255,7 @@
 }
 
 % 回答“略” omit
-\def\LableO{（略。）}
+\def\LableO{（略）}
 \def\answerLO{%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableO}}}%
     \saveAnswer[1,2,answerO]{}%
@@ -274,7 +276,7 @@
 }
 
 % 回答“见文中练习”inline as given above
-\def\LableIA{（见文中练习。）}
+\def\LableIA{（见\LableI）}
 \def\answerLIA{%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableIA}}}%
     \saveAnswer[1,2,answerLIA]{}%
@@ -283,31 +285,40 @@
 % 括号
 % TODO 测量宽度；允许输入宽度
 \def\brackets#1{（\enskip \PTA{#1} \enskip）}
-% 行末括号
+% 括号（行末）
 \def\rBrackets#1{\hfill \brackets{#1}}
 
-% 画勾
+% 括号中画勾
 \def\answerT{%
     \brackets{\TrueMark}%
+    \saveAnswer[1,2,answerT]{}%
 }
+% 括号（行末）中画勾
 \def\answerTR{%
     \rBrackets{\TrueMark}%
+    \saveAnswer[1,2,answerTR]{}%
 }
 
-% 打叉
+% 括号中画叉
 \def\answerF{%
     \brackets{\FalseMark}%
+    \saveAnswer[1,2,answerF]{}%
 }
+% 括号（行末）中画叉
 \def\answerFR{%
     \rBrackets{\FalseMark}%
+    \saveAnswer[1,2,answerFR]{}%
 }
 
 % 填入括号
 \def\answerB#1{%
     \brackets{#1}%
+    \saveAnswer[1,2,answerB]{#1}%
 }
+% 填入括号（行末）
 \def\answerBR#1{%
     \rBrackets{#1}%
+    \saveAnswer[1,2,answerBR]{#1}%
 }
 
 
