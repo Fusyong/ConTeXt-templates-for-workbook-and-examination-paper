@@ -222,13 +222,13 @@
 
 \startitemize[n,packed] % intext
     \startitem \zhuozhong{即使}附近的石头上有妇女在捣衣，它们 \zhuozhong{也} 从不吃惊。\stopitem
-        用加点的词语写一句话：\answerE\answerU{即使下雨，我们也要按时到校。}
-    \startitem 你最喜欢文中的哪句话？请端端正正地抄下来，并说说你喜欢的理由。\answerO\stopitem
+        用加点的词语写一句话：\answerLE\answerU{即使下雨，我们也要按时到校。}
+    \startitem 你最喜欢文中的哪句话？请端端正正地抄下来，并说说你喜欢的理由。\answerLO\stopitem
         句子： \thinrule
 
         理由： \thinrule
     \startitem 补全句子。\stopitem
-        “天边的\answerU{红霞}，向晚的\answerU{微风}，头上飞过的\answerU{归巢的鸟儿}，都是他们的好友。它们和乡下人家一起，绘成了一幅\answerU{自然}、\answerU{和谐}的田园风景画。”我觉得他们的好友还有：\answerE\answerU{夕阳}、\answerU{大树}、\answerU{田野}。
+        “天边的\answerU{红霞}，向晚的\answerU{微风}，头上飞过的\answerU{归巢的鸟儿}，都是他们的好友。它们和乡下人家一起，绘成了一幅\answerU{自然}、\answerU{和谐}的田园风景画。”我觉得他们的好友还有：\answerLE\answerU{夕阳}、\answerU{大树}、\answerU{田野}。
     \startitem 辛苦了一天的人们，甜甜蜜蜜地进入梦乡。（缩句）\stopitem
         \answerU{人们进入梦乡。}
 \stopitemize
@@ -270,7 +270,7 @@
 
 \subsubsection{《乡下人家》交叉采用了“植物—动物—人物”的对象顺序，“房前—屋后—河中”的空间顺序，“春—夏—秋”的季节顺序，“白天—傍晚—夜间”的时间顺序，运用比喻、拟人等修辞手法为我们描绘了“瓜藤攀檐图”“鲜花绽放图”“雨后春笋图”“鸡鸭觅食图”“院落晚霞图”“秋夜睡梦图”六幅自然和谐的田园风景画，全文运用了“分—总”的结构。请你按照一定的顺序，运用“分—总”的结构描写一段你喜欢的景致，注意要写出“画面感”。}
 
-\thinrules[n=4]\answerO
+\thinrules[n=4]\answerLO
 
 \section{3 天窗}
 
@@ -319,7 +319,7 @@
 简单 \answerB{复杂} \hfil
 虚   \answerB{实}
 
-\item 填上合适的量词。\answerE
+\item 填上合适的量词。\answerLE
 
 一\answerB{扇}木板窗 \quad
 一\answerB{个}小方洞 \quad
@@ -342,7 +342,7 @@
 
 \subsubsubject{阅读拓展}
 
-\subsubsection{阅读短文，完成练习。}
+\subsubsection{阅读短文，完成练习。\answerLI}
 
 \essayhead[窗外][]
 
@@ -384,16 +384,16 @@
 }
 
 \startitemize[n,packed] % intext
-\item 用“\hl[2]”从文中括号里选出正确的字。\answerAA
-\item 仿写词语。\answerE
+\item 用“\hl[2]”从文中括号里选出正确的字。\answerLIA
+\item 仿写词语。\answerLE
 
 慢悠悠 \qquad \answerU{胖乎乎} \quad \answerU{绿油油} \quad \answerU{美滋滋} 
 
 人来人往 \quad \answerU{毛手毛脚} \quad \answerU{自由自在} \quad \answerU{百发百中}
 
-\item 文中有一句关于珍惜时间的名言：\answerU{一寸光阴一寸金}。你还能写出一句这样的名言吗？试一试：\answerE\answerU{少壮不努力，老大
+\item 文中有一句关于珍惜时间的名言：\answerU{一寸光阴一寸金}。你还能写出一句这样的名言吗？试一试：\answerLE\answerU{少壮不努力，老大
 徒伤悲。}
-\item 用“\hl[2]”画出文中的反问句，并把它改成陈述句。\answerAA\answerU{这正好验证了那句俗语——“早起的鸟儿有虫吃”。}
+\item 用“\hl[2]”画出文中的反问句，并把它改成陈述句。\answerLIA\answerU{这正好验证了那句俗语——“早起的鸟儿有虫吃”。}
 \item这篇文章是按\answerU{时间}顺序来写的，作者透过那一层厚而明亮的玻璃窗所看到的景象，写出了老百姓\answerU{忙碌与幸福}日常生活的。
 
 \stopitemize

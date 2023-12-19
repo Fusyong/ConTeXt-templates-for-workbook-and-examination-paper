@@ -254,23 +254,30 @@
 
 % 回答“略” omit
 \def\LableO{（略。）}
-\def\answerO{%
+\def\answerLO{%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableO}}}%
     \saveAnswer[1,2,answerO]{}%
 }
 
 % 回答“示例：”example
 \def\LableE{示例：}
-\def\answerE{%
+\def\answerLE{%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableE}}}%
-    \saveAnswer[1,2,answerE]{}%
+    \saveAnswer[1,2,answerLE]{}%
 }
 
-% 回答“文中练习如前”as given above
-\def\LableAA{（文中练习如前。）}
-\def\answerAA{%
-    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableAA}}}%
-    \saveAnswer[1,2,answerAA]{}%
+% 回答“文中练习”inline
+\def\LableI{【文中练习】}
+\def\answerLI{%
+    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableI}}}%
+    \saveAnswer[1,2,answerLI]{}%
+}
+
+% 回答“见文中练习”inline as given above
+\def\LableIA{（见文中练习。）}
+\def\answerLIA{%
+    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableIA}}}%
+    \saveAnswer[1,2,answerLIA]{}%
 }
 
 % 括号
