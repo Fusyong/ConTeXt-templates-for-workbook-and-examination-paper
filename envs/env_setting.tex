@@ -77,6 +77,7 @@
     before=, % 覆盖上下行插入的空格
     ]
 
+\setupcounter[uniquename][way=bytext,numberconversion=a]
 
 % 配置标题、目录格式
 % 单元，新页起 , page=yes新页/left偶数页/right奇数页（默认）
@@ -249,9 +250,13 @@
 }
 
 % 回答序号
-\def\answerN{%
-    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{a.n.}}}%
-    \saveAnswer[1,2,answerN]{2}%
+\def\answerN#1{%
+    \def\abc{\rawcountervalue[uniquename]}%
+    \startitem[\abc]#1%
+    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\ref[number][\abc]}}}%
+    \stopitem%
+    \saveAnswer[1,2,answerN]{\ref[number][\abc]}%
+    \incrementcounter[uniquename]%
 }
 
 % 回答“略” omit
@@ -330,7 +335,7 @@
     indenting={yes, 2em, first}, % 无效
     offset=0.25em, % 内容向内偏置(可用loffset等分别指定)
     frameoffset=0em, % 外框向外偏置
-    location=hanging, % depth, low, hanging
+    location=hanging, % depth, low, hanging, none
     style={\it}]
 \definefloat[bianzhumezzo][bianzhumezzos][intermezzo]
 \setupcaption[bianzhumezzo][location=none] % 不加标题
