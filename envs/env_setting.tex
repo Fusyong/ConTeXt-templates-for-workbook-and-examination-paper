@@ -173,10 +173,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % %%%% 存取数据
-\definedataset[mytable][delay=yes] % 最后实现，会插入页码信息???
+\definedataset[answertable][delay=yes] % 最后实现，会插入页码信息???
 \def\saveAnswer[#1,#2,#3]#4{%
     \doifnotmode{answersheet}{%
-    \setdataset[mytable][title=#1, list=#2, type=#3, answer=#4]%
+    \setdataset[answertable][title=#1, list=#2, type=#3, answer=#4]%
     }%
 }
 

@@ -6,73 +6,25 @@
 
 \chapter{部分参考答案}
 
-\startitemize[n,packed]
-    \item 篱落（疏疏 \quad \answerS{蔬蔬}）一径深，树头新绿未成（\answerS{荫} \quad 阴）。
-    \item 日长篱落无人过，惟有蜻蜓蛱（\answerS{xiá} \quad jiá）蝶飞。
-    \item （\answerS{矛} \quad 茅）檐低小，溪上青青草。
-    \item 最喜小儿亡（wú \quad \answerS{wáng}）赖，溪头卧剥（\answerS{bāo} \quad bō）莲蓬。
-\stopitemize
+% \csname \datasetvariable{answertable}{1}{type}\endcsname{\datasetvariable{answertable}{1}{answer}}
 
+\startluacode
+  local getdata = job.datasets.getdata
+  i = 1
+  while (getdata("answertable",i)) do
+    context(getdata("answertable", i,"answer"))
+    context("\\par")
+    i = i + 1
+  end
+\stopluacode
+    % --context(getdata("answertable", i,"answer"))
+    % -- context("\\csname %s\\endcsname{%s}", getdata("answertable", "1","type"), getdata("answertable", "1","answer"))
 
-\hbox{%
-    \pinyinge[zá|xìng][杂兴]
-    \pinyinge[sù|shè][宿舍]
-    \pinyinge[qīng|tíng][蜻蜓]
-    \pinyinge[xī|shǎo][稀少]
-}
+% % A setup to display a vertical list of author names, separated with paragraph breaks:
+% \startsetups[userdata:answers]
+%   \datasetentry{answer}\par
+% \stopsetups
+% \processdataset[answertable][userdata:answers]
 
-\hbox{%
-    \pinyinge[jī|lóng][鸡笼]
-    \pinyinge[yī|lài][依赖]
-    \pinyinge[máo|yán][茅檐]
-    \pinyinge[lǎo|wēng][老翁]
-}
-
-
-\startxtable[mytable]
-    \startxtablehead
-        \startxrow[bold]
-            \startxcell 要查的字 \stopxcell
-            \startxcell 音序 \stopxcell
-            \startxcell 部首 \stopxcell
-            \startxcell 查几画 \stopxcell
-            \startxcell 在正确的解释上画“ \TrueMark ” \stopxcell
-        \stopxrow
-    \stopxtablehead
-    \startxtablebody
-        \startxrow
-            \startxcell \zhuozhong{觅}食 \stopxcell
-            \startxcell \PTA{M} \stopxcell
-            \startxcell \PTA{爫} \stopxcell
-            \startxcell \PTA{4} \stopxcell
-            \startxcell[align=flushleft]~\answerC{①}寻找 ②偷窃 ③雇 \stopxcell %~主旨行首的盒子断行
-        \stopxrow
-        \startxrow
-            \startxcell \zhuozhong{率}领 \stopxcell
-            \startxcell \PTA{S} \stopxcell
-            \startxcell \PTA{亠} \stopxcell
-            \startxcell \PTA{9} \stopxcell
-            \startxcell[align=flushleft]~①大略 \answerC{②}带领 ③模范 ④遵循 \stopxcell
-        \stopxrow
-        \startxrow
-            \startxcell 屋\zhuozhong{檐} \stopxcell
-            \startxcell \PTA{Y} \stopxcell
-            \startxcell \PTA{木} \stopxcell
-            \startxcell \PTA{13} \stopxcell
-            \startxcell[align=flushleft]~\answerC{①}屋顶伸出的边沿 ②像屋檐 \stopxcell
-        \stopxrow
-        \startxrow
-            \startxcell 和\zhuozhong{谐} \stopxcell
-            \startxcell \PTA{X} \stopxcell
-            \startxcell \PTA{讠} \stopxcell
-            \startxcell \PTA{19} \stopxcell
-            \startxcell[align=flushleft]~\answerC{①}调和、调整 ②完结、成功 \stopxcell
-        \stopxrow
-    \stopxtablebody
-\stopxtable
-
-儿朦朦（\answerCU{胧胧} \quad 笼笼）的雾，给人一种置身仙境的感觉。透过雾，能够看到
-许多学生骑着自行车或电动车向校园飞驰而去。有时还能够遇到几个小懒虫，
-上学的大部队都已经走远了，他们才慢悠悠地出
 
 \stoptext
