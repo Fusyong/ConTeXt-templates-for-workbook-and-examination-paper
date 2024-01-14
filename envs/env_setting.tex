@@ -48,47 +48,48 @@
 \definecolor[transparentColor][k=0,t=0,a=1] % 透明色（隐藏文本用）
 
 % 结构转换集合（序号集合）
+% \definecounter[subsubsectioncounter][way=bysection] % 每section重起
+% \defineconversion[cnbysection][\convertnumber{cn}{\rawcountervalue[subsubsectioncounter]}]
 \definestructureconversionset[cnconversion]
     [R,   % part: Rome
-     cn,  % chapter：中文数字
-     ,   % section: none defined (use fallback)
-     ,   % subsection: 
-     cn]   % subsubsection: 中文数字
+    cn,  % chapter 章/单元 中文数字
+    ,   % section 节/课文标题
+    ,   % subsection 小节/分组标题 
+    cn,   % subsubsection 小小节/大习题 中文数字
+    n]   % subsubsubsection 小小小节/小习题 印度数码
     [r] % Default setting
 
-% 重置/不重置集合
-\defineresetset[myresetset]
-    [1,1,1,1,0,1,1] % 对应7级标题
-    [1] % 1=reset, 0=don't reset
+% 标题统一设置（个别设置后面单独重设）
+% \defineresetset[myresetset][1,1,1,1,0][1] %关闭第3级标题的序号重置(全局设置，局部处理通过defineconversion)
+% \defineresetset[subsubsectionresetset][][0] %关闭，用于单个标题的设置
 \setupheads
-    [part,chapter,section,subsection,subsubsection]
+    [part,chapter,section,subsection,subsubsection,subsubsubsection]
     [%
-    % before=, % 覆盖上下行插入的空格
     after=, % 覆盖上下行插入的空格
-    sectionconversionset=cnconversion,
-    number=no, % 序号
+    sectionconversionset=cnconversion,%不要混入空格
+    number=no, % 不显示序号
     indentnext=yes, % 其后首行缩进
     sectionsegments=current, % 序号段：只包括当前序号
     % sectionresetset=myresetset, %
     ]
 \setupheads
-    [subsection,subsubsection]
+    [subsection,subsubsection,subsubsubsection]
     [%
     before=, % 覆盖上下行插入的空格
     ]
 
-\setupcounter[uniquename][way=bytext,numberconversion=a]
-
 % 配置标题、目录格式
 % 单元，新页起 , page=yes新页/left偶数页/right奇数页（默认）
 \setuphead[chapter][page=yes,style={\setupalign[middle]\tfb}]
-%  课目
+% 课目
 \setuphead[section][style={\setupalign[middle]\tfa}]
-% 栏目
+% 分组/栏目标题
+\setuphead[subsection][style={\tf}, color=secondColor, number=yes,distance=0pt]
+% 无序号大题
 \setuphead[subsubsubject][style={\bf}]
-% 题目
+% 大题
 \setuplabeltext[cn][subsubsection={{},{、}}] % 前后标签
-\setuphead[subsubsection][style={\tf}, color=secondColor, number=yes,distance=0pt]
+\setuphead[subsubsection][style={\tf}, color=secondColor, number=yes,distance=0pt,]
 
 % 自订文章标题（6级）、作者（7级）
 \definehead[centersection][subsubsubsubject][align=middle, before=, after=,]
@@ -172,12 +173,21 @@
 %   \jiazh{夹注}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% 自动名称（用于自动生成宏、引用等）
+\definecounter[uniquecounter][way=bytext]
+% \setnumber[uniquecounter][1]
+\def\incrementuniquename{\incrementcounter[uniquecounter]}
+\def\uniquename{uniquename\Characters{\rawcountervalue[uniquecounter]}}%
+
+% \someheadnumber[subsubsection][current]
 % %%%% 存取数据
 \definedataset[answertable][delay=yes] % 最后实现，会插入页码信息???
-\def\saveAnswer[#1,#2,#3]#4{%
+\def\saveAnswer[#1]#2{%
     \doifnotmode{answersheet}{%
-    \setdataset[answertable][title=#1, list=#2, type=#3, answer=#4]%
-    }%
+        % \incrementuniquename%
+        % \expandafter\def\csname \strippedcsname\uniquename\endcsname{\someheadnumber[subsubsection][current]}%
+        \setdataset[answertable][cmd={#1}, answer={#2}]%
+        }%
 }
 
 % 着重号
@@ -199,11 +209,34 @@
     \color[PTAColor]{#1}%
 }
 
-% 下划线颜色
-\setupthinrules[color=secondColor]
+% 自定义标题
+% 单元
+\def\danyuanname#1{\subject{#1}}
+\def\danyuan#1{%
+    \chapter{#1}%
+    \saveAnswer[danyuanname]{#1}%
+}
+% 课文标题
+\def\kewenname#1{\subsubject{#1}}
+\def\kewen#1{%
+    \section{#1}%
+    \saveAnswer[kewenname]{#1}%
+}
+% 大题目
+\def\datiname#1{#1、}
+\def\dati#1{%
+    \incrementuniquename%
+    \subsubsection[\uniquename]{#1}%
+    \saveAnswer[datiname]{\ref[title][\uniquename]}% TODO 无法取得number
+}
 
-% 下划线完形填空answerUnderbar
-% ！！！标点符号处理过程导致下划线断开，或禁则失效
+% 原样输出
+\def\answerAsItIs#1{#1}
+
+% 下画线颜色
+\setupthinrules[color=secondColor]
+% 下画线完形填空answerUnderbar
+% ！！！标点符号处理过程导致下画线断开，或禁则失效
 % 可能是标点模块删除标点前后的空白造成的
 % 临时处理方法是只在填空前面加kern
 \definebar[clozeBar][underbar][continue=yes, rulethickness=0.25pt, color=secondColor, offset=-0.5]
@@ -214,7 +247,7 @@
     % \scratchdimen\widthofstring{#1}\relax % 获取文本宽度
     % \zwj\kern1\scratchdimen \color[black]{#1}% \kern.5\scratchdimen\zwj % U+200D ZERO WIDTH JOINER
     \stopbar%
-    \saveAnswer[1,2,answerU]{#1}%
+    \saveAnswer[answerAsItIs]{#1}%
 }%
 
 % 回答画掉slashout
@@ -222,7 +255,7 @@
     \setbox0=\hbox{#1}%
     % 阻止切换到v模式以免断行
     \dontleavehmode\copy0\kern-\wd0\hbox to \wd0{\hfil\PTA{\backslash}\hfil}%
-    \saveAnswer[1,2,answerS]{#1}%
+    \saveAnswer[answerS]{#1}%
 }
 
 % 回答勾选check
@@ -233,7 +266,7 @@
 }
 \def\answerC#1{%
     \check{#1}%
-    \saveAnswer[1,2,answerC]{#1}%
+    \saveAnswer[answerC]{#1}%
 }
 
 % 回答画选checkUnderbar
@@ -246,45 +279,45 @@
 \def\answerCU#1{%
     \updatePTAColor%
     \checkU{#1}%
-    \saveAnswer[1,2,answerCU]{#1}%
+    \saveAnswer[answerCU]{#1}%
 }
 
 % 回答序号
 \def\answerN#1{%
-    \def\abc{\rawcountervalue[uniquename]}%
-    \startitem[\abc]#1%
-    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\ref[number][\abc]}}}%
+    \incrementuniquename%
+    \startitem[\uniquename]#1%
+    \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\ref[number][\uniquename]}}}%
     \stopitem%
-    \saveAnswer[1,2,answerN]{\ref[number][\abc]}%
-    \incrementcounter[uniquename]%
+    \saveAnswer[answerAsItIs]{\ref[number][\uniquename]}%
 }
 
 % 回答“略” omit
 \def\LableO{（略）}
 \def\answerLO{%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableO}}}%
-    \saveAnswer[1,2,answerO]{}%
+    \saveAnswer[answerAsItIs]{\LableO}%
 }
 
 % 回答“示例：”example
 \def\LableE{示例：}
 \def\answerLE{%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableE}}}%
-    \saveAnswer[1,2,answerLE]{}%
+    \saveAnswer[answerAsItIs]{\LableE}%
 }
 
-% 回答“文中练习”inline
+% 回答“文中练习”inline TODO 合并多题的提示
 \def\LableI{【文中练习】}
 \def\answerLI{%
+    \dontleavehmode%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableI}}}%
-    \saveAnswer[1,2,answerLI]{}%
+    \saveAnswer[answerAsItIs]{\LableI}%
 }
 
 % 回答“见文中练习”inline as given above
 \def\LableIA{（见\LableI）}
 \def\answerLIA{%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableIA}}}%
-    \saveAnswer[1,2,answerLIA]{}%
+    \saveAnswer[answerAsItIs]{\LableIA}%
 }
 
 % 括号
@@ -296,37 +329,48 @@
 % 括号中画勾
 \def\answerT{%
     \brackets{\TrueMark}%
-    \saveAnswer[1,2,answerT]{}%
+    \saveAnswer[answerAsItIs]{\TrueMark}%
 }
 % 括号（行末）中画勾
 \def\answerTR{%
     \rBrackets{\TrueMark}%
-    \saveAnswer[1,2,answerTR]{}%
+    \saveAnswer[answerAsItIs]{\TrueMark}%
 }
 
 % 括号中画叉
 \def\answerF{%
     \brackets{\FalseMark}%
-    \saveAnswer[1,2,answerF]{}%
+    \saveAnswer[answerAsItIs]{\FalseMark}%
 }
 % 括号（行末）中画叉
 \def\answerFR{%
     \rBrackets{\FalseMark}%
-    \saveAnswer[1,2,answerFR]{}%
+    \saveAnswer[answerAsItIs]{\FalseMark}%
 }
 
 % 填入括号
 \def\answerB#1{%
     \brackets{#1}%
-    \saveAnswer[1,2,answerB]{#1}%
+    \saveAnswer[answerAsItIs]{#1}%
 }
 % 填入括号（行末）
 \def\answerBR#1{%
     \rBrackets{#1}%
-    \saveAnswer[1,2,answerBR]{#1}%
+    \saveAnswer[answerAsItIs]{#1}%
 }
 
-
+% 田字格
+% 导入lua模块MPwordslink.lua
+\startluacode
+    require "envs/Pinyinge"
+\stopluacode
+\def\pinyinge[#1][#2]{
+    \dontleavehmode
+    \startMPcode
+        lua.MP.tianzige("#1","#2") ;
+    \stopMPcode
+    \saveAnswer[answerAsItIs]{#2}
+}
 
 % 边注
 \defineframedtext[bianzhu]
@@ -353,17 +397,7 @@
     {\par \endgroup}
 
 
-% 田字格
-% 导入lua模块MPwordslink.lua
-\startluacode
-    require "envs/Pinyinge"
-\stopluacode
-\def\pinyinge[#1][#2]{%
-    \dontleavehmode%
-    \startMPcode
-        lua.MP.tianzige("#1","#2") ;
-    \stopMPcode
-}
+
 
 % 括号分组
 % TODO 调整前头的空间；自动计算高度；绘制大括号

@@ -13,10 +13,10 @@
 % \tracingnodes1 %1,2
 % \showreferences
 
-\startproduct dict
+\startproduct book
     % \placecontent
     \completecontent
     \component[chapter_a.lmtx]
     \component[chapter_b.lmtx]
-    \component[chapter_z.lmtx]
+    \component[chapter_z.tex]
 \stopproduct

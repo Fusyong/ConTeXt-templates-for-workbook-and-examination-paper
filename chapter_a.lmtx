@@ -5,7 +5,7 @@
 
 \starttext
 
-\chapter{第一单元}
+\danyuan{第一单元}
 
 \essayhead[单元学习目标][]
 
@@ -17,11 +17,11 @@
     \item 和同学分享交流你最喜欢的景致；写写自己喜欢的某个地方，表达出真实的感受。
 \stopitemize
 
-\section{1 古诗词三首}
+\kewen{1 古诗词三首}
 
 \subsubsubject{基础练习}
 
-\subsubsection{用“\backslash”划去下列错误的读音或字形。}
+\dati{用“\backslash”划去下列错误的读音或字形。}
 
 \startitemize[n,packed]
     \item 篱落（疏疏 \quad \answerS{蔬蔬}）一径深，树头新绿未成（\answerS{荫} \quad 阴）。
@@ -30,7 +30,7 @@
     \item 最喜小儿亡（wú \quad \answerS{wáng}）赖，溪头卧剥（\answerS{bāo} \quad bō）莲蓬。
 \stopitemize
 
-\subsubsection{读拼音，写词语。}
+\dati{读拼音，写词语。}
 
 \pinyinge[zá|xìng][杂兴]
 \pinyinge[sù|shè][宿舍]
@@ -42,7 +42,7 @@
 \pinyinge[máo|yán][茅檐]
 \pinyinge[lǎo|wēng][老翁]
 
-\subsubsection{给加点的字词选择正确的意思。}
+\dati{给加点的字词选择正确的意思。}
 
 \startitemize[n,packed]
     \item 儿童急\zhuozhong{走}追黄蝶 \rBrackets{} % 或者
@@ -71,7 +71,7 @@
         \stopitemize
 \stopitemize
 
-\subsubsection{默写《宿新市徐公店》并回答问题。}
+\dati{默写《宿新市徐公店》并回答问题。}
 
 {\midaligned{\answerU{宿新市徐公店}\\
 \answerU{篱落疏疏一径深}，\answerU{树头新绿未成阴}。\\
@@ -79,7 +79,7 @@
 
 这首诗的作者是 \answerU{宋} 代诗人 \answerU{杨万里}，诗中运用 \answerU{动静结合} 的手法描写了 \answerU{暮春乡村} 的景色。我喜欢的诗句是 \answerU{儿童急走追黄蝶，飞入菜花无处寻}，因为 \answerU{这两句诗表现了儿童的天真可爱}。
 
-\subsubsection{判断下列说法是否正确。（正确的画“ \TrueMark ”，错误的画“ \FalseMark ”）}
+\dati{判断下列说法是否正确。（正确的画“ \TrueMark ”，错误的画“ \FalseMark ”）}
 
 \startitemize[n,packed]
     \item 《宿新市徐公店》描写的是暮春时节乡村的景色，而《四时田园杂兴（其二十五）》则写的是初春江南的田园景色。 \answerFR
@@ -87,7 +87,7 @@
     \item 《清平乐·村居》是宋代词人辛弃疾的词作，“清平乐”是题目，“村居”是词牌名，全词表现了词人对农村和平宁静生活的喜爱。 \answerFR
 \stopitemize
 
-\subsubsection{阅读古诗词，完成练习。}
+\dati{阅读古诗词，完成练习。}
 
 \essayhead[行香子·树绕村庄][秦观]
 
@@ -113,7 +113,7 @@
 
 \subsubsubject{实践运用}
 
-\subsubsection{无论什么时候，无论什么季节，乡下人家都是一道独特的风景，一幅和谐的画卷。我们来补一补下面这些关于乡村生活的诗句吧！}
+\dati{无论什么时候，无论什么季节，乡下人家都是一道独特的风景，一幅和谐的画卷。我们来补一补下面这些关于乡村生活的诗句吧！}
 
 \startitemize[n,packed] % intext
     \item \answerU{昼出耘田夜绩麻}，村庄儿女各当家。
@@ -125,11 +125,11 @@
 \stopitemize
 
 
-\section{2 乡下人家}
+\kewen{2 乡下人家}
 
 \subsubsubject{基础练习}
 
-\subsubsection{读拼音，写词语。}
+\dati{读拼音，写词语。}
 
 \pinyinge[jié|gòu][结构]
 \pinyinge[shùn|xù][顺序]
@@ -141,7 +141,7 @@
 \pinyinge[sǒng|lì][耸立]
 \pinyinge[zhào|lì][照例]
 
-\subsubsection{用“\backslash”划去下面词语中加点的字错误的读音。}
+\dati{用“\backslash”划去下面词语中加点的字错误的读音。}
 
 \startitemize[horizontal][columns=two,symbol=n]
     \startitem 鸡\zhuozhong{冠}花（guān \quad \answerS{guàn}） \stopitem
@@ -150,7 +150,7 @@
     \startitem 大\zhuozhong{踏}步（\answerS{tā} \quad tà） \stopitem
 \stopitemize
 
-\subsubsection{根据要求写词语。}
+\dati{根据要求写词语。}
 
 \startitemize[n,packed] % intext
     \item 从课文中找出下列词语的反义词。
@@ -174,7 +174,7 @@
         \stopitemize
 \stopitemize
 
-\subsubsection{查字典填空。}
+\dati{查字典填空。}
 
 \startxtable[mytable]
     \startxtablehead
@@ -218,7 +218,7 @@
     \stopxtablebody
 \stopxtable
 
-\subsubsection{按要求完成句子练习。}
+\dati{按要求完成句子练习。}
 
 \startitemize[n,packed] % intext
     \startitem \zhuozhong{即使}附近的石头上有妇女在捣衣，它们 \zhuozhong{也} 从不吃惊。\stopitem
@@ -236,7 +236,7 @@
 
 \subsubsubject{阅读拓展}
 
-\subsubsection{阅读短文，完成练习。}
+\dati{阅读短文，完成练习。}
 
 \essayhead[姥姥家的小院][]
 
@@ -268,13 +268,13 @@
 
 \subsubsubject{实践运用}
 
-\subsubsection{《乡下人家》交叉采用了“植物—动物—人物”的对象顺序，“房前—屋后—河中”的空间顺序，“春—夏—秋”的季节顺序，“白天—傍晚—夜间”的时间顺序，运用比喻、拟人等修辞手法为我们描绘了“瓜藤攀檐图”“鲜花绽放图”“雨后春笋图”“鸡鸭觅食图”“院落晚霞图”“秋夜睡梦图”六幅自然和谐的田园风景画，全文运用了“分—总”的结构。请你按照一定的顺序，运用“分—总”的结构描写一段你喜欢的景致，注意要写出“画面感”。}
+\dati{《乡下人家》交叉采用了“植物—动物—人物”的对象顺序，“房前—屋后—河中”的空间顺序，“春—夏—秋”的季节顺序，“白天—傍晚—夜间”的时间顺序，运用比喻、拟人等修辞手法为我们描绘了“瓜藤攀檐图”“鲜花绽放图”“雨后春笋图”“鸡鸭觅食图”“院落晚霞图”“秋夜睡梦图”六幅自然和谐的田园风景画，全文运用了“分—总”的结构。请你按照一定的顺序，运用“分—总”的结构描写一段你喜欢的景致，注意要写出“画面感”。}
 
 \thinrules[n=4]\answerLO
 
-\section{3 天窗}
+\kewen{3 天窗}
 
-\subsubsection{读拼音，写词语。}
+\dati{读拼音，写词语。}
 
 \pinyinge[wēi|lì][威力]
 \pinyinge[shǎn|shuò][闪烁]
@@ -286,7 +286,7 @@
 \pinyinge[māo|tóu|yīng][猫头鹰]
 \pinyinge[bà|qì|shí|zú][霸气十足]
 
-\subsubsection{用“\backslash”划去下面词语中加点的字错误的读音。}
+\dati{用“\backslash”划去下面词语中加点的字错误的读音。}
 
 暖\zhuozhong{和}（\answerS{hé} \quad huo） \hfil
 一\zhuozhong{瞥}（piē \quad \answerS{piě}） \hfil
@@ -296,7 +296,7 @@
 \zhuozhong{露}天（lù \quad \answerS{lòu}） \hfil
 玻\zhuozhong{璃}（\answerS{lǐ} \quad li）
 
-\subsubsection{比一比，再组词。}
+\dati{比一比，再组词。}
 
 \startcolumns[n=4,separator=off]
 \kuohaozu{%
@@ -309,7 +309,7 @@
     蝙\answerB{福气}\\编\answerB{编织}}
 \stopcolumns
 
-\subsubsection{按要求写词语。}
+\dati{按要求写词语。}
 
 \startitemize[n,packed] % intext
 \item 从文中找出下列词语的反义词。
@@ -331,7 +331,7 @@
 
 \stopitemize
 
-\subsubsection{根据课文内容填空。}
+\dati{根据课文内容填空。}
 
 \startitemize[n,packed] % intext
 \item 这篇文章的作者是现代著名作家 \answerU{茅盾} 。
@@ -342,11 +342,13 @@
 
 \subsubsubject{阅读拓展}
 
-\subsubsection{阅读短文，完成练习。}
+\dati{阅读短文，完成练习。}
 
-\essayhead[窗外\answerLI][]
+\essayhead[窗外][]
 
- {\it
+\answerLI
+
+{\it
 每当空闲时，我总习惯站在窗户前看看窗外。透过那一层厚而明亮的玻璃，
 我时常能够看到人们忙碌的身影，听到象征着劳动的喧哗声。
 
@@ -400,9 +402,16 @@
 
 \subsubsubject{实践运用}
 
-\subsubsection{透过那小小的玻璃天窗，你可能还会想象到无数神奇的东西……请你发挥想象，用具体、生动的文字把你想象到的某一画面写下来。}
+\dati{透过那小小的玻璃天窗，你可能还会想象到无数神奇的东西……请你发挥想象，用具体、生动的文字把你想象到的某一画面写下来。}
 
 \thinrules[n=4]
 
+本章中正确：
+\ref[number][uniquenameC]、\ref[title][uniquenameC]
+
+\chapter{新章}
+
+新章后被重置为一：
+\ref[number][uniquenameC]、\ref[title][uniquenameC]
 
 \stoptext
