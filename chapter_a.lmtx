@@ -406,12 +406,4 @@
 
 \thinrules[n=4]
 
-本章中正确：
-\ref[number][uniquenameC]、\ref[title][uniquenameC]
-
-\chapter{新章}
-
-新章后被重置为一：
-\ref[number][uniquenameC]、\ref[title][uniquenameC]
-
 \stoptext

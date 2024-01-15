@@ -186,7 +186,7 @@
     \doifnotmode{answersheet}{%
         % \incrementuniquename%
         % \expandafter\def\csname \strippedcsname\uniquename\endcsname{\someheadnumber[subsubsection][current]}%
-        \setdataset[answertable][cmd={#1}, answer={#2}]%
+        \setdataset[answertable][cmd={#1}, answer={#2}]%花括号可以避免数据中的符号引起错误
         }%
 }
 
@@ -209,9 +209,13 @@
     \color[PTAColor]{#1}%
 }
 
+% 原样输出
+\def\answerAsItIs#1{#1}
+
+
 % 自定义标题
 % 单元
-\def\danyuanname#1{\subject{#1}}
+\def\danyuanname#1{\section{#1}}
 \def\danyuan#1{%
     \chapter{#1}%
     \saveAnswer[danyuanname]{#1}%
@@ -223,15 +227,16 @@
     \saveAnswer[kewenname]{#1}%
 }
 % 大题目
-\def\datiname#1{#1、}
+% TODO 
+\def\datiname#1{\par{\itc #1}、}
 \def\dati#1{%
     \incrementuniquename%
     \subsubsection[\uniquename]{#1}%
-    \saveAnswer[datiname]{\ref[title][\uniquename]}% TODO 无法取得number
+    \saveAnswer[datiname]{\structurenumber}%获取实际的值
+    % 获取计数器的引用，必须在编号标题中或其后后才能显示，如\subsubsubject{#1、}
+    % \saveAnswer[datiname]{\ref[number][\uniquename]}%
 }
 
-% 原样输出
-\def\answerAsItIs#1{#1}
 
 % 下画线颜色
 \setupthinrules[color=secondColor]
@@ -290,6 +295,9 @@
     \stopitem%
     \saveAnswer[answerAsItIs]{\ref[number][\uniquename]}%
 }
+
+% TODO 列表
+% \saveAnswer[answerAsItIs]{\currentstructurelistnumber}%
 
 % 回答“略” omit
 \def\LableO{（略）}
