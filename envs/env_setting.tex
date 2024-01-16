@@ -113,7 +113,10 @@
 \setuplist[subsection][width=20mm]
 \setuplist[subsubsection][width=20mm, style=slanted, pagestyle=normal]
 % pdf交互/链接
-\setupinteraction[state=start]
+\setupinteraction[state=start,color=,]
+% pdf书签
+\setupinteractionscreen[option={bookmark}]
+\placebookmarks[chapter, section, subsubsection] % 可加入自定义\definelist[mylist]
 
 % 设置页码格式
 \setuppagenumbering[
