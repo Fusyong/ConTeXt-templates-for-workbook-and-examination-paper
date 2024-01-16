@@ -1,8 +1,7 @@
 
 %%%%配置和宏环境
-% \enablemode[proofread]
-% \disablemode[proofread]
 \environment[envs/env_setting.tex]
+% \disablemode[proofread]
 
 %%%%% 显式视觉调试信息 %%%%
 % \showboxes
