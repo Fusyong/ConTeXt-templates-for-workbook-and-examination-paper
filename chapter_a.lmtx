@@ -176,6 +176,9 @@
 
 \dati{查字典填空。}
 
+\incrementuniquename
+\definebuffer[\uniquename]
+\csname start\strippedcsname\uniquename\endcsname
 \startxtable[mytable]
     \startxtablehead
         \startxrow[bold]
@@ -217,6 +220,11 @@
         \stopxrow
     \stopxtablebody
 \stopxtable
+\csname stop\strippedcsname\uniquename\endcsname
+
+\csname get\strippedcsname\uniquename\endcsname
+
+\saveAnswer[placebuffer]{\uniquename}
 
 \dati{按要求完成句子练习。}
 
