@@ -200,7 +200,7 @@
 % 
 \def\updatePTAColor{%
     \doifmodeelse{answersheet}%
-    {\definecolor[PTAColor][default]}% default 默认颜色
+    {\definecolor[PTAColor][aboveColor]}% default 默认颜色
     {\doifmodeelse{proofread}%
         {\definecolor[PTAColor][proofColor]}%校对色
         {\definecolor[PTAColor][transparentColor]}%常态透明
@@ -212,7 +212,7 @@
 }
 
 % 原样输出
-\def\answerAsItIs#1{ #1} % 有空格，否则插入的quad无效 TODO
+\def\answerAsItIs#1{\hskip0pt #1 \hskip0pt} % 有空格，否则插入的quad无效 TODO
 
 % 排印缓存并保存为答案
 \def\startBufferAsAnswer{
@@ -250,7 +250,7 @@
     % \saveAnswer[datiformat]{\ref[number][\uniquename]}%
 }
 % 小题（一级列表项），用法：\startxiaoti \stopxiaoti
-\def\xiaotiformat#1{{\secondColor{#1}.}}
+\def\xiaotiformat#1{{\secondColor{#1}.\nobreak}}
 % 使用before={}，比直接将\incrementuniquename插在行头更稳健（会受到周围空格的影响）
 \definestartstop[xiaoti][
    before={%
@@ -261,7 +261,7 @@
 % \def\xiaoti{\item \saveAnswer[xiaotiformat]{\currentstructurelistnumber}} %数字错误
 
 % 小小题，二级列表项，用法：\startxxiaoti \stopxxiaoti
-\def\xiaoxiaotiformat#1{{\secondColor{（#1）}}}
+\def\xiaoxiaotiformat#1{{\secondColor{（#1）\nobreak}}}
 \definestartstop[xxiaoti][
    before={%
         \incrementuniquename%
