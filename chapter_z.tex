@@ -6,24 +6,18 @@
 
 \chapter{部分参考答案}
 
-新章后被重置为一：
-\ref[number][uniquenameC]、\ref[title][uniquenameC]
-
+% TODO 跨栏表格
+% \startcolumns[n=2,separator=off]
 % \csname \datasetvariable{answertable}{1}{type}\endcsname{\datasetvariable{answertable}{1}{answer}}
-
 \startluacode
     local getdata = job.datasets.getdata
     i = 1
     while (getdata("answertable",i)) do
-        --context("\\csname %s\\endcsname", getdata("answertable", i,"No"))
-        --context("、")
         context("\\csname %s\\endcsname{%s}", getdata("answertable", i,"cmd"), getdata("answertable", i,"answer"))
-        context("\\par") -- quad
+        context("\\enquad") -- enquad quad
         i = i + 1
     end
 \stopluacode
-
-这里取不到值：
-\ref[number][uniquenameC]、\ref[title][uniquenameC]
+% \stopcolumns
 
 \stoptext

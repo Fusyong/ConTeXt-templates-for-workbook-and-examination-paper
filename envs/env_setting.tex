@@ -113,7 +113,10 @@
 \setuplist[subsection][width=20mm]
 \setuplist[subsubsection][width=20mm, style=slanted, pagestyle=normal]
 % pdf交互/链接
-\setupinteraction[state=start]
+\setupinteraction[state=start,color=,]
+% pdf书签
+\setupinteractionscreen[option={bookmark}]
+\placebookmarks[chapter, section, subsubsection] % 可加入自定义\definelist[mylist]
 
 % 设置页码格式
 \setuppagenumbering[
@@ -186,12 +189,12 @@
     \doifnotmode{answersheet}{%
         % \incrementuniquename%
         % \expandafter\def\csname \strippedcsname\uniquename\endcsname{\someheadnumber[subsubsection][current]}%
-        \setdataset[answertable][cmd={#1}, answer={#2}]%
+        \setdataset[answertable][cmd={#1}, answer={#2}]%花括号可以避免数据中的符号引起错误
         }%
 }
 
-% 着重号
-\definebar[zhuozhong][text=\lower0.6em\hbox{~·}, repeat=no]
+% 着重号 TODO 居中
+\definebar[zhuozhong][text=\lower0.6em\hbox{\hskip0.65em ·}, repeat=no]
 
 % 条件文本：校对标记红P、校对标记透明T、答案不着色A
 % 
@@ -203,35 +206,68 @@
         {\definecolor[PTAColor][transparentColor]}%常态透明
     }%
 }
-
 \def\PTA#1{%
     \updatePTAColor%
     \color[PTAColor]{#1}%
 }
 
+% 原样输出
+\def\answerAsItIs#1{ #1} % 有空格，否则插入的quad无效 TODO
+
+% 排印缓存并保存为答案
+\def\startBufferAsAnswer{
+    \incrementuniquename
+    \startbuffer[\uniquename]}
+\def\bufferAsAnswer#1{\par\page[no]#1}%禁止分页无效 TODO
+\def\stopAsAnswer{
+    \getbuffer[\uniquename]
+    \saveAnswer[bufferAsAnswer]{\getbuffer[\uniquename]}}
+% 因为\startbuffer开始后直至\stopbuffer都被认为是buffer，所以\stopbuffer无法包装
+% 结束命令为：\stopbuffer\stopAsAnswer
+% TDO 也许有控制方法，如此则可以definestartstop，或自定起讫命令
+
 % 自定义标题
 % 单元
-\def\danyuanname#1{\subject{#1}}
+\def\danyuananswer#1{\section{#1}}
 \def\danyuan#1{%
     \chapter{#1}%
-    \saveAnswer[danyuanname]{#1}%
+    \saveAnswer[danyuananswer]{#1}%
 }
 % 课文标题
-\def\kewenname#1{\subsubject{#1}}
+\def\kewenanswer#1{\blank\subsubsubject{#1}}
 \def\kewen#1{%
     \section{#1}%
-    \saveAnswer[kewenname]{#1}%
+    \saveAnswer[kewenanswer]{#1}%
 }
 % 大题目
-\def\datiname#1{#1、}
+% TODO 
+\def\datiformat#1{\par{\secondColor{#1}、}}
 \def\dati#1{%
     \incrementuniquename%
     \subsubsection[\uniquename]{#1}%
-    \saveAnswer[datiname]{\ref[title][\uniquename]}% TODO 无法取得number
+    \saveAnswer[datiformat]{\structurenumber}%获取实际的值
+    % 获取计数器的引用，必须在编号标题中或其后后才能显示，如\subsubsubject{#1、}
+    % \saveAnswer[datiformat]{\ref[number][\uniquename]}%
 }
+% 小题（一级列表项），用法：\startxiaoti \stopxiaoti
+\def\xiaotiformat#1{{\secondColor{#1}.}}
+% 使用before={}，比直接将\incrementuniquename插在行头更稳健（会受到周围空格的影响）
+\definestartstop[xiaoti][
+   before={%
+        \incrementuniquename%
+        \startitem[\uniquename]%
+        \saveAnswer[xiaotiformat]{\ref[number][\uniquename]}},
+   after={\stopitem}]
+% \def\xiaoti{\item \saveAnswer[xiaotiformat]{\currentstructurelistnumber}} %数字错误
 
-% 原样输出
-\def\answerAsItIs#1{#1}
+% 小小题，二级列表项，用法：\startxxiaoti \stopxxiaoti
+\def\xiaoxiaotiformat#1{{\secondColor{（#1）}}}
+\definestartstop[xxiaoti][
+   before={%
+        \incrementuniquename%
+        \startitem[\uniquename]%
+        \saveAnswer[xiaoxiaotiformat]{\ref[number][\uniquename]}},
+   after={\stopitem}]
 
 % 下画线颜色
 \setupthinrules[color=secondColor]
