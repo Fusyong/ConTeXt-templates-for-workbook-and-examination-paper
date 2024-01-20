@@ -315,8 +315,9 @@
 \def\answerCU#1{%
     \updatePTAColor%
     \checkU{#1}%
-    \saveAnswer[answerCU]{#1}%
+    \saveAnswer[answerCUformat]{#1}%
 }
+\def\answerCUformat#1{\hskip0pt \answerCU{#1} \hskip0pt}
 
 % 回答序号
 \def\answerN#1{%

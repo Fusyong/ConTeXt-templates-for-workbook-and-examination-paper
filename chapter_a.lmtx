@@ -302,13 +302,13 @@
 
 \startcolumns[n=4,separator=off]
 \kuohaozu{%
-    帐\answerB{帐篷}\\账\answerB{摆摊}}
+    帐\answerB{帐篷}\\账\answerB{结账}}
 \kuohaozu{%
-    摊\answerB{蝙蝠}\\滩\answerB{蝙蝠}}
+    摊\answerB{摆摊}\\滩\answerB{沙滩}}
 \kuohaozu{%
-    蝠\answerB{结账}\\福\answerB{沙滩}}
+    蝠\answerB{蝙蝠}\\福\answerB{福气}}
 \kuohaozu{%
-    蝙\answerB{福气}\\编\answerB{编织}}
+    蝙\answerB{蝙蝠}\\编\answerB{编织}}
 \stopcolumns
 
 \dati{按要求写词语。}
