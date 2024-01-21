@@ -6,15 +6,21 @@
 
 \chapter{部分参考答案}
 
+% 缩小字体
+\setupbodyfont[mschinese,10.5pt]
+
+% TODO 跨栏表格
+% \startcolumns[n=2,separator=off]
 % \csname \datasetvariable{answertable}{1}{type}\endcsname{\datasetvariable{answertable}{1}{answer}}
 \startluacode
     local getdata = job.datasets.getdata
     i = 1
     while (getdata("answertable",i)) do
         context("\\csname %s\\endcsname{%s}", getdata("answertable", i,"cmd"), getdata("answertable", i,"answer"))
-        context("\\quad") -- quad
+        context("\\enquad") -- enquad quad
         i = i + 1
     end
 \stopluacode
+% \stopcolumns
 
 \stoptext

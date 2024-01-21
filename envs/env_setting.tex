@@ -113,7 +113,10 @@
 \setuplist[subsection][width=20mm]
 \setuplist[subsubsection][width=20mm, style=slanted, pagestyle=normal]
 % pdf交互/链接
-\setupinteraction[state=start]
+\setupinteraction[state=start,color=,]
+% pdf书签
+\setupinteractionscreen[option={bookmark}]
+\placebookmarks[chapter, section, subsubsection] % 可加入自定义\definelist[mylist]
 
 % 设置页码格式
 \setuppagenumbering[
@@ -190,55 +193,82 @@
         }%
 }
 
-% 着重号
-\definebar[zhuozhong][text=\lower0.6em\hbox{~·}, repeat=no]
+% 着重号 TODO 居中
+\definebar[zhuozhong][text=\lower0.4em\hbox{\hskip0.45em .}, repeat=no]
 
 % 条件文本：校对标记红P、校对标记透明T、答案不着色A
 % 
 \def\updatePTAColor{%
     \doifmodeelse{answersheet}%
-    {\definecolor[PTAColor][default]}% default 默认颜色
+    {\definecolor[PTAColor][aboveColor]}% default 默认颜色
     {\doifmodeelse{proofread}%
         {\definecolor[PTAColor][proofColor]}%校对色
         {\definecolor[PTAColor][transparentColor]}%常态透明
     }%
 }
-
 \def\PTA#1{%
     \updatePTAColor%
     \color[PTAColor]{#1}%
 }
 
 % 原样输出
-\def\answerAsItIs#1{#1}
+\def\answerAsItIs#1{\hskip0pt #1 \hskip0pt} % 有空格，否则插入的quad无效 TODO
 
-% 放置缓存内容
-\def\placebuffer#1{\csname get#1\endcsname}
+% 排印缓存并保存为答案
+\def\startBufferAsAnswer{
+    \incrementuniquename
+    \startbuffer[\uniquename]}
+\def\bufferAsAnswer#1{\par\page[no]#1}%禁止分页无效 TODO
+\def\stopAsAnswer{
+    \getbuffer[\uniquename]
+    \saveAnswer[bufferAsAnswer]{\getbuffer[\uniquename]}}
+% 因为\startbuffer开始后直至\stopbuffer都被认为是buffer，所以\stopbuffer无法包装
+% 结束命令为：\stopbuffer\stopAsAnswer
+% TDO 也许有控制方法，如此则可以definestartstop，或自定起讫命令
 
 % 自定义标题
 % 单元
-\def\danyuanname#1{\section{#1}}
+\def\danyuananswer#1{\section{#1}}
 \def\danyuan#1{%
     \chapter{#1}%
-    \saveAnswer[danyuanname]{#1}%
+    \saveAnswer[danyuananswer]{#1}%
 }
 % 课文标题
-\def\kewenname#1{\subsubject{#1}}
+\def\kewenanswer#1{\blank\subsubsubject{#1}}
 \def\kewen#1{%
     \section{#1}%
-    \saveAnswer[kewenname]{#1}%
+    \saveAnswer[kewenanswer]{#1}%
 }
-% 大题目
-% TODO 
-\def\datiname#1{\par{\itc #1}、}
+% 栏目/题目分组，包装的是\subsubsubject（可能会改成\subsubject）
+\def\lanmu#1{\subsubsubject{#1}}
+% 大题目 TODO 
+\def\datiformat#1{\par{\secondColor{#1}、}}
 \def\dati#1{%
     \incrementuniquename%
     \subsubsection[\uniquename]{#1}%
-    \saveAnswer[datiname]{\structurenumber}%获取实际的值
+    \saveAnswer[datiformat]{\structurenumber}%获取实际的值
     % 获取计数器的引用，必须在编号标题中或其后后才能显示，如\subsubsubject{#1、}
-    % \saveAnswer[datiname]{\ref[number][\uniquename]}%
+    % \saveAnswer[datiformat]{\ref[number][\uniquename]}%
 }
+% 小题（一级列表项），用法：\startxiaoti \stopxiaoti
+\def\xiaotiformat#1{{\secondColor{#1}.\nobreak}}
+% 使用before={}，比直接将\incrementuniquename插在行头更稳健（会受到周围空格的影响）
+\definestartstop[xiaoti][
+   before={%
+        \incrementuniquename%
+        \startitem[\uniquename]%
+        \saveAnswer[xiaotiformat]{\ref[number][\uniquename]}},
+   after={\stopitem}]
+% \def\xiaoti{\item \saveAnswer[xiaotiformat]{\currentstructurelistnumber}} %数字错误
 
+% 小小题，二级列表项，用法：\startxxiaoti \stopxxiaoti
+\def\xiaoxiaotiformat#1{{\secondColor{（#1）\nobreak}}}
+\definestartstop[xxiaoti][
+   before={%
+        \incrementuniquename%
+        \startitem[\uniquename]%
+        \saveAnswer[xiaoxiaotiformat]{\ref[number][\uniquename]}},
+   after={\stopitem}]
 
 % 下画线颜色
 \setupthinrules[color=secondColor]
@@ -286,8 +316,9 @@
 \def\answerCU#1{%
     \updatePTAColor%
     \checkU{#1}%
-    \saveAnswer[answerCU]{#1}%
+    \saveAnswer[answerCUformat]{#1}%
 }
+\def\answerCUformat#1{\hskip0pt \answerCU{#1} \hskip0pt}
 
 % 回答序号
 \def\answerN#1{%
@@ -316,7 +347,7 @@
 }
 
 % 回答“文中练习”inline TODO 合并多题的提示
-\def\LableI{【文中练习】}
+\def\LableI{〖文中练习〗}
 \def\answerLI{%
     \dontleavehmode%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableI}}}%
@@ -369,7 +400,7 @@
     \saveAnswer[answerAsItIs]{#1}%
 }
 
-% 田字格
+% 看拼音，在田字格中写字词 TODO 字数校验
 % 导入lua模块MPwordslink.lua
 \startluacode
     require "envs/Pinyinge"
@@ -409,11 +440,11 @@
 
 
 
-% 括号分组
+% 带括号的多行组 BUG 答案保存了两次
 % TODO 调整前头的空间；自动计算高度；绘制大括号
 % vbox式只能用分栏的形式并排，以获取vbox的宽度
 % 换成图形则可用combination并排
-\def\kuohaozu#1{%
+\def\kuohaozu[#1,#2]#3{%右侧部分的宽度(em)、括号缩放倍数、内容
     % 用lua逐行处理，未完成
     % \startluacode
     %     MP = MP or {}
@@ -428,21 +459,23 @@
     %     draw textext.rt(lua("mp.quoted(MP.lines[" & decimal i & "])"));
     % endfor ;
     % \stopMPcode
+    % 
+    \setbox0=\hbox{\framedtext[%
+        offset=default,%
+        location=depth,%
+        frame=off,%
+        width=#1em,%
+        % autowidth=force,% yes no force 无效
+        ]{#3}}
     \dontleavehmode%
     \startMPcode
     % 用加框文本可以实现更复杂的控制
-    % draw textext.lft("\[") yscaled 2;
-    % draw textext.rt("\framedtext[%
-    %     offset=default,%
-    %     location=depth,%
-    %     frame=off,%
-    %     % width=7em,% local fit max broad fixed dimension
-    %     % autowidth=force,% yes no force 无效
-    %     ]{#1}");
+    draw textext.lft("\[") yscaled #2;
+    draw textext.rt("\copy0"); % 不能将\framedtext代码直接放在这里，否则会归集两次答案，原因不明
     % 
     % 简易方式
-    draw textext.lft("\strut \[") yscaled 2;
-    draw textext.rt("\vbox{#1}")
+    % draw textext.rt("\hbox to #1em{\vbox{#3}}"); -- BUG 答案会归集两次
+    % draw textext.lft("\strut\[") yscaled #2;
     \stopMPcode
 }
 
