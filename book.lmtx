@@ -1,13 +1,13 @@
 
 %%%%配置和宏环境
 \environment[envs/env_setting.tex]
-% \disablemode[proofread]
+\disablemode[proofread]
 
 %%%%% 显式视觉调试信息 %%%%
 % \showboxes
 % \showglyphs
 \setuppapersize[standing][A3] % A3打印，能看到裁切线
-\showframe
+% \showframe
 % \showmakeup
 % \tracingnodes1 %1,2
 % \showreferences
