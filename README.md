@@ -8,4 +8,5 @@ some ConTeXt templates for workbook and examination paper in Chinese
 
 ## BUG
 
-<!-- 标点压缩模块：中圆点压缩错误 -->
+1. 标点压缩模块：中圆点压缩错误，win11字体
+1. 括号组（其他有待检查！！！）答案重复

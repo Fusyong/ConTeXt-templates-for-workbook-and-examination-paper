@@ -440,7 +440,7 @@
 
 
 
-% 带括号的多行组
+% 带括号的多行组 BUG 答案保存了两次
 % TODO 调整前头的空间；自动计算高度；绘制大括号
 % vbox式只能用分栏的形式并排，以获取vbox的宽度
 % 换成图形则可用combination并排
@@ -459,21 +459,23 @@
     %     draw textext.rt(lua("mp.quoted(MP.lines[" & decimal i & "])"));
     % endfor ;
     % \stopMPcode
+    % 
+    \setbox0=\hbox{\framedtext[%
+        offset=default,%
+        location=depth,%
+        frame=off,%
+        width=#1em,%
+        % autowidth=force,% yes no force 无效
+        ]{#3}}
     \dontleavehmode%
     \startMPcode
     % 用加框文本可以实现更复杂的控制
-    % draw textext.lft("\[") yscaled 2;
-    % draw textext.rt("\framedtext[%
-    %     offset=default,%
-    %     location=depth,%
-    %     frame=off,%
-    %     % width=7em,% local fit max broad fixed dimension
-    %     % autowidth=force,% yes no force 无效
-    %     ]{#1}");
+    draw textext.lft("\[") yscaled #2;
+    draw textext.rt("\copy0"); % 不能将\framedtext代码直接放在这里，否则会归集两次答案，原因不明
     % 
     % 简易方式
-    draw textext.rt("\hbox to #1em{\vbox{#3}}");
-    draw textext.lft("\strut\[") yscaled #2;
+    % draw textext.rt("\hbox to #1em{\vbox{#3}}"); -- BUG 答案会归集两次
+    % draw textext.lft("\strut\[") yscaled #2;
     \stopMPcode
 }
 
