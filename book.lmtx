@@ -15,7 +15,7 @@
 \startproduct book
     % \placecontent
     \completecontent
-    \component[chapter_a.lmtx]
-    \component[chapter_b.lmtx]
+    \component[chapter_a.tex]
+    \component[chapter_b.tex]
     \component[chapter_z.tex]
 \stopproduct

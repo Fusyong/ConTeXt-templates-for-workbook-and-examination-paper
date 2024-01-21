@@ -194,7 +194,7 @@
 }
 
 % 着重号 TODO 居中
-\definebar[zhuozhong][text=\lower0.6em\hbox{\hskip0.65em ·}, repeat=no]
+\definebar[zhuozhong][text=\lower0.4em\hbox{\hskip0.45em .}, repeat=no]
 
 % 条件文本：校对标记红P、校对标记透明T、答案不着色A
 % 
@@ -239,8 +239,9 @@
     \section{#1}%
     \saveAnswer[kewenanswer]{#1}%
 }
-% 大题目
-% TODO 
+% 栏目/题目分组，包装的是\subsubsubject（可能会改成\subsubject）
+\def\lanmu#1{\subsubsubject{#1}}
+% 大题目 TODO 
 \def\datiformat#1{\par{\secondColor{#1}、}}
 \def\dati#1{%
     \incrementuniquename%
@@ -399,7 +400,7 @@
     \saveAnswer[answerAsItIs]{#1}%
 }
 
-% 田字格
+% 看拼音，在田字格中写字词 TODO 字数校验
 % 导入lua模块MPwordslink.lua
 \startluacode
     require "envs/Pinyinge"
@@ -439,11 +440,11 @@
 
 
 
-% 括号分组
+% 带括号的多行组
 % TODO 调整前头的空间；自动计算高度；绘制大括号
 % vbox式只能用分栏的形式并排，以获取vbox的宽度
 % 换成图形则可用combination并排
-\def\kuohaozu#1{%
+\def\kuohaozu[#1,#2]#3{%右侧部分的宽度(em)、括号缩放倍数、内容
     % 用lua逐行处理，未完成
     % \startluacode
     %     MP = MP or {}
@@ -471,8 +472,8 @@
     %     ]{#1}");
     % 
     % 简易方式
-    draw textext.lft("\strut \[") yscaled 2;
-    draw textext.rt("\vbox{#1}")
+    draw textext.rt("\hbox to #1em{\vbox{#3}}");
+    draw textext.lft("\strut\[") yscaled #2;
     \stopMPcode
 }
 
