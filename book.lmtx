@@ -18,5 +18,4 @@
     \component[chapter_a.tex]
     \component[chapter_b.tex]
     \component[chapter_z.tex]
-   \getuniquenameP
 \stopproduct
