@@ -240,12 +240,15 @@
     \saveAnswer[kewenanswer]{#1}%
 }
 % 栏目/题目分组，包装的是\subsubsubject（可能会改成\subsubject）
-\def\lanmu#1{\subsubsubject{#1}}
-% 大题目 TODO 
+\def\lanmu#1{\subsubject{#1}}
+% 大题目
+\definecounter[datinumber][way=bysection]% 大题编号计数器，reset bysection
 \def\datiformat#1{\par{\secondColor{#1}、}}
 \def\dati#1{%
+    \incrementcounter[datinumber]%
     \incrementuniquename%
-    \subsubsection[\uniquename]{#1}%
+    %  转换计数器的数值为中文数码，以强制替换大题编号
+    \subsubsection[title={#1},reference={\uniquename}, ownnumber={\convertnumber{cn}{\rawcountervalue[datinumber]}}]%
     \saveAnswer[datiformat]{\structurenumber}%获取实际的值
     % 获取计数器的引用，必须在编号标题中或其后后才能显示，如\subsubsubject{#1、}
     % \saveAnswer[datiformat]{\ref[number][\uniquename]}%

@@ -34,8 +34,6 @@ some ConTeXt templates for workbook and examination paper in Chinese
 
 * [ ] 练习题赋分，并自动归总、校验、排印分数；
 * [ ] 优化答题空间
-* [ ] 某些题型的自动校验
-    * [ ] 看拼音写字词
 * [ ] 题型模版
     * [x] 用斜线画掉错误答案
     * [x] 在括号中填空
@@ -44,11 +42,13 @@ some ConTeXt templates for workbook and examination paper in Chinese
     * [x] 括号中画勾画叉
     * [x] 括号中画勾画叉（右侧对齐）
     * [x] 在拼音下的田字格里写字词
+        * [ ] 校验
     * [x] 选择正确的项目序号
     * [x] 一段包括填空和勾选等标记的内容（如表格）整体作为答案
     * [x] 在文句中画线，画线内容作为答案
     * [x] 包含填空的带括号的多行的组
     * [ ] 连线题
+    * [ ] 多项选择题
 * [X] 答题说明（标签）
     * [X] （略）
     * [X] 示例：
@@ -58,6 +58,6 @@ some ConTeXt templates for workbook and examination paper in Chinese
 
 ## 已知BUG
 
-* 栏目与大题同级（可能导致其间分页），提级则大题序号重置
+* [x] 栏目与大题同级（可能导致其间分页），提级则大题序号重置
 
 <!-- 压缩模块的问题：标点压缩模块：中圆点压缩错误，win11字体（） -->
