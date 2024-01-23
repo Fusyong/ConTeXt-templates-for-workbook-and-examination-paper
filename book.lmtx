@@ -6,7 +6,7 @@
 %%%%% 显式视觉调试信息 %%%%
 % \showboxes
 % \showglyphs
-\setuppapersize[standing][A3] % A3打印，能看到裁切线
+\setuppapersize[standing][A3] % A3纸张打印，能看到裁切线
 % \showframe
 % \showmakeup
 % \tracingnodes1 %1,2

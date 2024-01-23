@@ -18,6 +18,7 @@
 \definepapersize[sheet][width=145mm, height=210mm]
 % Create two A4-derived paper sizes
 \definepapersize[standing][A4][sheet]
+% \setuppapersize[standing][A3] % A3纸张打印，能看到裁切线
 \setuppapersize[standing]
 \setuplayout[
     marking=on, % 裁切线，设置较大幅面打印纸才能显示
@@ -33,7 +34,7 @@
 \setupalign[hanging,hz] %行末标点悬挂
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 字体配置
+% 字体和符号配置
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usetypescriptfile[mscore]%使用系统自带的字体脚本
 \usebodyfont   [mschinese,14pt]
@@ -41,6 +42,8 @@
 \definefont[checkMarkFont][name:dejavusansmono*default]
 \define\TrueMark{{\checkMarkFont ✔}}
 \define\FalseMark{{\checkMarkFont ✗}}
+% 着重号 TODO 居中
+\definebar[zhuozhong][text=\lower0.4em\hbox{\hskip0.45em .}, repeat=no]
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 设置颜色
@@ -52,7 +55,9 @@
 \definecolor[proofColor]      [m=1,t=0.8,a=1] % 校对文本色（80%透明的品色）
 \definecolor[transparentColor][k=0,t=0,a=1] % 透明色（就地隐藏文本用）
 
-% 结构转换集合（序号集合）
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 结构编号转换集合（各级标题编号的呈现方式）
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \definecounter[subsubsectioncounter][way=bysection] % 每section重起
 % \defineconversion[cnbysection][\convertnumber{cn}{\rawcountervalue[subsubsectioncounter]}]
 \definestructureconversionset[cnconversion]
@@ -62,41 +67,41 @@
     ,    % subsection          小节/分组标题 
     cn,  % subsubsection       大题 中文数字
     n,   % subsubsubsection    小题 印度数码
-    n,   % subsubsubsubsection 小小题 印度数码
+    n,]   % subsubsubsubsection 小小题 印度数码
     [r] % Default setting 小写罗马字
 
-% 标题统一设置（个别设置后面单独重设）
-% \defineresetset[myresetset][1,1,1,1,0][1] %关闭第3级标题的序号重置(全局设置，局部处理通过defineconversion)
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 设置标题
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 统一设置（个别标题后面可单独重设）
+% \defineresetset[myresetset][1,1,1,1,0][1] %关闭第3级标题的序号重置
 % \defineresetset[subsubsectionresetset][][0] %关闭，用于单个标题的设置
 \setupheads
     [part,chapter,section,subsection,subsubsection,subsubsubsection]
     [%
-    after=, % 覆盖上下行插入的空格
+    after=, % 覆盖其后插入的空
     sectionconversionset=cnconversion,%不要混入空格
     number=no, % 不显示序号
     indentnext=yes, % 其后首行缩进
     sectionsegments=current, % 序号段：只包括当前序号
-    % sectionresetset=myresetset, %
+    % sectionresetset=myresetset, % 序号重置集合
     ]
+% 部分重设
 \setupheads
     [subsection,subsubsection,subsubsubsection]
     [%
-    before=, % 覆盖上下行插入的空格
+    before=, % 覆盖其前插入的空
     ]
-
-% 配置标题、目录格式
-% 单元，新页起 , page=yes新页/left偶数页/right奇数页（默认）
+% 单元设置，新页起 , page=yes新页/left偶数页/right奇数页（默认）
 \setuphead[chapter][page=yes,style={\setupalign[middle]\tfb}]
-% 课目
+% 课文标题设置
 \setuphead[section][style={\setupalign[middle]\tfa}]
-% 分组/栏目标题
+% 分组/栏目标题设置
 \setuphead[subsection][style={\tf}, color=secondColor, number=yes,distance=0pt]
-% 无序号大题
-\setuphead[subsubsubject][style={\bf}]
-% 大题
+\setuphead[subsubject][style={\bf}]
+% 大题设置
 \setuplabeltext[cn][subsubsection={{},{、}}] % 前后标签
 \setuphead[subsubsection][style={\tf}, color=secondColor, number=yes,distance=0pt,]
-
 % 自订文章标题（6级）、作者（7级）
 \definehead[centersection][subsubsubsubject][align=middle, before=, after=,]
 \definehead[authorsection][subsubsubsubsubject][align=middle, before=, after=,]
@@ -107,12 +112,14 @@
     }
 % \define[2]\rhymehead{\leftsection{#1}\leftaligned{\itx #2}\blank[0cm]}
 % \define[2]\classicalpoemhead{\centersection{#1}\middlealigned{\itx #2}\blank[0cm]}
-
 % 短文标题
 \def\centralTitle[#1][#2]{%
     \subsubsubject{\tf }%
 }
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 设置目录、PDF书签、交互、引用
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setupheadtext[content=目录]
 \setupcombinedlist[content][list={chapter,section},alternative=c]%
 \setuplist[section][width=10mm, style=bold]
@@ -123,13 +130,13 @@
 % pdf书签
 \setupinteractionscreen[option={bookmark}]
 \placebookmarks[chapter, section, subsubsection] % 可加入自定义\definelist[mylist]
+% 设置引用
+% \setupreferencing[left=,right=] % 覆盖左右两侧的引号
+% \define[1]\see{\at{}{页}[#1]\about[#1]}% 另见
 
-% 设置页码格式
-\setuppagenumbering[
-    alternative=doublesided,
-    location={header, margin},
-]
-
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 间距和缩进
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 段落间距
 \setupwhitespace[none]
 % 条目间距（覆盖预设）
@@ -142,13 +149,23 @@
 \setupnarrower[left=01em]%
 \setupcolumns[n=2, separator=rule]
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 其他设置
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 下画线颜色
+\setupthinrules[color=secondColor]
+% 表格
+\definextable[mytable][offset=0.2em, option={stretch, width}, align={center,lohi}]
 
-% % 引用、交互
-% \setupreferencing[left=,right=] % 覆盖左右两侧的引号
-% \setupinteraction   [state=start, color=,contrastcolor=black,style=]
-% \define[1]\see{\at{}{页}[#1]\about[#1]}% 另见
-
-% % 页眉
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 设置页码、页眉
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 页码
+\setuppagenumbering[
+    alternative=doublesided,
+    location={header, margin},
+]
+% 页眉
 % % \setupheadertexts[{\getmarking[subsubject]}][][][{\getmarking[subsubject]}]
 % \setupheadertexts%
 %     []%
@@ -156,7 +173,9 @@
 %     [{\ReadFile{header.lua}}]%
 %     []%
 
-%%%%%%%%%%%%% 使用模块(保持顺序) %%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 使用竖排、标点压缩、加注三模块(保持模块顺序)
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 竖排
 % \usemodule[vtypeset]
 % 
@@ -180,16 +199,19 @@
 % fontname和fontsize与\switchtobodyfont的对应参数一致
 % 夹注命令：
 %   \jiazh{夹注}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% 自动名称（用于自动生成宏、引用等）
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 唯一名称（用于自动生成不重复的宏、引用等）
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecounter[uniquecounter][way=bytext]
 % \setnumber[uniquecounter][1]
 \def\incrementuniquename{\incrementcounter[uniquecounter]}
 \def\uniquename{uniquename\Characters{\rawcountervalue[uniquecounter]}}%
 
-% \someheadnumber[subsubsection][current]
-% %%%% 存取数据
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 存取答案数据
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definedataset[answertable][delay=yes] % 最后实现，会插入页码信息???
 \def\saveAnswer[#1]#2{%
     \doifnotmode{answersheet}{%
@@ -199,11 +221,10 @@
         }%
 }
 
-% 着重号 TODO 居中
-\definebar[zhuozhong][text=\lower0.4em\hbox{\hskip0.45em .}, repeat=no]
-
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 处理答案的宏
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 条件文本：校对标记红P、校对标记透明T、答案不着色A
-% 
 \def\updatePTAColor{%
     \doifmodeelse{answersheet}%
     {\definecolor[PTAColor][aboveColor]}% default 默认颜色
@@ -232,21 +253,26 @@
 % 结束命令为：\stopbuffer\stopAsAnswer
 % TDO 也许有控制方法，如此则可以definestartstop，或自定起讫命令
 
+% %%%%%%%%%
 % 自定义标题
+% %%%%%%%%%
 % 单元
 \def\danyuananswer#1{\section{#1}}
 \def\danyuan#1{%
     \chapter{#1}%
     \saveAnswer[danyuananswer]{#1}%
 }
+
 % 课文标题
 \def\kewenanswer#1{\blank\subsubsubject{#1}}
 \def\kewen#1{%
     \section{#1}%
     \saveAnswer[kewenanswer]{#1}%
 }
+
 % 栏目/题目分组，包装的是\subsubsubject（可能会改成\subsubject）
 \def\lanmu#1{\subsubject{#1}}
+
 % 大题目
 \definecounter[datinumber][way=bysection]% 大题编号计数器，reset bysection
 \def\datiformat#1{\par{\secondColor{#1}、}}
@@ -259,6 +285,7 @@
     % 获取计数器的引用，必须在编号标题中或其后后才能显示，如\subsubsubject{#1、}
     % \saveAnswer[datiformat]{\ref[number][\uniquename]}%
 }
+
 % 小题（一级列表项），用法：\startxiaoti \stopxiaoti
 \def\xiaotiformat#1{{\secondColor{#1}.\nobreak}}
 % 使用before={}，比直接将\incrementuniquename插在行头更稳健（会受到周围空格的影响）
@@ -279,8 +306,9 @@
         \saveAnswer[xiaoxiaotiformat]{\ref[number][\uniquename]}},
    after={\stopitem}]
 
-% 下画线颜色
-\setupthinrules[color=secondColor]
+% %%%%%%%%%
+% 题型
+% %%%%%%%%%
 % 下画线完形填空answerUnderbar
 % ！！！标点符号处理过程导致下画线断开，或禁则失效
 % 可能是标点模块删除标点前后的空白造成的
@@ -337,9 +365,6 @@
     \stopitem%
     \saveAnswer[answerAsItIs]{\ref[number][\uniquename]}%
 }
-
-% TODO 列表
-% \saveAnswer[answerAsItIs]{\currentstructurelistnumber}%
 
 % 回答“略” omit
 \def\LableO{（略）}
@@ -422,6 +447,9 @@
     \saveAnswer[answerAsItIs]{#2}
 }
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 排式
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 边注
 \defineframedtext[bianzhu]
     [corner=round,
@@ -446,10 +474,7 @@
 \def\stopParagraphNumbers%
     {\par \endgroup}
 
-
-
-
-% 带括号的多行组 BUG 答案保存了两次
+% 带括号的多行组
 % TODO 调整前头的空间；自动计算高度；绘制大括号
 % vbox式只能用分栏的形式并排，以获取vbox的宽度
 % 换成图形则可用combination并排
@@ -488,9 +513,9 @@
     \stopMPcode
 }
 
-% 表格
-\definextable[mytable][offset=0.2em, option={stretch, width}, align={center,lohi}]
-
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 默认开启的信息
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \replacemissingcharacters % 缺字替换
 
 \stopenvironment
