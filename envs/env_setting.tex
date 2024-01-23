@@ -1,15 +1,20 @@
 %%%% 全局配置
 \startenvironment
 
-% 校对模式
-% yes no keep(保持预先设置，其后调整无效，可在命令行设置)
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 模式
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 校对模式，yes no keep(保持预先设置，其后调整无效，可在命令行设置)
 \definemode[proofread][keep]
 \enablemode[proofread]
 % \disablemode[proofread]
+% 答案模式，请在答案部分开启
 \definemode[answersheet][keep]
 \disablemode[answersheet]
 
-%%%% 纸张和版面
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 纸张和版面
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definepapersize[sheet][width=145mm, height=210mm]
 % Create two A4-derived paper sizes
 \definepapersize[standing][A4][sheet]
@@ -19,45 +24,46 @@
     location=middle,
 ]
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 中文配置
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mainlanguage[cn]
 \language[cn]
-\setscript[hanzi] % 汉字处理脚本（断行）
+\setscript[hanzi] % 汉字处理脚本（断行等）
 \setupalign[hanging,hz] %行末标点悬挂
 
-% 汉字字体配置
-\usetypescriptfile[mscore]
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 字体配置
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetypescriptfile[mscore]%使用系统自带的字体脚本
 \usebodyfont   [mschinese,14pt]
-% \usebodyfont   [mschinese-light,12pt]
-% \setupbodyfont [mschinese-literate,12pt]
-% \usebodyfont   [mschinese-literate,12pt]
-% \definebodyfontenvironment[24pt]
-% \definebodyfontenvironment[18pt]
-% 定义字体
-% \definefont[kaiti][name:kaiti*default at 24pt]
+% 定义画勾画叉符号及字体
 \definefont[checkMarkFont][name:dejavusansmono*default]
 \define\TrueMark{{\checkMarkFont ✔}}
 \define\FalseMark{{\checkMarkFont ✗}}
 
-% 颜色
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 设置颜色
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setupcolors[state=start] % 开启颜色（默认关闭，转成灰度）
 % !!!如果不设置透明度，用于下画线时，字色透明度会覆盖下画线的透明度
-\definecolor[secondColor]     [c=1,t=1,a=1] % 双色中的彩色
-\definecolor[aboveColor]      [c=1,t=0.8,a=1] % 双色中的彩色+透明（用在文字上方）
-\definecolor[proofColor]      [m=1,t=0.8,a=1] % 校对文本色+透明
-\definecolor[transparentColor][k=0,t=0,a=1] % 透明色（隐藏文本用）
+\definecolor[secondColor]     [c=1,t=1,a=1] % 第二色（青色）
+\definecolor[aboveColor]      [c=1,t=0.8,a=1] % 上层色（80%透明的青色）
+\definecolor[proofColor]      [m=1,t=0.8,a=1] % 校对文本色（80%透明的品色）
+\definecolor[transparentColor][k=0,t=0,a=1] % 透明色（就地隐藏文本用）
 
 % 结构转换集合（序号集合）
 % \definecounter[subsubsectioncounter][way=bysection] % 每section重起
 % \defineconversion[cnbysection][\convertnumber{cn}{\rawcountervalue[subsubsectioncounter]}]
 \definestructureconversionset[cnconversion]
-    [R,   % part: Rome
-    cn,  % chapter 章/单元 中文数字
-    ,   % section 节/课文标题
-    ,   % subsection 小节/分组标题 
-    cn,   % subsubsection 小小节/大习题 中文数字
-    n]   % subsubsubsection 小小小节/小习题 印度数码
-    [r] % Default setting
+    [R,  % part                部分，大写罗马数字
+    cn,  % chapter             章/单元 中文数字
+    ,    % section             节/课文标题
+    ,    % subsection          小节/分组标题 
+    cn,  % subsubsection       大题 中文数字
+    n,   % subsubsubsection    小题 印度数码
+    n,   % subsubsubsubsection 小小题 印度数码
+    [r] % Default setting 小写罗马字
 
 % 标题统一设置（个别设置后面单独重设）
 % \defineresetset[myresetset][1,1,1,1,0][1] %关闭第3级标题的序号重置(全局设置，局部处理通过defineconversion)
