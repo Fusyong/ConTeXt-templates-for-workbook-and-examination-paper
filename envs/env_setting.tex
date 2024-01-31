@@ -1,5 +1,12 @@
 %%%% 全局配置
 \startenvironment
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 设置变量 TODO
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setvariables[setting]
+    [
+      smallblank=quarterline,% 板块间的最小间距
+    ]
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 模式
@@ -101,6 +108,7 @@
 \setuphead[subsubject][style={\bf}]
 % 大题设置
 \setuplabeltext[cn][subsubsection={{},{、}}] % 前后标签
+%after={\blank[samepage]}无效，受到dati后续命令的干扰
 \setuphead[subsubsection][style={\tf}, color=secondColor, number=yes,distance=0pt,]
 % 自订文章标题（6级）、作者（7级）
 \definehead[centersection][subsubsubsubject][align=middle, before=, after=,]
@@ -116,6 +124,14 @@
 \def\centralTitle[#1][#2]{%
     \subsubsubject{\tf }%
 }
+
+% 设置列表组itemize、所有级别、阿拉伯数字、堆叠、其后不留空
+\setupitemgroup[itemize][each][n,packed][before={\blank[quarterline]}, after={\blank[quarterline]},]
+% 设置二级列表
+\setupitemgroup[itemize][2][left=（, right=）,stopper=]
+% 定义答案列表，大写字母序号、横排、三列
+\defineitemgroup[answeritems]
+\setupitemgroup[answeritems][each][A,horizontal,three]
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 设置目录、PDF书签、交互、引用
@@ -135,7 +151,7 @@
 % \define[1]\see{\at{}{页}[#1]\about[#1]}% 另见
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 间距和缩进
+% 空白、间距和缩进
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 段落间距
 \setupwhitespace[none]
@@ -271,12 +287,17 @@
 }
 
 % 栏目/题目分组，包装的是\subsubsubject（可能会改成\subsubject）
-\def\lanmu#1{\subsubject{#1}}
+\def\lanmu#1{%
+    \blank[quarterline]%
+    \subsubject{#1}%
+    \blank[quarterline]%
+    }
 
 % 大题目
 \definecounter[datinumber][way=bysection]% 大题编号计数器，reset bysection
 \def\datiformat#1{\par{\secondColor{#1}、}}
 \def\dati#1{%
+    \blank[quarterline]%
     \incrementcounter[datinumber]%
     \incrementuniquename%
     %  转换计数器的数值为中文数码，以强制替换大题编号
@@ -284,6 +305,7 @@
     \saveAnswer[datiformat]{\structurenumber}%获取实际的值
     % 获取计数器的引用，必须在编号标题中或其后后才能显示，如\subsubsubject{#1、}
     % \saveAnswer[datiformat]{\ref[number][\uniquename]}%
+    \blank[quarterline,samepage]%禁止断行，要放在最后
 }
 
 % 小题（一级列表项），用法：\startxiaoti \stopxiaoti

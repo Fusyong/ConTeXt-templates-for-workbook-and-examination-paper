@@ -11,7 +11,7 @@
 % 散文标题，不上目录，包装的是\subsubsubsubject
 \essayhead[学习目标][]
 
-\startitemize[n,packed]
+\startitemize
 % 不归集答案的列表项使用系统的\item，或\startitem...\stopitem
     \item 按要求掌握“识字表”“写字表”中本单元的生字，理解并积累“词语表”中本单元的词语，掌握“识字表”中列出的多音字。
     \item 有感情地朗读课文，背诵并默写指定的内容。
@@ -29,7 +29,7 @@
 % 大题，包装的是\subsubsection
 \dati{用“\backslash”划去不正确的选项。}
 
-\startitemize[n,packed]
+\startitemize
 % 小题，包装的是\startitem...\stopitem
 % 画斜线题的答案\answerS{}
     \startxiaoti 篱落（疏疏 \quad \answerS{蔬蔬}）一径深，树头新绿未成（\answerS{荫} \quad 阴）。 \stopxiaoti
@@ -52,33 +52,33 @@
 
 \dati{给加点的字词选择正确的意思。}
 
-\startitemize[n,packed]
+\startitemize
     % 着重号，下加点
     \startxiaoti 儿童急\zhuozhong{走}追黄蝶 \rBrackets{} \stopxiaoti
-        \startitemize[A,horizontal,three]
+        \startansweritems
             \startitem 离开 \stopitem
             % 正确选项，答案为项目编号
             \answerN{跑}
             \startitem 行走 \stopitem
-        \stopitemize
+        \stopansweritems
     \startxiaoti 白发谁家翁\zhuozhong{媪} \rBrackets{} \stopxiaoti
-        \startitemize[A,horizontal,three]
+        \startansweritems
             \startitem 母亲 \stopitem
             \startitem 妇女 \stopitem
             \answerN{老妇人}
-        \stopitemize
+        \stopansweritems
     \startxiaoti 最喜小儿\zhuozhong{亡赖} \rBrackets{} \stopxiaoti
-        \startitemize[A,horizontal,three]
+        \startansweritems
             \answerN{顽皮、淘气}
             \startitem 撒泼刁蛮 \stopitem
             \startitem 没有依靠 \stopitem
-        \stopitemize
+        \stopansweritems
     \startxiaoti 四时田园杂\zhuozhong{兴} \rBrackets{} \stopxiaoti
-        \startitemize[A,horizontal,three]
+        \startansweritems
             \startitem 高兴 \stopitem
             \startitem 兴奋 \stopitem
             \answerN{兴致}
-        \stopitemize
+        \stopansweritems
 \stopitemize
 
 \dati{默写《宿新市徐公店》并回答问题。}
@@ -94,7 +94,7 @@
 % 打钩/画钩/对钩、打叉/画叉符号
 \dati{判断下列说法是否正确。（正确的画“ \TrueMark ”，错误的画“ \FalseMark ”）}
 
-\startitemize[n,packed]
+\startitemize
 % 右侧带括号的对(\answerTR)错(\answerFR)答案
     \startxiaoti 《宿新市徐公店》描写的是暮春时节乡村的景色，而《四时田园杂兴（其二十五）》则写的是初春江南的田园景色。 \answerFR \stopxiaoti
     \startxiaoti 《四时田园杂兴（其二十五）》这首诗的前两句写景色，第三句从侧面写农民劳动的情况，最后一句用蛱蝶飞来衬托村中的寂静，静中有动，显得更静。 \answerTR \stopxiaoti
@@ -113,13 +113,13 @@
 正莺儿啼，燕儿舞，蝶儿忙。
 }
 
-\startitemize[n,packed] % intext
+\startitemize % intext
     \startxiaoti 这首词的词牌名是 \answerU{行香子}，我知道的词牌名还有： \answerU{卜算子}、 \answerU{沁园春}、 \answerU{念奴娇}。 \stopxiaoti
     \startxiaoti 这首词上下片完全对称，节奏明快，上下片结尾各有由一个字引领的三字排偶句（对仗句）： \stopxiaoti
         有 \answerU{桃花红}， \answerU{李花白}， \answerU{菜花黄}。
         正 \answerU{莺儿啼}， \answerU{燕儿舞}， \answerU{蝶儿忙}。
     \startxiaoti 根据词句内容填空。 \stopxiaoti
-    \startitemize[n,packed][left=（, right=）,stopper=]
+    \startitemize
         \startxxiaoti 小园虽然很小，但也能收尽 \answerU{春光}。看那桃花 \answerU{红}，李花 \answerU{白}，菜花 \answerU{黄}。 \stopxxiaoti
         \startxxiaoti 远远的 \answerU{苔墙}，隐隐的 \answerU{茅堂}。青色的酒旗在风中飘扬。 \stopxxiaoti
         \startxxiaoti 乘着游兴，步过 \answerU{东冈}，正有莺儿 \answerU{啼}，燕儿 \answerU{舞}，蝶儿 \answerU{忙}。 \stopxxiaoti
@@ -130,7 +130,7 @@
 
 \dati{无论什么时候，无论什么季节，乡下人家都是一道独特的风景，一幅和谐的画卷。我们来补一补下面这些关于乡村生活的诗句吧！}
 
-\startitemize[n,packed] % intext
+\startitemize % intext
     \startxiaoti \answerU{昼出耘田夜绩麻}，村庄儿女各当家。 \stopxiaoti
     \startxiaoti 晨兴理荒秽， \answerU{ 戴月荷锄归}。 \stopxiaoti
     \startxiaoti 乡村四月闲人少， \answerU{才了蚕桑又插田}。 \stopxiaoti
@@ -158,7 +158,7 @@
 
 \dati{用“\backslash”划去下面词语中加点的字错误的读音。}
 
-\startitemize[horizontal][columns=two,symbol=n]
+\startitemize[horizontal][columns=two]
     \startitem 鸡\zhuozhong{冠}花（guān \quad \answerS{guàn}） \stopitem
     \startitem \zhuozhong{朴}素（sù \quad \answerS{shù}） \stopitem
     \startitem \zhuozhong{附}会（\answerS{fǔ} \quad fù） \stopitem
@@ -167,7 +167,7 @@
 
 \dati{根据要求写词语。}
 
-\startitemize[n,packed] % intext
+\startitemize % intext
     \startxiaoti 从课文中找出下列词语的反义词。 \stopxiaoti
         \startitemize[horizontal][columns=,symbol=a]
             % 在括号中填空的答案
@@ -180,14 +180,14 @@
             \startitem 协调 — \answerB{和谐} \stopitem
         \stopitemize
     \startxiaoti 在括号里填上合适的动词。 \stopxiaoti
-        \startitemize[horizontal,three,a]
+        \startansweritems
             \startitem \answerB{搭}瓜架 \stopitem
             \startitem \answerB{种}南瓜 \stopitem
             \startitem \answerB{翘}尾巴 \stopitem
             \startitem \answerB{爬}屋檐 \stopitem
             \startitem \answerB{找}食物 \stopitem
             \startitem \answerB{竖}旗杆 \stopitem
-        \stopitemize
+        \stopansweritems
 \stopitemize
 
 \dati{查字典填空。}
@@ -241,7 +241,7 @@
 
 \dati{按要求完成句子练习。}
 
-\startitemize[n,packed] % intext
+\startitemize % intext
     \startitem \zhuozhong{即使}附近的石头上有妇女在捣衣，它们 \zhuozhong{也} 从不吃惊。\stopitem
         % 答案“示例”标签 \answerLE
         % 答案“略”标签 \answerLO
@@ -282,7 +282,7 @@
 姥姥家的小院，多么富有诗情画意啊！
 }
 
-\startitemize[n,packed] % intext
+\startitemize % intext
     \startxiaoti 短文的结构为\answerU{总—分—总}，全文是围绕哪一句话写的？请把这句话抄下来。\stopxiaoti
         \answerU{姥姥家的小院，多么富有诗情画意啊！}
     \startxiaoti 按要求填空。\stopxiaoti
@@ -341,7 +341,7 @@
 
 \dati{按要求写词语。}
 
-\startitemize[n,packed] % intext
+\startitemize % intext
 \startxiaoti 从文中找出下列词语的反义词。 \stopxiaoti
 
 寒冷 \answerB{暖和} \hfil
@@ -363,7 +363,7 @@
 
 \dati{根据课文内容填空。}
 
-\startitemize[n,packed] % intext
+\startitemize % intext
 \startxiaoti 这篇文章的作者是现代著名作家 \answerU{茅盾} 。 \stopxiaoti
 \startxiaoti 我认为这是一扇 \answerU{神奇} 的天窗，因为 \answerU{它打开了孩子们神奇的想象力和好奇心}。 \stopxiaoti
 \startxiaoti 最初，人们装天窗是为了 \answerU{采光} 、 \answerU{取暖} ，没想到在黑洞似的屋里，小小的天窗却成了孩子们的 \answerU{精神慰藉} 。文中的“天窗”象征了 \answerU{儿童通往想象世界的窗口} 。 \stopxiaoti
@@ -414,7 +414,7 @@
 形的画布，见证着一天中分分秒秒的变化，展示着动态的生活画卷。
 }
 
-\startitemize[n,packed] % intext
+\startitemize % intext
 \startxiaoti 用“\hl[2]”从文中括号里选出正确的字。\answerLIA \stopxiaoti
 \startxiaoti 仿写词语。\answerLE \stopxiaoti
 
