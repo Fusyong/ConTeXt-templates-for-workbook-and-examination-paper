@@ -1,12 +1,5 @@
 %%%% 全局配置
-\startenvironment
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 设置变量 TODO
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setvariables[setting]
-    [
-      smallblank=quarterline,% 板块间的最小间距
-    ]
+\startenvironment % 与第一行代码间必须有空行 BUG
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 模式
@@ -18,6 +11,18 @@
 % 答案模式，请在答案部分开启
 \definemode[answersheet][keep]
 \disablemode[answersheet]
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 设置变量 TODO
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setvariables[settings][%
+    % 如果紧跟在startenvironment后，上行末尾需要注释，
+    % 且注释前不能有空格，否则会引入空白页
+    smallblank=quarterline,% 板块间的最小间距
+]
+\def\smallblank{\blank[\getvariable{settings}{smallblank}]}
+% samepage在某些地方不起效，而再手动加则有效 TODO
+\def\smallblanksamepage{\blank[\getvariable{settings}{smallblank},samepage]}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 纸张和版面
@@ -126,7 +131,7 @@
 }
 
 % 设置列表组itemize、所有级别、阿拉伯数字、堆叠、其后不留空
-\setupitemgroup[itemize][each][n,packed][before={\blank[quarterline]}, after={\blank[quarterline]},]
+\setupitemgroup[itemize][each][n,packed][before={\smallblank}, after={\smallblank},]
 % 设置二级列表
 \setupitemgroup[itemize][2][left=（, right=）,stopper=]
 % 定义答案列表，大写字母序号、横排、三列
@@ -288,16 +293,16 @@
 
 % 栏目/题目分组，包装的是\subsubsubject（可能会改成\subsubject）
 \def\lanmu#1{%
-    \blank[quarterline]%
+    \smallblank%
     \subsubject{#1}%
-    \blank[quarterline]%
+    \smallblank%
     }
 
 % 大题目
 \definecounter[datinumber][way=bysection]% 大题编号计数器，reset bysection
 \def\datiformat#1{\par{\secondColor{#1}、}}
 \def\dati#1{%
-    \blank[quarterline]%
+    \smallblank%
     \incrementcounter[datinumber]%
     \incrementuniquename%
     %  转换计数器的数值为中文数码，以强制替换大题编号
@@ -305,7 +310,7 @@
     \saveAnswer[datiformat]{\structurenumber}%获取实际的值
     % 获取计数器的引用，必须在编号标题中或其后后才能显示，如\subsubsubject{#1、}
     % \saveAnswer[datiformat]{\ref[number][\uniquename]}%
-    \blank[quarterline,samepage]%禁止断行，要放在最后
+    \smallblanksamepage%禁止断行，要放在最后，TODO 但某些地方仍无效，需要手动再加
 }
 
 % 小题（一级列表项），用法：\startxiaoti \stopxiaoti
