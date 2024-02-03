@@ -119,16 +119,13 @@
 \definehead[centersection][subsubsubsubject][align=middle, before=, after=,]
 \definehead[authorsection][subsubsubsubsubject][align=middle, before=, after=,]
 % \definehead[leftsection][subsubsubject][align=flushleft]
-\def\essayhead[#1][#2]{%
-    \centersection{#1}%
+\def\essayhead[#1][#2]{\centersection{#1}%
     \doifnotempty{#2}{\authorsection{#2}}%
     }
 % \define[2]\rhymehead{\leftsection{#1}\leftaligned{\itx #2}\blank[0cm]}
 % \define[2]\classicalpoemhead{\centersection{#1}\middlealigned{\itx #2}\blank[0cm]}
 % 短文标题
-\def\centralTitle[#1][#2]{%
-    \subsubsubject{\tf }%
-}
+\def\centralTitle[#1][#2]{\subsubsubject{\tf }}
 
 % 设置列表组itemize、所有级别、阿拉伯数字、堆叠、其后不留空
 \setupitemgroup[itemize][each][n,packed][before={\smallblank}, after={\smallblank},]
@@ -142,15 +139,14 @@
 % 设置目录、PDF书签、交互、引用
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setupheadtext[content=目录]
-\setupcombinedlist[content][list={chapter,section},alternative=c]%
-\setuplist[section][width=10mm, style=bold]
-\setuplist[subsection][width=20mm]
-\setuplist[subsubsection][width=20mm, style=slanted, pagestyle=normal]
+\setupcombinedlist[content][list={danyuan,kewen},alternative=c]%
+\setuplist[danyuan][width=10mm, style=bold]
+\setuplist[kewen][width=10mm]
 % pdf交互/链接
 \setupinteraction[state=start,color=,]
 % pdf书签
 \setupinteractionscreen[option={bookmark}]
-\placebookmarks[chapter, section, subsubsection] % 可加入自定义\definelist[mylist]
+\placebookmarks[danyuan,kewen] % 可加入自定义\definelist[mylist]
 % 设置引用
 % \setupreferencing[left=,right=] % 覆盖左右两侧的引号
 % \define[1]\see{\at{}{页}[#1]\about[#1]}% 另见
@@ -278,39 +274,40 @@
 % 自定义标题
 % %%%%%%%%%
 % 单元
-\def\danyuananswer#1{\section{#1}}
-\def\danyuan#1{%
-    \chapter{#1}%
-    \saveAnswer[danyuananswer]{#1}%
-}
+\definehead[danyuan][chapter]
+    [after={\saveAnswer[section]{\structuretitle}}]
+% 等效于：
+% \def\danyuananswer#1{\section{#1}}
+% \def\danyuan#1{\chapter{#1}%
+%     \saveAnswer[danyuananswer]{#1}%
+% }
 
 % 课文标题
-\def\kewenanswer#1{\blank\subsubsubject{#1}}
-\def\kewen#1{%
-    \section{#1}%
-    \saveAnswer[kewenanswer]{#1}%
-}
+\def\kewenformat#1{\blank \subsubsubject{#1}}
+\definehead[kewen][section]
+    [after={\saveAnswer[kewenformat]{\structuretitle}}]
 
-% 栏目/题目分组，包装的是\subsubsubject（可能会改成\subsubject）
-\def\lanmu#1{%
-    \smallblank%
-    \subsubject{#1}%
-    \smallblank%
-    }
+% 栏目/题目分组
+\definehead[lanmu][subsubject]
+    [before={\smallblank}, after={\smallblank}]
 
 % 大题目
 \definecounter[datinumber][way=bysection]% 大题编号计数器，reset bysection
-\def\datiformat#1{\par{\secondColor{#1}、}}
-\def\dati#1{%
-    \smallblank%
-    \incrementcounter[datinumber]%
-    \incrementuniquename%
-    %  转换计数器的数值为中文数码，以强制替换大题编号
-    \subsubsection[title={#1},reference={\uniquename}, ownnumber={\convertnumber{cn}{\rawcountervalue[datinumber]}}]%
-    \saveAnswer[datiformat]{\structurenumber}%获取实际的值
+\def\datiformat#1{\par{\secondColor{#1}、}}% 在答案纸中的格式
+\definehead[DATI][subsubsection]
+    [%
+    before={\smallblank \incrementcounter[datinumber] \incrementuniquename},
+    %获取实际的值
     % 获取计数器的引用，必须在编号标题中或其后后才能显示，如\subsubsubject{#1、}
     % \saveAnswer[datiformat]{\ref[number][\uniquename]}%
-    \smallblanksamepage%禁止断行，要放在最后，TODO 但某些地方仍无效，需要手动再加
+    % 禁止断行要放在最后，TODO 但某些地方仍无效，需要手动再加
+    after={\saveAnswer[datiformat]{\structurenumber} \smallblanksamepage},
+    ]
+\def\dati#1{%
+    % reference和ownnumber不能在设置中应用
+    % reference={\uniquename},
+    % 转换计数器的数值为中文数码，以强制替换大题编号
+    \DATI[title={#1}, ownnumber={\convertnumber{cn}{\rawcountervalue[datinumber]}}]%
 }
 
 % 小题（一级列表项），用法：\startxiaoti \stopxiaoti
