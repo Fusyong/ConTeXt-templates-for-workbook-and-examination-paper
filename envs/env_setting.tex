@@ -259,12 +259,12 @@
 \def\answerAsItIs#1{\hskip0pt #1 \hskip0pt} % 有空格，否则插入的quad无效 TODO
 
 % 排印缓存并保存为答案
-\def\startBufferAsAnswer{
-    \incrementuniquename
+\def\startBufferAsAnswer{%
+    \incrementuniquename%
     \startbuffer[\uniquename]}
 \def\bufferAsAnswer#1{\par\page[no]#1}%禁止分页无效 TODO
-\def\stopAsAnswer{
-    \getbuffer[\uniquename]
+\def\stopAsAnswer{%
+    \getbuffer[\uniquename]%
     \saveAnswer[bufferAsAnswer]{\getbuffer[\uniquename]}}
 % 因为\startbuffer开始后直至\stopbuffer都被认为是buffer，所以\stopbuffer无法包装
 % 结束命令为：\stopbuffer\stopAsAnswer
@@ -276,7 +276,7 @@
 % 单元
 \definehead[danyuan][chapter]
     [after={\saveAnswer[section]{\structuretitle}}]
-% 等效于：
+% 等效于（也许更健壮）：
 % \def\danyuananswer#1{\section{#1}}
 % \def\danyuan#1{\chapter{#1}%
 %     \saveAnswer[danyuananswer]{#1}%
@@ -298,15 +298,16 @@
     [%
     before={\smallblank \incrementcounter[datinumber] \incrementuniquename},
     %获取实际的值
-    % 获取计数器的引用，必须在编号标题中或其后后才能显示，如\subsubsubject{#1、}
+    % 获取计数器的引用，必须在编号标题中或其后后才能显示，如 subsubsubject{#1、}
     % \saveAnswer[datiformat]{\ref[number][\uniquename]}%
     % 禁止断行要放在最后，TODO 但某些地方仍无效，需要手动再加
     after={\saveAnswer[datiformat]{\structurenumber} \smallblanksamepage},
     ]
+% 实例
+% 因为reference和ownnumber不能在定义/设置中应用
+% reference={\uniquename},
+% 转换计数器的数值为中文数码，以强制替换大题编号
 \def\dati#1{%
-    % reference和ownnumber不能在设置中应用
-    % reference={\uniquename},
-    % 转换计数器的数值为中文数码，以强制替换大题编号
     \DATI[title={#1}, ownnumber={\convertnumber{cn}{\rawcountervalue[datinumber]}}]%
 }
 

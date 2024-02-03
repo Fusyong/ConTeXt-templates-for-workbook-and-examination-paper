@@ -1,4 +1,4 @@
-some ConTeXt templates for workbook and examination paper in Chinese
+a ConTeXt template for workbook and examination paper
 
 语文练习册和试卷的ConTeXt模板
 
@@ -44,11 +44,11 @@ some ConTeXt templates for workbook and examination paper in Chinese
     * [x] 在拼音下的田字格里写字词
         * [ ] 校验
     * [x] 选择正确的项目序号
+      * [ ] 多项选择题校验
     * [x] 一段包括填空和勾选等标记的内容（如表格）整体作为答案
     * [x] 在文句中画线，画线内容作为答案
     * [x] 包含填空的带括号的多行的组
     * [ ] 连线题
-    * [ ] 多项选择题
 * [X] 答题说明（标签）
     * [X] （略）
     * [X] 示例：

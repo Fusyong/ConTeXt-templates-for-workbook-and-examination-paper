@@ -8,6 +8,9 @@
 
 % 缩小字体
 \setupbodyfont[mschinese,10.5pt]
+% 悬挂缩进
+\setupindenting[-2em]
+\startnarrow[left=2em,right=0em][left,right]
 
 % TODO 跨栏表格
 % \startcolumns[n=2,separator=off]
@@ -22,5 +25,6 @@
     end
 \stopluacode
 % \stopcolumns
+\stopnarrow
 
 \stoptext
