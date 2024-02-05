@@ -18,8 +18,13 @@
 \startluacode
     local getdata = job.datasets.getdata
     i = 1
+    local refformats = {["datiformat"]=true, ["xiaotiformat"]=true, ["xiaoxiaotiformat"]=true}
     while (getdata("answertable",i)) do
-        context("\\csname %s\\endcsname{%s}", getdata("answertable", i,"cmd"), getdata("answertable", i,"answer"))
+        if (refformats[getdata("answertable", i,"cmd")]) then
+            context("\\csname %s\\endcsname{%s}[%s]", getdata("answertable", i,"cmd"), getdata("answertable", i,"answer"), getdata("answertable", i,"ref"))
+        else
+            context("\\csname %s\\endcsname{%s}", getdata("answertable", i,"cmd"), getdata("answertable", i,"answer"))
+        end
         context("\\enquad") -- enquad quad
         i = i + 1
     end

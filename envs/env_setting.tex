@@ -230,11 +230,11 @@
 % 存取答案数据
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definedataset[answertable][delay=yes] % 最后实现，会插入页码信息???
-\def\saveAnswer[#1]#2{%
+\def\saveAnswer[#1,#2]#3{%
     \doifnotmode{answersheet}{%
         % \incrementuniquename%
         % \expandafter\def\csname \strippedcsname\uniquename\endcsname{\someheadnumber[subsubsection][current]}%
-        \setdataset[answertable][cmd={#1}, answer={#2}]%花括号可以避免数据中的符号引起错误
+        \setdataset[answertable][cmd={#1}, ref={#2}, answer={#3}]%花括号可以避免数据中的符号引起错误
         }%
 }
 
@@ -265,7 +265,7 @@
 \def\bufferAsAnswer#1{\par\page[no]#1}%禁止分页无效 TODO
 \def\stopAsAnswer{%
     \getbuffer[\uniquename]%
-    \saveAnswer[bufferAsAnswer]{\getbuffer[\uniquename]}}
+    \saveAnswer[bufferAsAnswer,]{\getbuffer[\uniquename]}}
 % 因为\startbuffer开始后直至\stopbuffer都被认为是buffer，所以\stopbuffer无法包装
 % 结束命令为：\stopbuffer\stopAsAnswer
 % TDO 也许有控制方法，如此则可以definestartstop，或自定起讫命令
@@ -275,7 +275,7 @@
 % %%%%%%%%%
 % 单元
 \definehead[danyuan][chapter]
-    [after={\saveAnswer[section]{\structuretitle}}]
+    [after={\saveAnswer[section,]{\structuretitle}}]
 % 等效于（也许更健壮）：
 % \def\danyuananswer#1{\section{#1}}
 % \def\danyuan#1{\chapter{#1}%
@@ -285,7 +285,7 @@
 % 课文标题
 \def\kewenformat#1{\blank \subsubsubject{#1}}
 \definehead[kewen][section]
-    [after={\saveAnswer[kewenformat]{\structuretitle}}]
+    [after={\saveAnswer[kewenformat,]{\structuretitle}}]
 
 % 栏目/题目分组
 \definehead[lanmu][subsubject]
@@ -293,42 +293,36 @@
 
 % 大题目
 \definecounter[datinumber][way=bysection]% 大题编号计数器，reset bysection
-\def\datiformat#1{\par{\secondColor{#1}、}}% 在答案纸中的格式
-\definehead[DATI][subsubsection]
-    [%
-    before={\smallblank \incrementcounter[datinumber] \incrementuniquename},
+\def\datiformat#1[#2]{\par\goto{\secondColor{#1}、}[#2]}% 在答案纸中的格式
+\def\dati#1{%
+    \smallblank \incrementcounter[datinumber] \incrementuniquename%
     %获取实际的值
     % 获取计数器的引用，必须在编号标题中或其后后才能显示，如 subsubsubject{#1、}
     % \saveAnswer[datiformat]{\ref[number][\uniquename]}%
+    % 转换计数器的数值为中文数码，以强制替换大题编号
     % 禁止断行要放在最后，TODO 但某些地方仍无效，需要手动再加
-    after={\saveAnswer[datiformat]{\structurenumber} \smallblanksamepage},
-    ]
-% 实例
-% 因为reference和ownnumber不能在定义/设置中应用
-% reference={\uniquename},
-% 转换计数器的数值为中文数码，以强制替换大题编号
-\def\dati#1{%
-    \DATI[title={#1}, ownnumber={\convertnumber{cn}{\rawcountervalue[datinumber]}}]%
+    \subsubsection[title={#1}, reference=\uniquename, ownnumber={\convertnumber{cn}{\rawcountervalue[datinumber]}}]%
+    \saveAnswer[datiformat,\uniquename]{\structurenumber} \smallblanksamepage%
 }
 
 % 小题（一级列表项），用法：\startxiaoti \stopxiaoti
-\def\xiaotiformat#1{{\secondColor{#1}.\nobreak}}
+\def\xiaotiformat#1[#2]{\goto{\secondColor{#1}.\nobreak}[#2]}
 % 使用before={}，比直接将\incrementuniquename插在行头更稳健（会受到周围空格的影响）
 \definestartstop[xiaoti][
    before={%
         \incrementuniquename%
         \startitem[\uniquename]%
-        \saveAnswer[xiaotiformat]{\ref[number][\uniquename]}},
+        \saveAnswer[xiaotiformat,\uniquename]{\ref[number][\uniquename]}},
    after={\stopitem}]
 % \def\xiaoti{\item \saveAnswer[xiaotiformat]{\currentstructurelistnumber}} %数字错误
 
 % 小小题，二级列表项，用法：\startxxiaoti \stopxxiaoti
-\def\xiaoxiaotiformat#1{{\secondColor{（#1）\nobreak}}}
+\def\xiaoxiaotiformat#1[#2]{\goto{\secondColor{（#1）\nobreak}}[#2]}
 \definestartstop[xxiaoti][
    before={%
         \incrementuniquename%
         \startitem[\uniquename]%
-        \saveAnswer[xiaoxiaotiformat]{\ref[number][\uniquename]}},
+        \saveAnswer[xiaoxiaotiformat,\uniquename]{\ref[number][\uniquename]}},
    after={\stopitem}]
 
 % %%%%%%%%%
@@ -346,7 +340,7 @@
     % \scratchdimen\widthofstring{#1}\relax % 获取文本宽度
     % \zwj\kern1\scratchdimen \color[black]{#1}% \kern.5\scratchdimen\zwj % U+200D ZERO WIDTH JOINER
     \stopbar%
-    \saveAnswer[answerAsItIs]{#1}%
+    \saveAnswer[answerAsItIs,]{#1}%
 }%
 
 % 回答画掉slashout
@@ -354,7 +348,7 @@
     \setbox0=\hbox{#1}%
     % 阻止切换到v模式以免断行
     \dontleavehmode\copy0\kern-\wd0\hbox to \wd0{\hfil\PTA{\backslash}\hfil}%
-    \saveAnswer[answerS]{#1}%
+    \saveAnswer[answerS,]{#1}%
 }
 
 % 回答勾选check
@@ -365,7 +359,7 @@
 }
 \def\answerC#1{%
     \check{#1}%
-    \saveAnswer[answerC]{#1}%
+    \saveAnswer[answerC,]{#1}%
 }
 
 % 回答画选checkUnderbar
@@ -378,7 +372,7 @@
 \def\answerCU#1{%
     \updatePTAColor%
     \checkU{#1}%
-    \saveAnswer[answerCUformat]{#1}%
+    \saveAnswer[answerCUformat,]{#1}%
 }
 \def\answerCUformat#1{\hskip0pt \answerCU{#1} \hskip0pt}
 
@@ -388,21 +382,21 @@
     \startitem[\uniquename]#1%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\ref[number][\uniquename]}}}%
     \stopitem%
-    \saveAnswer[answerAsItIs]{\ref[number][\uniquename]}%
+    \saveAnswer[answerAsItIs,]{\ref[number][\uniquename]}%
 }
 
 % 回答“略” omit
 \def\LableO{（略）}
 \def\answerLO{%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableO}}}%
-    \saveAnswer[answerAsItIs]{\LableO}%
+    \saveAnswer[answerAsItIs,]{\LableO}%
 }
 
 % 回答“示例：”example
 \def\LableE{示例：}
 \def\answerLE{%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableE}}}%
-    \saveAnswer[answerAsItIs]{\LableE}%
+    \saveAnswer[answerAsItIs,]{\LableE}%
 }
 
 % 回答“文中练习”inline TODO 合并多题的提示
@@ -410,14 +404,14 @@
 \def\answerLI{%
     \dontleavehmode%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableI}}}%
-    \saveAnswer[answerAsItIs]{\LableI}%
+    \saveAnswer[answerAsItIs,]{\LableI}%
 }
 
 % 回答“见文中练习”inline as given above
 \def\LableIA{（见\LableI）}
 \def\answerLIA{%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableIA}}}%
-    \saveAnswer[answerAsItIs]{\LableIA}%
+    \saveAnswer[answerAsItIs,]{\LableIA}%
 }
 
 % 括号
@@ -429,34 +423,34 @@
 % 括号中画勾
 \def\answerT{%
     \brackets{\TrueMark}%
-    \saveAnswer[answerAsItIs]{\TrueMark}%
+    \saveAnswer[answerAsItIs,]{\TrueMark}%
 }
 % 括号（行末）中画勾
 \def\answerTR{%
     \rBrackets{\TrueMark}%
-    \saveAnswer[answerAsItIs]{\TrueMark}%
+    \saveAnswer[answerAsItIs,]{\TrueMark}%
 }
 
 % 括号中画叉
 \def\answerF{%
     \brackets{\FalseMark}%
-    \saveAnswer[answerAsItIs]{\FalseMark}%
+    \saveAnswer[answerAsItIs,]{\FalseMark}%
 }
 % 括号（行末）中画叉
 \def\answerFR{%
     \rBrackets{\FalseMark}%
-    \saveAnswer[answerAsItIs]{\FalseMark}%
+    \saveAnswer[answerAsItIs,]{\FalseMark}%
 }
 
 % 填入括号
 \def\answerB#1{%
     \brackets{#1}%
-    \saveAnswer[answerAsItIs]{#1}%
+    \saveAnswer[answerAsItIs,]{#1}%
 }
 % 填入括号（行末）
 \def\answerBR#1{%
     \rBrackets{#1}%
-    \saveAnswer[answerAsItIs]{#1}%
+    \saveAnswer[answerAsItIs,]{#1}%
 }
 
 % 看拼音，在田字格中写字词 TODO 字数校验
@@ -469,7 +463,7 @@
     \startMPcode
         lua.MP.tianzige("#1","#2") ;
     \stopMPcode
-    \saveAnswer[answerAsItIs]{#2}
+    \saveAnswer[answerAsItIs,]{#2}
 }
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
