@@ -32,7 +32,8 @@ a ConTeXt template for workbook and examination paper
 
 ## TODO
 
-* [ ] 练习题赋分，并自动归总、校验、排印分数；
+* [ ] 试卷模式
+  * [ ] 练习题赋分，并自动归总、校验、排印分数；
 * [ ] 优化答题空间
 * [ ] 题型模版
     * [x] 用斜线画掉错误答案
@@ -55,6 +56,7 @@ a ConTeXt template for workbook and examination paper
     * [X] 文中练习
     * [X] 见文中练习
 * [X] 自动归集参考答案、答题说明并排印
+  * [x] 从答案序号向题目跳转`\goto`
 
 ## 已知BUG
 

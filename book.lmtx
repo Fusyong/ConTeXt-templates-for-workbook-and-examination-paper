@@ -7,15 +7,28 @@
 % \showboxes
 % \showglyphs
 \setuppapersize[standing][A3] % A3纸张打印，能看到裁切线
-\showframe
+\showframe[text]
 % \showmakeup
 % \tracingnodes1 %1,2
 % \showreferences
 
 \startproduct book
-    % \placecontent
-    \completecontent
-    \component[chapter_a.tex]
-    \component[chapter_b.tex]
-    \component[chapter_z.tex]
+    \startstandardmakeup[page=right]
+        书名页
+    \stopstandardmakeup
+    \startstandardmakeup
+        版权页
+    \stopstandardmakeup
+    % 文前
+    \startfrontmatter[page=right]
+        % \placecontent
+        \completecontent
+    \stopfrontmatter
+    \startbodymatter[page=right]
+        \component[chapter_a.tex]
+        \component[chapter_b.tex]
+    \stopbodymatter
+    \startappendices[page=right]
+        \component[chapter_z.tex]
+    \stopappendices
 \stopproduct

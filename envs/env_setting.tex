@@ -178,10 +178,14 @@
 % 设置页码、页眉
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 页码
-\setuppagenumbering[
-    alternative=doublesided,
-    location={header, margin},
-]
+\setuppagenumbering[location={footer,right}]
+% 文前用小写罗马字
+\definestructureconversionset [frontpart:pagenumber][][r]
+\definestructureconversionset [bodypart:pagenumber][][n]
+\startsectionblockenvironment [bodypart]
+    \setcounter [userpage][1]%重排正文页码
+\stopsectionblockenvironment
+
 % 页眉
 % % \setupheadertexts[{\getmarking[subsubject]}][][][{\getmarking[subsubject]}]
 % \setupheadertexts%
