@@ -57,6 +57,9 @@ a ConTeXt template for workbook and examination paper
     * [X] 见文中练习
 * [X] 自动归集参考答案、答题说明并排印
   * [x] 从答案序号向题目跳转`\goto`
+* [ ] 必要的版面布局
+  * [x] A4练习册
+  * [ ] A2试卷
 
 ## 已知BUG
 
