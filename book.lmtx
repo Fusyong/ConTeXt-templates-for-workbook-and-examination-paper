@@ -6,29 +6,32 @@
 %%%%% 显式视觉调试信息 %%%%
 % \showboxes
 % \showglyphs
-\setuppapersize[standing][A3] % A3纸张打印，能看到裁切线
-\showframe[text]
+\setuppapersize[A4][A3] % A4版面A3纸打印，能看到裁切线
+% \showframe[text]
+\showframe
 % \showmakeup
 % \tracingnodes1 %1,2
 % \showreferences
 
 \startproduct book
-    \startstandardmakeup[page=right]
+    \startmakeup[standard][page=odd,doublesided=no]
         书名页
-    \stopstandardmakeup
-    \startstandardmakeup
+    \stopmakeup
+    \startmakeup[text][page=even,doublesided=no]
         版权页
-    \stopstandardmakeup
+    \stopmakeup
     % 文前
-    \startfrontmatter[page=right]
+    \startfrontmatter[page=odd]
         % \placecontent
         \completecontent
     \stopfrontmatter
-    \startbodymatter[page=right]
+    % 正文
+    \startbodymatter[page=odd]
         \component[chapter_a.tex]
         \component[chapter_b.tex]
     \stopbodymatter
-    \startappendices[page=right]
+    % 附录
+    \startappendices
         \component[chapter_z.tex]
     \stopappendices
 \stopproduct

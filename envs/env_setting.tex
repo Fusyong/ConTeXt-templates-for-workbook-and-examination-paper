@@ -25,17 +25,32 @@
 \def\smallblanksamepage{\blank[\getvariable{settings}{smallblank},samepage]}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 纸张和版面
+% 纸张、版面、页码、页眉
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\definepapersize[sheet][width=145mm, height=210mm]
-% Create two A4-derived paper sizes
-\definepapersize[standing][A4][sheet]
-% \setuppapersize[standing][A3] % A3纸张打印，能看到裁切线
-\setuppapersize[standing]
+% \setuppapersize[A4][A3] % A4版面A3纸打印，能看到裁切线
+\setuppapersize[A4]
 \setuplayout[
     marking=on, % 裁切线，设置较大幅面打印纸才能显示
     location=middle,
 ]
+% 页码
+% ！！！alternative=doublesided指定对页交替
+% （一般setup­layout设置默认指奇数页，对页交替使偶数页采用奇数页的镜像值）
+\setuppagenumbering[alternative=doublesided,location={footer,right}]
+% 文前用小写罗马字
+\definestructureconversionset [frontpart:pagenumber][][r]
+\definestructureconversionset [bodypart:pagenumber][][n]
+\startsectionblockenvironment [bodypart]
+    \setcounter[userpage][1]%重排正文页码
+\stopsectionblockenvironment
+
+% 页眉
+% % \setupheadertexts[{\getmarking[subsubject]}][][][{\getmarking[subsubject]}]
+% \setupheadertexts%
+%     []%
+%     [{\ReadFile{header.lua}}]%
+%     [{\ReadFile{header.lua}}]%
+%     []%
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 中文配置
@@ -173,26 +188,6 @@
 \setupthinrules[color=secondColor]
 % 表格
 \definextable[mytable][offset=0.2em, option={stretch, width}, align={center,lohi}]
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 设置页码、页眉
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 页码
-\setuppagenumbering[location={footer,right}]
-% 文前用小写罗马字
-\definestructureconversionset [frontpart:pagenumber][][r]
-\definestructureconversionset [bodypart:pagenumber][][n]
-\startsectionblockenvironment [bodypart]
-    \setcounter [userpage][1]%重排正文页码
-\stopsectionblockenvironment
-
-% 页眉
-% % \setupheadertexts[{\getmarking[subsubject]}][][][{\getmarking[subsubject]}]
-% \setupheadertexts%
-%     []%
-%     [{\ReadFile{header.lua}}]%
-%     [{\ReadFile{header.lua}}]%
-%     []%
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 使用竖排、标点压缩、加注三模块(保持模块顺序)
