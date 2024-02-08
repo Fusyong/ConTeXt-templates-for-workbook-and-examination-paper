@@ -273,10 +273,10 @@
 % 自定义标题
 % %%%%%%%%%
 % 单元
-\definehead[DANYUAN][chapter]
+\definehead[DANYUAN][chapter][command={\externalfigure[dummy][width=1cm,height=1cm]}]
 \def\danyuan#1{%
     \DANYUAN{#1}%
-    \externalfigure[dummy][width=1cm,height=1cm]%
+    % \externalfigure[dummy][width=1cm,height=1cm]%
     \saveAnswer[section,]{#1}%
 }
 % 等效于（也许更健壮）：
