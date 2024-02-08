@@ -154,14 +154,14 @@
 % 设置目录、PDF书签、交互、引用
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setupheadtext[content=目录]
-\setupcombinedlist[content][list={danyuan,kewen},alternative=c]%
-\setuplist[danyuan][width=10mm, style=bold]
-\setuplist[kewen][width=10mm]
+\setupcombinedlist[content][list={DANYUAN,KEWEN},alternative=c]%
+\setuplist[DANYUAN][style=bold]
+\setuplist[KEWEN][margin=2em]
 % pdf交互/链接
 \setupinteraction[state=start,color=,]
 % pdf书签
 \setupinteractionscreen[option={bookmark}]
-\placebookmarks[danyuan,kewen] % 可加入自定义\definelist[mylist]
+\placebookmarks[DANYUAN,KEWEN] % 可加入自定义\definelist[mylist]
 % 设置引用
 % \setupreferencing[left=,right=] % 覆盖左右两侧的引号
 % \define[1]\see{\at{}{页}[#1]\about[#1]}% 另见
@@ -273,18 +273,24 @@
 % 自定义标题
 % %%%%%%%%%
 % 单元
-\definehead[danyuan][chapter]
-    [after={\saveAnswer[section,]{\structuretitle}}]
+\definehead[DANYUAN][chapter]
+\def\danyuan#1{%
+    \DANYUAN{#1}%
+    \externalfigure[dummy][width=1cm,height=1cm]%
+    \saveAnswer[section,]{#1}%
+}
 % 等效于（也许更健壮）：
-% \def\danyuananswer#1{\section{#1}}
-% \def\danyuan#1{\chapter{#1}%
-%     \saveAnswer[danyuananswer]{#1}%
-% }
+% \definehead[danyuan][chapter]
+%     [after={\saveAnswer[section,]{\structuretitle}}]
 
 % 课文标题
+\definehead[KEWEN][section]
 \def\kewenformat#1{\blank \subsubsubject{#1}}
-\definehead[kewen][section]
-    [after={\saveAnswer[kewenformat,]{\structuretitle}}]
+\def\kewen#1{\KEWEN{#1}%
+    \saveAnswer[kewenformat,]{\structuretitle}%
+}
+% \definehead[kewen][section]
+%     [after={\saveAnswer[kewenformat,]{\structuretitle}}]
 
 % 栏目/题目分组
 \definehead[lanmu][subsubject]
@@ -530,6 +536,14 @@
     % draw textext.lft("\strut\[") yscaled #2;
     \stopMPcode
 }
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 资源
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useMPlibrary[dum]%占位图库
+% \setupexternalfigures[location={local,default}]
+% \useexternalfigure[sine][sin.pdf][width=3cm]
+% \externalfigure[sine]
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 默认开启的信息
