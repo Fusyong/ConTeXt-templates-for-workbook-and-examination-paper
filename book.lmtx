@@ -6,7 +6,6 @@
 %%%%% 显式视觉调试信息 %%%%
 % \showboxes
 % \showglyphs
-\setuppapersize[A4][A3] % A4版面A3纸打印，能看到裁切线
 % \showframe[text]
 \showframe
 % \showmakeup
@@ -19,6 +18,7 @@
     \stopmakeup
     \startmakeup[text][page=even,doublesided=no]
         版权页
+        \showlayout
     \stopmakeup
     % 文前
     \startfrontmatter[page=odd]

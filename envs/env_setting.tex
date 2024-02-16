@@ -27,11 +27,14 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 纸张、版面、页码、页眉
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \setuppapersize[A4][A3] % A4版面A3纸打印，能看到裁切线
-\setuppapersize[A4]
+\setuppapersize[A4][A4,oversized] % A4版面A4纸+oversized打印（扩展以便看到裁切线）
+\definemeasure[Bleed][3mm]%出血
+\definemeasure[Trim][7.5mm]%剪裁线偏置等于oversized
 \setuplayout[
     marking=on, % 裁切线，设置较大幅面打印纸才能显示
     location=middle,
+    bleedoffset=\measure{Bleed},
+    trimoffset=-\measure{Trim},
 ]
 % 页码
 % ！！！alternative=doublesided指定对页交替
@@ -160,7 +163,11 @@
 % pdf交互/链接
 \setupinteraction[state=start,color=,]
 % pdf书签
-\setupinteractionscreen[option={bookmark}]
+% \setupinteractionscreen[option={bookmark}]
+\setupinteractionscreen[
+    option={doublesided,bookmark},
+    width=max,height=max,% necessary for Trim/BleedBox
+]
 \placebookmarks[DANYUAN,KEWEN] % 可加入自定义\definelist[mylist]
 % 设置引用
 % \setupreferencing[left=,right=] % 覆盖左右两侧的引号
