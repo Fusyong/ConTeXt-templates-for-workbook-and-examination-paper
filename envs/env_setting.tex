@@ -7,7 +7,6 @@
 % 校对模式，yes no keep(保持预先设置，其后调整无效，可在命令行设置)
 \definemode[proofread][keep]
 \enablemode[proofread]
-% \disablemode[proofread]
 % 答案模式，请在答案部分开启
 \definemode[answersheet][keep]
 \disablemode[answersheet]
@@ -19,20 +18,29 @@
     % 如果紧跟在startenvironment后，上行末尾需要注释，
     % 且注释前不能有空格，否则会引入空白页
     smallblank=quarterline,% 板块间的最小间距
+    bodyfont=14pt,%正文字号
 ]
 \def\smallblank{\blank[\getvariable{settings}{smallblank}]}
-% samepage在某些地方不起效，而再手动加则有效 TODO
+% 此处samepage在某些地方不起效，而在当地手动加则有效 TODO
 \def\smallblanksamepage{\blank[\getvariable{settings}{smallblank},samepage]}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 纸张、版面、页码、页眉
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setuppapersize[A4][A4,oversized] % A4版面A4纸+oversized打印（扩展以便看到裁切线）
+\setuppapersize[A4][A4,oversized] % A4版面，A4纸+oversized(1.5cm)打印（扩展以便看到裁切线）
 \definemeasure[Bleed][3mm]%出血
 \definemeasure[Trim][7.5mm]%剪裁线偏置等于oversized
-\setuplayout[
-    marking=on, % 裁切线，设置较大幅面打印纸才能显示
-    location=middle,
+\setuplayout[%
+    backspace=20mm,
+    % width取正文字号的整数倍，即每行字数*字号
+    % width正常可用宽度约160mm，14pt*33字*0.35146mm/pt=162.4mm
+    width={\dimexpr\getvariable{settings}{bodyfont}*33\relax},
+    topspace=20mm,
+    height=250mm,
+        header=0mm,
+        footer=7.5mm,
+    marking=on, % 裁切线，打印纸设置大于版面时才能显示
+    location=middle, % 居中放置在纸张上
     bleedoffset=\measure{Bleed},
     trimoffset=-\measure{Trim},
 ]
@@ -67,7 +75,7 @@
 % 字体和符号配置
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usetypescriptfile[mscore]%使用系统自带的字体脚本
-\usebodyfont   [mschinese,14pt]
+\usebodyfont   [mschinese,\getvariable{settings}{bodyfont}]
 % 定义画勾画叉符号及字体
 \definefont[checkMarkFont][name:dejavusansmono*default]
 \define\TrueMark{{\checkMarkFont ✔}}
@@ -203,7 +211,7 @@
 % \usemodule[vtypeset]
 % 
 % 标点压缩与支持
-\usemodule[zhpunc][pattern=kaiming, spacequad=0.5, hangjian=false]
+\usemodule[zhpunc][pattern=quanjiao, spacequad=0.5, hangjian=false]
 % 
 % 四种标点压缩方案：全角、开明、半角、原样：
 %   pattern: quanjiao(default), kaiming, banjiao, yuanyang
