@@ -5,7 +5,7 @@
 
 %%%%% 显式视觉调试信息 %%%%
 % \showboxes
-% \showglyphs
+\showglyphs
 % \showframe[text]
 \showframe
 % \showmakeup
@@ -18,7 +18,8 @@
     \stopmakeup
     \startmakeup[text][page=even,doublesided=no]
         版权页
-        \showlayout
+        % 显示版面布局尺寸
+        {\tfx \showlayout[pt,cm,1] }
     \stopmakeup
     % 文前
     \startfrontmatter[page=odd]

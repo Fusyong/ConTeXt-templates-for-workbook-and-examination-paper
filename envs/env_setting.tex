@@ -31,10 +31,12 @@
 \definemeasure[Bleed][3mm]%出血
 \definemeasure[Trim][7.5mm]%剪裁线偏置等于oversized
 \setuplayout[%
-    backspace=20mm,
-    % width取正文字号的整数倍，即每行字数*字号
-    % width正常可用宽度约160mm，14pt*33字*0.35146mm/pt=162.4mm
+    backspace=20mm,% 内侧空白
+    % 版心width，排中文时要取正文字号的整数倍，即`每行字数*字号`
+    % A4正常可用width约160mm，约合14pt*33字*0.35146mm/pt=162.4mm
     width={\dimexpr\getvariable{settings}{bodyfont}*33\relax},
+    % 或直取M宽/方空铅的整数倍，即`每行字数em`（与上法有极小的差别，与字体有关）
+    % width=33em,
     topspace=20mm,
     height=250mm,
         header=0mm,
@@ -563,6 +565,6 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 默认开启的信息
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\replacemissingcharacters % 缺字替换
+\replacemissingcharacters % 缺字体时替换为方框标记
 
 \stopenvironment
