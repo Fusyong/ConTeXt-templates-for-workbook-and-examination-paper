@@ -4,13 +4,13 @@
 % \disablemode[proofread]
 
 %%%%% 显式视觉调试信息 %%%%
-% \showboxes
-\showglyphs
-% \showframe[text]
-\showframe
-% \showmakeup
-% \tracingnodes1 %1,2
+% \showboxes%盒子
+% \showglyphs%字模轮廓
+\showframe%框架
+    % \showframe[text]
+% \showmakeup%额外信息
 % \showreferences
+% \tracingnodes1 %1,2
 
 \startproduct book
     \startmakeup[standard][page=odd,doublesided=no]
@@ -18,8 +18,7 @@
     \stopmakeup
     \startmakeup[text][page=even,doublesided=no]
         版权页
-        % 显示版面布局尺寸
-        {\tfx \showlayout[pt,cm,1] }
+        {\tfx \showsetups}% 显示版面布局的尺寸
     \stopmakeup
     % 文前
     \startfrontmatter[page=odd]
