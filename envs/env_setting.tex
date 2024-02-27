@@ -18,7 +18,7 @@
     % 如果紧跟在startenvironment后，上行末尾需要注释，
     % 且注释前不能有空格，否则会引入空白页
     smallblank=quarterline,% 板块间的最小间距
-    bodyfont=14pt,%正文字号
+    bodyfont=14pt,%正文字号 A5a类21—16，b类14，c类12，d类10.5
 ]
 \def\smallblank{\blank[\getvariable{settings}{smallblank}]}
 % 此处samepage在某些地方不起效，而在当地手动加则有效 TODO
@@ -34,8 +34,10 @@
     backspace=20mm,% 内侧空白
     % 版心width，排中文时要取正文字号的整数倍，即`每行字数*字号`
     % A4正常可用width约160mm，约合14pt*33字*0.35146mm/pt=162.4mm
+    % A5a类106*168，b类108*167，c类106*164，d类107*166
     width={\dimexpr\getvariable{settings}{bodyfont}*33\relax},
     % 或直取M宽/方空铅的整数倍，即`每行字数em`（与上法有极小的差别，与字体有关）
+    % A5a类19*20，b类22*22，c类25*25，d类29*28
     % width=33em,
     topspace=20mm,
     height=250mm,
@@ -178,7 +180,7 @@
     option={doublesided,bookmark},
     width=max,height=max,% necessary for Trim/BleedBox
 ]
-\placebookmarks[DANYUAN,KEWEN] % 可加入自定义\definelist[mylist]
+\placebookmarks[DANYUAN,KEWEN,chapter,section,subsection] % 可加入自定义\definelist[mylist]
 % 设置引用
 % \setupreferencing[left=,right=] % 覆盖左右两侧的引号
 % \define[1]\see{\at{}{页}[#1]\about[#1]}% 另见
@@ -190,7 +192,7 @@
 \setupwhitespace[none]
 % 条目间距（覆盖预设）
 % \setupitemgroup[packed]
-% 行距设置
+% 行距设置 A5a类19*20，b类22*22，c类25*25，d类29*28
 \setupinterlinespace[line=1.5em]
 % 缩进设置
 \setupindenting[yes, 2em, first]
