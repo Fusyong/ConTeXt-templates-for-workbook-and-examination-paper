@@ -558,6 +558,59 @@
     \stopMPcode
 }
 
+% 连线题
+\startluacode
+    require "envs/Lianxian"
+\stopluacode
+\def\lianxian[#1]#2#3{%
+    \dontleavehmode
+    \startMPcode
+        lua.MP.lianxian("#1","#2","#3") ;
+    \stopMPcode
+    % \saveAnswer[answerAsItIs,]{#2}%
+}
+
+% \def\wordslink[#1,#2,#3]{
+%     \startMPcode
+%     lua.MP.wordslink(#1,#2,#3) ;
+%     \stopMPcode
+% }
+
+% \startluacode
+% function MP.lianxian(char,words) --lua.MP是给用户预留的命名空间，lua.mp则是系统自用的
+%     local code1 = [[
+%     draw
+% textext("This will print \quotation{Hi} in the console!")
+% xsized TextWidth
+% withcolor "darkblue" ;
+%     ]]
+%     mp.fprint(code1)
+    
+% end
+% --return MP.lianxian
+
+% --userdata = userdata or { }
+% --function userdata.lianxian(keywords, str)
+% --    keyword_options = utilities.parsers.settings_to_array(keywords)
+% --    -- named_values = utilities.parsers.settings_to_hash(keyvals)
+
+% --    -- 回输位置参数
+% --    context('First option = ' .. keyword_options[1])
+% --    context('\\par')
+% --    -- context('Color chosen = ' .. named_values['color'])
+% --    context('Curly braces = ' .. str)
+% --end
+% \stopluacode
+
+% \def\lianxian[#1]#2{
+%     \startMPcode
+
+%     % lua.MP.lianxian(#1,#2) ;
+%     MP.lianxian(#1,#2) ;
+%     \stopMPcode
+%     }
+
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 资源
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
