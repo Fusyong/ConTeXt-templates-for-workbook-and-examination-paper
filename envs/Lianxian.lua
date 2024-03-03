@@ -23,18 +23,18 @@ function MP.lianxian(widthes,sort_code,before_items,after_items) --lua.MP是给�
     -- 画后项
     for i, line in ipairs(sort_code_list) do
         -- BaseLineSkip似乎等于LineHeight
-        mp.fprint([[a[%s] := (0cm, -(bbheight(currentpicture)+LineHeight));]], i)
+        mp.fprint([[a[%s] := (0, -(bbheight(currentpicture)+LineHeight));]], i)
 
         mp.fprint([[label.lft(textext("\framedtext[offset=none,width=%s,frame=off,corner=00,]{%s}"), a[%s]);]],
         widthes_list[1],
         string.strip(before_list[i]),
         i)
 
-        mp.fprint([[label.rt(textext("\framedtext[offset=none,width=%s,frame=off,corner=00,]{%s}"), a[%s]) shifted (%s,0cm);]],
+        mp.fprint([[label.rt(textext("\framedtext[offset=none,width=%s,frame=off,corner=00,]{%s}"), a[%s]) shifted (%s,0);]],
         widthes_list[3],
         string.strip(after_list[line]),
         i,
-        widthes_list[2])
+        widthes_list[2])--不能接受em值
     end
 
     -- 画连线
@@ -42,7 +42,7 @@ function MP.lianxian(widthes,sort_code,before_items,after_items) --lua.MP是给�
     -- TODO \MPcolor{proofColor}
     -- TODO \MPcolor{transparentColor}
     for i, line in ipairs(sort_code_list) do
-        mp.fprint([[draw a[%s]--a[%s]+(%s,0cm) withcolor red;]], i, line,widthes_list[2])
+        mp.fprint([[draw a[%s]--a[%s]+(%s,0) withcolor red;]], i, line,widthes_list[2])
     end
 
 end
