@@ -562,10 +562,11 @@
 \startluacode
     require "envs/Lianxian"
 \stopluacode
-\def\lianxian[#1]#2#3{%
+% #1三列宽度[8em,2em,1em]，#2后项顺序[231]，#3前项，后项#4
+\def\lianxian[#1][#2]#3#4{%
     \dontleavehmode
     \startMPcode
-        lua.MP.lianxian("#1","#2","#3") ;
+        lua.MP.lianxian("#1","#2","#3","#4") ;
     \stopMPcode
     % \saveAnswer[answerAsItIs,]{#2}%
 }
