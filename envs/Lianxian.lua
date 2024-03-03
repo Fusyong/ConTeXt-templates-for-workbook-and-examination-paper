@@ -1,7 +1,8 @@
 -- 限制/TODO
--- 序号
--- 完整答案/序号答案
--- 参数一致性校验
+    -- 序号
+    -- 完整答案/序号答案
+    -- 参数一致性校验
+    -- 位置有误（改成相对位置）
 function MP.lianxian(widthes,sort_code,before_items,after_items) --lua.MP是给用户预留的命名空间，lua.mp则是系统自用的
     local before_list = string.explode(before_items, "\\+")
     local after_list = string.explode(after_items, "\\+")
