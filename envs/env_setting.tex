@@ -19,6 +19,7 @@
     % 且注释前不能有空格，否则会引入空白页
     smallblank=quarterline,% 板块间的最小间距
     bodyfont=14pt,%正文字号 A5a类21—16，b类14，c类12，d类10.5
+    interlinespace=1.5em,
 ]
 \def\smallblank{\blank[\getvariable{settings}{smallblank}]}
 % 此处samepage在某些地方不起效，而在当地手动加则有效 TODO
@@ -193,7 +194,7 @@
 % 条目间距（覆盖预设）
 % \setupitemgroup[packed]
 % 行距设置 A5a类19*20，b类22*22，c类25*25，d类29*28
-\setupinterlinespace[line=1.5em]
+\setupinterlinespace[line=\getvariable{settings}{interlinespace}]
 % 缩进设置
 \setupindenting[yes, 2em, first]
 % 窄行、缩进设置（每一级的缩进量）
@@ -229,7 +230,7 @@
 %   \shumh{书名}
 % 
 % 夹注
-% \usemodule[jiazhu][fontname=tf, fontsize=10.5pt, interlinespace=0.2em]
+\usemodule[jiazhu][fontname=tf, fontsize=10.5pt, interlinespace=0.2em]
 % default: fontname=tf, fontsize=10.5pt, interlinespace=0.08em(行间标点时约0.2em)
 % fontname和fontsize与\switchtobodyfont的对应参数一致
 % 夹注命令：
@@ -288,6 +289,32 @@
 % 结束命令为：\stopbuffer\stopAsAnswer
 % TDO 也许有控制方法，如此则可以definestartstop，或自定起讫命令
 
+% 行间式增删改标记，以及作答式
+\def\Insert[#1,#2]#3[#4]{%
+    \dontleavehmode%
+    \offset[width=0em,y=-0.7em,location={middle,top}]{\itxx #4 {∨}}%
+    % 或用\raise提升，用\hss ∨ \hss居中
+    \offset[width=0em,y=- #2 em,location={right,top}]
+        {\framedtext[width=#1 em,frame=off,offset=0em,frameoffset=0em,style={\itx\setupinterlinespace[line=1em]}]{#4 {#3}}%
+    }%
+}
+\def\InsertCode{\color[secondColor]}
+\def\AnswerInsertCode{\PTA}
+\def\insert[#1,#2]#3{\Insert[#1,#2]#3[\InsertCode]}
+\def\answerInsert[#1,#2]#3{\Insert[#1,#2]#3[\AnswerInsertCode]}
+
+\definebar[delete][overstrike][color=aboveColor, rulethickness=1pt]
+\definebar[answerDelete][delete][color=PTAColor]%TODO 直接改变模式不能更新颜色
+\def\change[#1,#2]#3#4{\insert[#1,#2]{#3}\delete{#4}}
+\def\answerChange[#1,#2]#3#4{\answerInsert[#1,#2]{#3}\answerDelete{#4}\dontleavehmode}
+
+% 行内式增删改
+\definebar[insertInlineBar][underbar][color=secondColor, rulethickness=1pt]
+\def\insertIn#1{\insertInlineBar{\it #1}}
+\def\deleteIn#1{\delete{#1}}
+\def\changeIn#1#2{\insertIn{#1}\delete{#2}}% 行内式
+% 夹注点评
+\def\appreciateIn#1{\jiazh{\color[secondColor]{#1}}}
 % %%%%%%%%%
 % 自定义标题
 % %%%%%%%%%
@@ -367,6 +394,12 @@
     \saveAnswer[answerAsItIs,]{#1}%
 }%
 
+% 就地填空（没有下划线）
+\def\answerFill#1{%
+    \color[transparentColor]{#1}\PTA{#1}%　
+    \saveAnswer[answerAsItIs,]{#1}%
+}%
+
 % 回答画掉slashout
 \def\answerS#1{%
     \setbox0=\hbox{#1}%
@@ -412,6 +445,7 @@
 % 回答“略” omit
 \def\LableO{（略）}
 \def\answerLO{%
+    \dontleavehmode%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableO}}}%
     \saveAnswer[answerAsItIs,]{\LableO}%
 }
@@ -419,6 +453,7 @@
 % 回答“示例：”example
 \def\LableE{示例：}
 \def\answerLE{%
+    \dontleavehmode%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableE}}}%
     \saveAnswer[answerAsItIs,]{\LableE}%
 }
@@ -434,13 +469,14 @@
 % 回答“见文中练习”inline as given above
 \def\LableIA{（见\LableI）}
 \def\answerLIA{%
+    \dontleavehmode%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableIA}}}%
     \saveAnswer[answerAsItIs,]{\LableIA}%
 }
 
 % 括号
 % TODO 测量宽度；允许输入宽度
-\def\brackets#1{（\enskip \PTA{#1} \enskip）}
+\def\brackets#1{（\nobreak\enskip \PTA{#1} \enskip）}
 % 括号（行末）
 \def\rBrackets#1{\hfill \brackets{#1}}
 
