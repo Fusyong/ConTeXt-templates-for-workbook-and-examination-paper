@@ -40,6 +40,8 @@
     % 或直取M宽/方空铅的整数倍，即`每行字数em`（与上法有极小的差别，与字体有关）
     % A5a类19*20，b类22*22，c类25*25，d类29*28
     % width=33em,
+    leftmargin=0em,
+    rightmargin=4em,
     topspace=20mm,
     height=250mm,
         header=0mm,
@@ -95,6 +97,7 @@
 % !!!如果不设置透明度，用于下画线时，字色透明度会覆盖下画线的透明度
 \definecolor[secondColor]     [c=1,t=1,a=1] % 第二色（青色）
 \definecolor[aboveColor]      [c=1,t=0.8,a=1] % 上层色（80%透明的青色）
+\definecolor[lightSecondColor][c=0.3,t=1,a=1] % 浅二色（青色）
 \definecolor[proofColor]      [m=1,t=0.8,a=1] % 校对文本色（80%透明的品色）
 \definecolor[transparentColor][k=0,t=0,a=1] % 透明色（就地隐藏文本用）
 
@@ -140,8 +143,7 @@
 % 课文标题设置
 \setuphead[section][style={\setupalign[middle]\tfa}]
 % 分组/栏目标题设置
-\setuphead[subsection][style={\tf}, color=secondColor, number=yes,distance=0pt]
-\setuphead[subsubject][style={\bf}]
+\setuphead[subsection][style={\bf}, color=secondColor, number=no,distance=0pt]
 % 大题设置
 \setuplabeltext[cn][subsubsection={{},{、}}] % 前后标签
 %after={\blank[samepage]}无效，受到dati后续命令的干扰
@@ -170,7 +172,7 @@
 % 设置目录、PDF书签、交互、引用
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setupheadtext[content=目录]
-\setupcombinedlist[content][list={DANYUAN,KEWEN},alternative=c]%
+\setupcombinedlist[content][list={DANYUAN,KEWEN,lanmuN},alternative=c]%
 \setuplist[DANYUAN][style=bold]
 \setuplist[KEWEN][margin=2em]
 % pdf交互/链接
@@ -181,7 +183,7 @@
     option={doublesided,bookmark},
     width=max,height=max,% necessary for Trim/BleedBox
 ]
-\placebookmarks[DANYUAN,KEWEN,chapter,section,subsection] % 可加入自定义\definelist[mylist]
+\placebookmarks[DANYUAN,KEWEN,lanmuN,chapter,section,subsection] % 可加入自定义\definelist[mylist]
 % 设置引用
 % \setupreferencing[left=,right=] % 覆盖左右两侧的引号
 % \define[1]\see{\at{}{页}[#1]\about[#1]}% 另见
@@ -339,7 +341,11 @@
 %     [after={\saveAnswer[kewenformat,]{\structuretitle}}]
 
 % 栏目/题目分组
+% 不上目录的
 \definehead[lanmu][subsubject]
+    [before={\smallblank}, after={\smallblank}]
+% 上目录的
+\definehead[lanmuN][subsection]
     [before={\smallblank}, after={\smallblank}]
 
 % 大题目
@@ -380,7 +386,7 @@
 % 题型
 % %%%%%%%%%
 % 下画线完形填空answerUnderbar
-% ！！！标点符号处理过程导致下画线断开，或禁则失效
+% ！！！标点符号处理过程导致下画线断开，或禁则失效 TODO 用\blackrule和\hspace 模拟
 % 可能是标点模块删除标点前后的空白造成的
 % 临时处理方法是只在填空前面加kern
 \definebar[clozeBar][underbar][continue=yes, rulethickness=0.25pt, color=secondColor, offset=-0.5]
@@ -472,6 +478,12 @@
     \dontleavehmode%
     \raise 1em\vbox to 0em{\hbox to 0em{\itx\PTA{\LableIA}}}%
     \saveAnswer[answerAsItIs,]{\LableIA}%
+}
+
+% 说明文字 TODO 宽度错误
+\def\note#1{%
+    \dontleavehmode%
+    \inoutermargin[style={\itx\setupinterlinespace[line=1em]\setupalign[flushleft]}]{\PTA{#1}}%
 }
 
 % 括号
@@ -647,6 +659,58 @@
 %     \stopMPcode
 %     }
 
+% 点拨文本框
+% 随机曲线风格
+\startuseMPgraphic{FunnyFrame}
+picture p ; numeric o ; path a, b ; pair c ;
+p := textext.rt(\MPstring{FunnyFrame}) ;
+a := unitsquare xyscaled(OverlayWidth,OverlayHeight) ;
+o := BodyFontSize ;
+p := p shifted (2o,OverlayHeight-ypart center p) ;
+drawoptions (withpen pencircle scaled 1pt withcolor \MPcolor{secondColor}) ;
+b := a randomized (o/2) ;
+fill b withcolor white ; draw b ;
+b := (boundingbox p) randomized (o/8) ;
+fill b withcolor white ; draw b ;
+draw p withcolor black;
+setbounds currentpicture to a ;
+\stopuseMPgraphic
+
+% 圆角方形
+% \startuseMPgraphic{FunnyFrame}
+%     picture p ; numeric o ; path a, b ; pair c ;
+%     p := textext.rt(\MPstring{FunnyFrame}) ;
+%     o := BodyFontSize ;
+%     a := unitsquare xyscaled(OverlayWidth,OverlayHeight) ;
+%     p := p shifted (2o,OverlayHeight-ypart center p) ;
+%     pickup pencircle scaled OverlayLineWidth ;
+%     b := a superellipsed .95 ;
+%     fill b withcolor \MPcolor{lightSecondColor} ;
+%     draw b withcolor \MPcolor{aboveColor} ;
+%     b := (boundingbox p) superellipsed .95 ;
+%     fill b withcolor \MPcolor{lightSecondColor} ;
+%     draw b withcolor \MPcolor{aboveColor} ;
+%     draw p withcolor black ;
+%     setbounds currentpicture to a ;
+% \stopuseMPgraphic
+
+\defineoverlay[FunnyFrame][\useMPgraphic{FunnyFrame}]
+\defineframedtext[FunnyText][frame=off,background=FunnyFrame]
+\setupframedtexts
+    [FunnyText]
+    [backgroundcolor=lightgray,
+    % foregroundcolor=white,
+    framecolor=darkred,
+    rulethickness=2pt,
+    offset=\bodyfontsize,
+    before={\blank[big,medium]},
+    after={\blank[big]},
+    width=\textwidth]
+\def\StartDianbo{\startFunnyText}
+\def\StopDianbo {\stopFunnyText }
+\def\DianboTitle#1%
+{\setMPtext{FunnyFrame}{\hbox spread 1em{\hss\strut#1\hss}}}
+\setMPtext{FunnyFrame}{} % initialize the text variable
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 资源
