@@ -1,0 +1,28 @@
+% TODO fallback
+
+% \definefontfamily [mainface] [rm] [TeX Gyre Pagella]
+% \definefontfamily[changedstyles][rm][TeX Gyre Pagella][tf=style:italic,it=style:bold,bi=style:bolditalic,bf=style:regular]
+% \definefontfamily[changedfiles][rm][TeX Gyre Pagella][it=file:texgyreherositalic,bi=file:texgyrecursorbolditalic]
+% \definefontfamily[changedfeatures][rm][TeX Gyre Pagella][tf=features:smallcaps,bf=features:none]
+% https://wiki.contextgarden.net/Command/definefontfamily
+% https://wiki.contextgarden.net/Command/definefallbackfamily
+% \definefallbackfamily [alegreya] [rm] [KaiseiOpti] [preset=range:japanese]
+% \definefallbackfamily [studentA] [ss] [Noto Sans CJK SC][range={0x0000-0x058F},force=yes]%preset=range:chinese
+
+% 学生用书字体楷体（a类，一至三年级，21至16pt）
+% 学生用书字体楷体（b类楷，二至四年级，14pt）
+% \definefallbackfamily [studentK] [rm] [Noto Sans CJK SC] [preset=range:chinese,force=yes] % 例外，见下
+% \definefallbackfamily [studentK] [ss] [simfang][preset=range:chinese,force=yes]
+% \definefallbackfamily [studentK] [tt] [simhei][preset=range:chinese,force=yes]
+\definefontfamily [studentK] [rm] [kaiti][bf=simhei,it=file:simfang.ttf]
+% \definefontfamily [studentK] [ss] [simfang]
+% \definefontfamily [studentK] [tt] [simhei]
+% 学生用书字体宋体（b类宋，二至四年级，14pt）
+% 学生用书字体宋体（c类，五年级至高中，12pt）
+% 学生用书字体宋体（d类，高中理科，10.5pt）
+% \definefallbackfamily [studentS] [rm] [simsunextb] [preset=range:chinese,force=yes] % simsunb.ttf
+% \definefallbackfamily [studentS] [ss] [simhei][preset=range:chinese,force=yes]
+% \definefallbackfamily [studentS] [tt] [simhei][preset=range:chinese,force=yes]
+\definefontfamily [studentS] [rm] [simsun][tf=file:simsun.ttc,bf=simhei,it=kaiti]
+% \definefontfamily [studentS] [ss] [simhei]
+% \definefontfamily [studentS] [tt] [simhei]
