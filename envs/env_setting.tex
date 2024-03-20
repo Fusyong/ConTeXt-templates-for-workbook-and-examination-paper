@@ -621,61 +621,21 @@
     % \saveAnswer[answerAsItIs,]{#2}%
 }
 
-% \def\wordslink[#1,#2,#3]{
-%     \startMPcode
-%     lua.MP.wordslink(#1,#2,#3) ;
-%     \stopMPcode
-% }
-
-% \startluacode
-% function MP.lianxian(char,words) --lua.MP是给用户预留的命名空间，lua.mp则是系统自用的
-%     local code1 = [[
-%     draw
-% textext("This will print \quotation{Hi} in the console!")
-% xsized TextWidth
-% withcolor "darkblue" ;
-%     ]]
-%     mp.fprint(code1)
-    
-% end
-% --return MP.lianxian
-
-% --userdata = userdata or { }
-% --function userdata.lianxian(keywords, str)
-% --    keyword_options = utilities.parsers.settings_to_array(keywords)
-% --    -- named_values = utilities.parsers.settings_to_hash(keyvals)
-
-% --    -- 回输位置参数
-% --    context('First option = ' .. keyword_options[1])
-% --    context('\\par')
-% --    -- context('Color chosen = ' .. named_values['color'])
-% --    context('Curly braces = ' .. str)
-% --end
-% \stopluacode
-
-% \def\lianxian[#1]#2{
-%     \startMPcode
-
-%     % lua.MP.lianxian(#1,#2) ;
-%     MP.lianxian(#1,#2) ;
-%     \stopMPcode
-%     }
-
 % 点拨文本框
 % 随机曲线风格
 \startuseMPgraphic{FunnyFrame}
-picture p ; numeric o ; path a, b ; pair c ;
-p := textext.rt(\MPstring{FunnyFrame}) ;
-a := unitsquare xyscaled(OverlayWidth,OverlayHeight) ;
-o := BodyFontSize ;
-p := p shifted (2o,OverlayHeight-ypart center p) ;
-drawoptions (withpen pencircle scaled 1pt withcolor \MPcolor{secondColor}) ;
-b := a randomized (o/2) ;
-fill b withcolor white ; draw b ;
-b := (boundingbox p) randomized (o/8) ;
-fill b withcolor white ; draw b ;
-draw p withcolor black;
-setbounds currentpicture to a ;
+    picture p ; numeric o ; path a, b ; pair c ;
+    p := textext.rt(\MPstring{FunnyFrame}) ;
+    a := unitsquare xyscaled(OverlayWidth,OverlayHeight) ;
+    o := BodyFontSize ;
+    p := p shifted (2o,OverlayHeight-ypart center p) ;
+    drawoptions (withpen pencircle scaled 1pt withcolor \MPcolor{secondColor}) ;
+    b := a randomized (o/2) ;
+    fill b withcolor white ; draw b ;
+    b := (boundingbox p) randomized (o/8) ;
+    fill b withcolor white ; draw b ;
+    draw p withcolor black;
+    setbounds currentpicture to a ;
 \stopuseMPgraphic
 
 % 圆角方形
@@ -710,9 +670,22 @@ setbounds currentpicture to a ;
     width=\textwidth]
 \def\StartDianbo{\startFunnyText}
 \def\StopDianbo {\stopFunnyText }
+
 \def\DianboTitle#1%
 {\setMPtext{FunnyFrame}{\hbox spread 1em{\hss\strut#1\hss}}}
 \setMPtext{FunnyFrame}{} % initialize the text variable
+
+% 
+\def\bgframedtext[#1]#2{%
+\startuseMPgraphic{frame}
+    path p; p := unitsquare xyscaled(OverlayWidth,OverlayHeight);
+    draw p randomized 2.5mm
+    withcolor transparent (1, 0.4 randomized 0.25, \MPcolor{secondColor})
+    withpen pencircle scaled 2pt;
+\stopuseMPgraphic
+\defineoverlay[frame][\useMPgraphic{frame}] % 可以多层： \startoverlay ... \stopoverlay
+\dontleavehmode\framedtext[frame=off,background={frame},width=#1em]{#2}%
+}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 资源
