@@ -621,6 +621,19 @@
     % \saveAnswer[answerAsItIs,]{#2}%
 }
 
+% 思维导图
+\startluacode
+    require "envs/Mindmap"
+\stopluacode
+% #1三列宽度[8em,2cm,1em]，#2后项顺序[231]，#3前项，后项#4
+\def\lianxian[#1][#2]#3#4{%
+    \dontleavehmode
+    \startMPcode
+        lua.MP.mindmap("#1","#2","#3","#4") ;
+    \stopMPcode
+    % \saveAnswer[answerAsItIs,]{#2}%
+}
+
 % 点拨文本框
 % 随机曲线风格
 \startuseMPgraphic{FunnyFrame}
