@@ -634,6 +634,19 @@
     % \saveAnswer[answerAsItIs,]{#2}%
 }
 
+% \startluacode
+%     -- remember, using the userdata namespace prevents conflicts
+%     userdata = userdata or {}
+
+%     function userdata.surroundwithdashes(str)
+%         context("--" .. str .. "--")
+%     end
+% \stopluacode
+% 然后定义同一个TeX命令来展开\ctxlua回调:
+
+% \def\surroundwd#1%
+%     {\ctxlua{userdata.surroundwithdashes([==[#1]==])}}
+
 % 点拨文本框
 % 随机曲线风格
 \startuseMPgraphic{FunnyFrame}
