@@ -532,11 +532,11 @@
 \startluacode
     require "envs/Pinyinge"
 \stopluacode
-\def\pinyinge[#1][#2]{%
+\def\pinyinge[#1][#2][#3]{%
     \dontleavehmode
     \bbox{%底线对齐（默认为基线对齐）
     \startMPcode
-        lua.MP.tianzige("#1","#2") ;
+        lua.MP.tianzige("#1","#2","#3") ;
     \stopMPcode
     }%
     \saveAnswer[answerAsItIs,]{#2}%

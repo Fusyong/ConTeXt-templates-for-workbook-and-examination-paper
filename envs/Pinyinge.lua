@@ -1,7 +1,7 @@
 -- https://wiki.contextgarden.net/String_manipulation
-function MP.tianzige(pinyin,characters) --lua.MP是给用户预留的命名空间，lua.mp则是系统自用的
+function MP.tianzige(pinyin,characters,cColor) --lua.MP是给用户预留的命名空间，lua.mp则是系统自用的
     local mp_string = [[
-        u := 1.3cm;
+        u := 1.5cm;
         right_y := %d(u);
         
         path square ; square := fullsquare scaled u shifted(right_y,0cm);
@@ -16,7 +16,7 @@ function MP.tianzige(pinyin,characters) --lua.MP是给用户预留的命名空�
         draw c2 shifted(right_y,0cm) dashed evenly ;
 
         label.top(textext("\strut %s"), square) ;
-        label(textext("\itd\PTA{%s}"), square) ;
+        label(textext("\tiangekai\%s{%s}"), square) ;
     ]]
 
     -- 分拆拼音音节，逐一存在表中
@@ -37,8 +37,9 @@ function MP.tianzige(pinyin,characters) --lua.MP是给用户预留的命名空�
     for c in string.utfcharacters(characters) do
         table.insert(chineses,c)
     end
+    local color = cColor or "PTA"
     for k,v in ipairs(syllables) do
-        mp.fprint(mp_string,(k-1),v,chineses[k])
+        mp.fprint(mp_string,(k-1),v,color,chineses[k])
     end
 end
 return MP.tianzige
