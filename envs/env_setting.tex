@@ -655,7 +655,8 @@
     a := unitsquare xyscaled(OverlayWidth,OverlayHeight) ;
     o := BodyFontSize ;
     p := p shifted (2o,OverlayHeight-ypart center p) ;
-    drawoptions (withpen pencircle scaled 1pt withcolor \MPcolor{secondColor}) ;
+    % drawoptions (withpen pencircle scaled 1pt withcolor \MPcolor{secondColor}) ;
+    drawoptions (withpen pencircle scaled 1pt withcolor "lightblue") ;
     b := a randomized (o/2) ;
     fill b withcolor white ; draw b ;
     b := (boundingbox p) randomized (o/8) ;
@@ -706,7 +707,8 @@
 \startuseMPgraphic{frame}
     path p; p := unitsquare xyscaled(OverlayWidth,OverlayHeight);
     draw p randomized 2.5mm
-    withcolor transparent (1, 0.4 randomized 0.25, \MPcolor{secondColor})
+    % withcolor transparent (1, 0.4 randomized 0.25, \MPcolor{secondColor}) %\MPcolor{secondColor}
+    withcolor "lightblue"
     withpen pencircle scaled 2pt;
 \stopuseMPgraphic
 \defineoverlay[frame][\useMPgraphic{frame}] % 可以多层： \startoverlay ... \stopoverlay
