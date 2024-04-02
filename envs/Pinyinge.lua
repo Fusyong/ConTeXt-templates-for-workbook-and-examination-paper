@@ -15,8 +15,8 @@ function MP.tianzige(pinyin,characters,cColor) --lua.MP是给用户预留的命�
         draw c1 shifted(right_y,0cm) dashed evenly ;
         draw c2 shifted(right_y,0cm) dashed evenly ;
 
-        label.top(textext("\strut %s"), square) ;
-        label(textext("\tiangekai\%s{%s}"), square) ;
+        label.top(textext("\bix\strut %s"), square) ;
+        label(textext("\%s{\tiangekai %s}"), square) ;
     ]]
 
     -- 分拆拼音音节，逐一存在表中
