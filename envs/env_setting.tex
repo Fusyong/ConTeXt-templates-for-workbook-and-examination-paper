@@ -98,9 +98,11 @@
 \setupcolors[state=start] % 开启颜色（默认关闭，转成灰度）
 % !!!如果不设置透明度，用于下画线时，字色透明度会覆盖下画线的透明度
 \definecolor[secondColor]     [c=1,t=1,a=1] % 第二色（青色）
+\definecolor[lightSecondColor][c=0.4,t=0.8,a=1] % 浅二色（青色）
 \definecolor[aboveColor]      [c=1,t=0.8,a=1] % 上层色（80%透明的青色）
-\definecolor[lightSecondColor][c=0.3,t=1,a=1] % 浅二色（青色）
+\definecolor[lightAboveColor] [c=0.4,t=0.8,a=1] % 上层色（80%透明的青色）
 \definecolor[proofColor]      [m=1,t=0.8,a=1] % 校对文本色（80%透明的品色）
+\definecolor[lightProofColor] [m=0.4,t=0.8,a=1] % 校对文本色（80%透明的品色）
 \definecolor[transparentColor][k=0,t=0,a=1] % 透明色（就地隐藏文本用）
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -714,6 +716,10 @@
 \defineoverlay[frame][\useMPgraphic{frame}] % 可以多层： \startoverlay ... \stopoverlay
 \dontleavehmode\framedtext[frame=off,background={frame},width=#1em]{#2}%
 }
+
+% 写字图示段落
+\defineparagraphs[illustrationPar][n=2,before={\blank},after={\blank}] 
+\setupparagraphs [illustrationPar][1][width=.25\textwidth] 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 资源
