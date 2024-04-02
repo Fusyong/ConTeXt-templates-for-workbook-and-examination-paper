@@ -4,6 +4,15 @@ a ConTeXt template for workbook and examination paper
 
 缘起和思路等见我的博客[《语文练习册和试卷的ConTeXt模板》](https://blog.xiiigame.com/2024-01-21-%E8%AF%AD%E6%96%87%E7%BB%83%E4%B9%A0%E5%86%8C%E5%92%8C%E8%AF%95%E5%8D%B7%E7%9A%84ConTeXt%E6%A8%A1%E6%9D%BF/)
 
+## 用法
+
+1. 安装[ConTeXt LMTX](https://wiki.contextgarden.net/Installation)
+2. 安装插件（否则编译时会报告命令/控制序列不存在）
+    1. 夹注[jiazhu](https://github.com/Fusyong/jiazhu)
+    2. 竖排[vtypeset](https://github.com/Fusyong/vertical-typesetting)
+    3. 标点挤压[zhpunc](https://github.com/Fusyong/zhpunc)
+3. 下载本项目，在根目录位置编译`>context book.lmtx`。如果控制台显示中文时有乱码，可用命令临时改变代码页`>chcp 65001`
+
 ## 主要特性
 
 1. 在排版文档中，就地放置参考答案和答题说明（标签）；
