@@ -12,6 +12,7 @@ a ConTeXt template for workbook and examination paper
     2. 竖排[vtypeset](https://github.com/Fusyong/vertical-typesetting)
     3. 标点挤压[zhpunc](https://github.com/Fusyong/zhpunc)
 3. 下载本项目，在根目录位置编译`>context book.lmtx`。如果控制台显示中文时有乱码，可用命令临时改变代码页`>chcp 65001`
+4. 在字体设置文件`type-imp-student.mkiv`中，字体家族`student`的`tt`风格的`bi`变体用于显示汉语拼音，所用字体文件`WukongPinyinSans-Light.ttf`在font文件夹中，请自行安装。如果不想安装，可以改`\definefontfamily[student][tt][kaiti][bf=simhei,it=fangsong,bi=WukongPinyinSans-Light]`中的“WukongPinyinSans-Light”为“simhei”，或其他。仅当使用student字体的tt风格时有此问题。
 
 ## 主要特性
 

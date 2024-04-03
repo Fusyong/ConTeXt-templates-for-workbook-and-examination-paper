@@ -78,6 +78,9 @@
 \setscript[hanzi] % 汉字处理脚本（断行等）
 \setupalign[hanging,hz] %行末标点悬挂
 
+% 边沿margin/edge文本
+\setupmargindata[style={\itx\setupinterlinespace[line=1em]\setscript[hanzi]}]
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 字体和符号配置
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -487,7 +490,7 @@
 % 说明文字 TODO 宽度错误
 \def\note#1{%
     \dontleavehmode%
-    \inoutermargin[style={\itx\setupinterlinespace[line=1em]\setupalign[flushleft]}]{\PTA{#1}}%
+    \inouter{\PTA{#1}}%
 }
 
 % 括号
