@@ -1,0 +1,129 @@
+%%%% 一个建议的幻灯片环境
+\startenvironment % 与第一行代码间必须有空行 BUG
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 中文配置
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainlanguage[cn]
+\language[cn]
+\setscript[hanzi] % 汉字处理脚本（断行等）
+\setupalign[hanging,hz] %行末标点悬挂
+
+% 模式
+% 在分步中
+\definemode[insteps]
+% \enablemode[insteps]
+\disablemode[insteps]
+
+% 页面和用纸的尺寸
+\setuppapersize[S6][S6]
+% [S3] [width=300pt,height=225pt]
+% [S4] [width=400pt,height=300pt]
+% [S5] [width=500pt,height=375pt]
+% [S6] [width=600pt,height=450pt]
+% [S8] [width=800pt,height=600pt]
+% [SW] [width=800pt,height=450pt]
+% [SM] [width=720pt,height=450pt]
+
+% 定义页面为装饰页
+\definemakeup[slidepage]
+\definelayout[slidepage][width=fit,
+    rightmargin=1.5cm,
+    leftmargin=1.5cm,
+    leftmargindistance=0pt,
+    rightmargindistance=0pt,
+    topspace=0cm,
+    height=fit,
+        header=0pt,
+        footer=1em,
+    bottomspace=0cm,
+    backspace=1.5cm,
+    bottom=12pt,
+    location=singlesided]
+\setupmakeup[slidepage][doublesided=empty, pagestate=start, align=middle, page={disable,no}]
+
+% \setupcolors[state=start]
+\usecolors[crayola]%使用颜色集合
+\definecolor[transparentColor][k=0,t=0,a=1] % 透明色（就地隐藏文本用）
+
+\setupbodyfont   [student,tt,16pt]
+\setupindenting[no]
+
+\setupheads[chapter][
+    before=,
+    after=,
+    number=no,
+    page=no,% 单元设置，新页起 , page=yes新页/left偶数页/right奇数页（默认）
+    style={\setupalign[middle]\tfb},
+    ]
+\setuplabeltext[cn][chapter={{},{、}}] % 前后标签
+
+\def\sTitle#1{\title{\tfb #1}}
+\def\sChapter#1{\doifmodeelse{insteps}
+    {\sTitle{#1}}
+    {\chapter{\tfb #1}}}
+
+% 设置列表组itemize、所有级别、阿拉伯数字、堆叠、其后不留空
+\setupitemgroup[itemize][each][packed][before={}, after={},]
+\def\sItems[#1]#2{\centeraligned{\framedtext[before=,offset=0pt,width=#1,frame=off]{\startitemize[packed] #2 \stopitemize}}}
+\def\sPar[#1]#2{\centeraligned{\framedtext[before=,offset=0pt,width=#1,frame=off,indenting={}]{#2}}}
+
+% 分步（隐藏/显示）
+\definecounter[recursenum][way=bytext]
+\setnumber[recursenum][1]
+\definecounter[currentstepnum][way=bytext]
+\setnumber[currentstepnum][1]
+\def\step[#1]#2{%
+    \ifnum #1>\rawcountervalue[currentstepnum] \color[transparentColor]{#2} \else #2 \fi%
+    \ifnum #1>\rawcountervalue[recursenum] \setnumber[recursenum][#1] \fi%
+    }
+
+% 幻灯片环境起讫
+\definestartstop[Slide]
+[commands={\switchtobodyfont[24pt]},
+before={\startmakeup[slidepage]},
+after={\stopmakeup}]
+\def\slide#1{\startSlide #1 \stopSlide%
+    \decrementcounter[recursenum]%
+    \incrementcounter[currentstepnum]%
+    \enablemode[insteps]%
+    \dorecurse{\rawcountervalue[recursenum]}{%
+        \startSlide #1 \stopSlide%
+    \incrementcounter[currentstepnum]}%
+    \setnumber[recursenum][1]%
+    \setnumber[currentstepnum][1]%
+    \disablemode[insteps]%
+}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 设置目录、PDF书签、交互、引用
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setupheadtext[content=目录]
+\setupcombinedlist[content][list={DANYUAN,KEWEN,lanmuN},alternative=c]%
+\setuplist[DANYUAN][style=bold]
+\setuplist[KEWEN][margin=2em]
+% pdf交互/链接
+\setupinteraction[state=start,color=,]
+% pdf书签
+% \setupinteractionscreen[option={bookmark}]
+\setupinteractionscreen[
+    option={doublesided,bookmark},
+    width=max,height=max,% necessary for Trim/BleedBox
+]
+\placebookmarks[DANYUAN,KEWEN,lanmuN,chapter,section,subsection] % 可加入自定义\definelist[mylist]
+% 设置引用
+% \setupreferencing[left=,right=] % 覆盖左右两侧的引号
+% \define[1]\see{\at{}{页}[#1]\about[#1]}% 另见
+
+
+\setupbackgrounds[page][background=color,backgroundcolor=LightChromeGreen]
+    % {\setupbackgrounds[page][background=color,backgroundcolor=white]}
+% \startcolor[OuterSpace]
+% \startcolor[white]
+
+% \setuppagenumber[state=start]
+\setuppagenumbering[location={footer,right}]
+% \setuptolerance[verytolerant,stretch] 
+\setupinteractionscreen[option=max]
+
+\stopenvironment
